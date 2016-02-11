@@ -24,8 +24,7 @@
         </nav>
 
         <main>
-            <h1>Page heading</h1>
-            <p>Some content goes here</p>
+            @yield('content')
         </main>
 
         <footer>

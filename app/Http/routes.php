@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('master');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'Pages@home']);
