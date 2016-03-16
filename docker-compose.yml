@@ -1,0 +1,32 @@
+---
+
+version: "2"
+
+services:
+
+  proxy:
+    image: nginx:1.9.12
+    volumes:
+      - ./ops/config/nginx:/etc/nginx/conf.d
+    volumes_from:
+      - app
+    depends_on:
+      - app
+  
+  app:
+    build: ops/dockerfiles/app
+    volumes:
+      - ./:/srv/http/
+    env_file: .env
+    depends_on:
+      - db
+  
+  db:
+    image: mysql:5.7.8
+
+  srcbuild:
+    build: ops/dockerfiles/srcbuild
+    volumes_from: 
+      - app
+    env_file: .env
+

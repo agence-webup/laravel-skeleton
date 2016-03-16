@@ -1,0 +1,22 @@
+---
+
+version: "2"
+
+services:
+
+  proxy:
+    networks:
+      - default
+      - proxies
+
+  db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=db
+
+networks:
+  default:
+    driver: overlay
+  proxies:
+    external: true
+

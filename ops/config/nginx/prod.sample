@@ -1,0 +1,42 @@
+server {
+    server_name my-domain;
+    listen 80;
+
+    root /srv/http/public;
+    index index.html index.htm index.php;
+
+    client_max_body_size 15M;
+
+    access_log off;
+
+    location / {
+        try_files $uri @app;
+    }
+
+    location @app {
+        fastcgi_param  SCRIPT_FILENAME site.php;
+        include        fastcgi_params;
+        fastcgi_pass   app:9000;
+    }
+
+}
+
+server {
+    server_name media.my-domain;
+    listen 80;
+
+    # Project public directory
+    root /srv/http/public;
+    index index.html index.htm index.php;
+
+    location / {
+        add_header Access-Control-Allow-Origin 'http://my-domain';
+        try_files $uri =404;
+    }
+}
+
+server {
+    server_name my-other-domain;
+    listen 80;
+    return 301 http://my-domain$request_uri;
+}

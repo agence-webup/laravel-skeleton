@@ -7,6 +7,12 @@ Homestead.json
 public/assets
 public/bower
 
+# OPS
+docker_ports.yml
+docker-compose.override.yml
+docker-compose.prod.yml
+ops/config/nginx/prod.conf
+
 # OS
 .DS_Store
 ._*

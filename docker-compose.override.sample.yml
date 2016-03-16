@@ -1,0 +1,14 @@
+---
+
+version: "2"
+
+services:
+
+  proxy:
+    ports:
+      - "8000:8000"
+  
+  db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=db

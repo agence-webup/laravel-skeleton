@@ -1,0 +1,20 @@
+---
+
+version: 1
+
+config_files:
+  docker-compose.override.sample.yml: docker-compose.override.yml
+  docker-compose.prod.sample.yml: docker-compose.prod.yml
+  .env.example: .env
+  ops/config/nginx/prod.sample: ops/config/nginx/prod.conf
+
+enabled_tasks:
+  - name: npm
+  - name: composer
+  - name: bower
+  - name: gulp
+  - name: db-update
+
+checklist:
+  - Don't forget to run 'pliz bash app; php artisan key:generate' if needed
+  - Check ./storage and ./boostrap/cache have write permissions ($ chgrp -R 33 bootstrap/cache/ storage/)
