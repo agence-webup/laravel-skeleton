@@ -15,6 +15,14 @@ enabled_tasks:
   - name: gulp
   - name: db-update
 
+custom_tasks:
+  - name: key_generate
+    container: app
+    command: 
+      - php 
+      - artisan 
+      - key:generate
+
 checklist:
-  - Don't forget to run 'pliz bash app; php artisan key:generate' if needed
-  - Check ./storage and ./boostrap/cache have write permissions ($ chgrp -R 33 bootstrap/cache/ storage/)
+  - Don't forget to run 'pliz run key_generate' if needed
+  - Check ./storage and ./boostrap/cache have write permissions ($ chown -R 33:33 bootstrap/cache/ storage/)
