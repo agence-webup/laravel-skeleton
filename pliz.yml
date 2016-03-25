@@ -8,19 +8,19 @@ config_files:
   .env.example: .env
   ops/config/nginx/prod.sample: ops/config/nginx/prod.conf
 
-enabled_tasks:
-  - name: npm
-  - name: composer
-  - name: bower
-  - name: gulp
-  - name: db-update
+install_tasks:
+  - npm
+  - composer
+  - bower
+  - gulp
+  - db-update
 
-custom_tasks:
+tasks:
   - name: key_generate
     container: app
-    command: 
-      - php 
-      - artisan 
+    command:
+      - php
+      - artisan
       - key:generate
 
 checklist:
