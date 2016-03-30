@@ -9,13 +9,15 @@ server {
 
     access_log off;
 
-    location / {
-        try_files $uri @app;
+    # On desactive l'accès à index.php ou index.php/page
+    location ~ ^/index.php {
+        return 404;
     }
 
-    location @app {
-        fastcgi_param  SCRIPT_FILENAME index.php;
+    # Tout le reste est envoyé au index.php
+    location / {
         include        fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME $document_root/index.php;
         fastcgi_pass   app:9000;
     }
 
