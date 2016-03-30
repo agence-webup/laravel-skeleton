@@ -14,7 +14,7 @@ server {
     }
 
     location @app {
-        fastcgi_param  SCRIPT_FILENAME site.php;
+        fastcgi_param  SCRIPT_FILENAME index.php;
         include        fastcgi_params;
         fastcgi_pass   app:9000;
     }
