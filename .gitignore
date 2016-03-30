@@ -4,6 +4,12 @@
 Homestead.yaml
 Homestead.json
 .env
+.npm
+.cache
+.composer
+.node-gyp
+.bash_history
+.v8flag*
 
 public/assets
 public/bower
