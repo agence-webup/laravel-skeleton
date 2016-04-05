@@ -26,3 +26,4 @@ tasks:
 checklist:
   - Don't forget to run 'pliz run key_generate' if needed
   - Check ./storage and ./boostrap/cache have write permissions ($ chown -R 33:33 bootstrap/cache/ storage/)
+  - If you have the error 'File not found', check your permissions on your folders ($ find . -type d -exec chmod 755 {} \;; find . -type f -exec chmod 644 {} \;)
