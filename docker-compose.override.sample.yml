@@ -7,8 +7,14 @@ services:
   proxy:
     ports:
       - "8000:8000"
+    depends_on:
+      - maildev
   
   db:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=db
+
+  maildev:
+    ports:
+      - "1080:80"
