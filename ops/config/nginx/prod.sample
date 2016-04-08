@@ -1,3 +1,4 @@
+# Domain principale
 server {
     server_name my-domain;
     listen 80;
@@ -21,10 +22,16 @@ server {
         fastcgi_pass   app:9000;
     }
 
+    # On sert aussi les SVG sur le domaine principale
+    location ~* \.svg$ {
+        try_files $uri =404;
+    }
+
 }
 
+# Domain static
 server {
-    server_name media.my-domain;
+    server_name static.my-domain;
     listen 80;
 
     # Project public directory
@@ -37,8 +44,16 @@ server {
     }
 }
 
-server {
-    server_name my-other-domain;
-    listen 80;
-    return 301 http://my-domain$request_uri;
-}
+# # Domain 404 - utile pour les démos
+# server {
+#     server_name *.my-domain;
+#     listen 80;
+#     return 404;
+# }
+
+# # Redirections
+# server {
+#     server_name www.my-domain;
+#     listen 80;
+#     return 301 http://my-domain$request_uri;
+# }
