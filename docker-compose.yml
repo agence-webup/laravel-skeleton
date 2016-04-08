@@ -23,6 +23,10 @@ services:
   
   db:
     image: mysql:5.7.8
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=db
+
 
   srcbuild:
     build: ops/dockerfiles/srcbuild
