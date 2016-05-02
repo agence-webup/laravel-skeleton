@@ -1,8 +1,8 @@
-module.exports = function (gulp, plugins, config) {
+module.exports = function (gulp, plugins, path) {
     return function() {
-        return gulp.src([config.js.src, "!" + config.jsBundle.src])
+        return gulp.src([path.js.src, "!" + path.jsBundle.src])
         .pipe(plugins.plumber())
         .pipe(plugins.uglify())
-        .pipe(gulp.dest(config.js.dist))
+        .pipe(gulp.dest(path.js.dist))
     }
 };

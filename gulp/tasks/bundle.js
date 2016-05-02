@@ -1,11 +1,11 @@
-module.exports = function (gulp, plugins, config) {
+module.exports = function (gulp, plugins, path) {
     return function() {
-        return gulp.src(config.jsBundle.src)
+        return gulp.src(path.jsBundle.src)
         .pipe(plugins.plumber())
         .pipe(plugins.concat('bundle.js'))
         .pipe(plugins.uglify({
             mangle: true
         }))
-        .pipe(gulp.dest(config.jsBundle.dist))
+        .pipe(gulp.dest(path.jsBundle.dist))
     }
 };
