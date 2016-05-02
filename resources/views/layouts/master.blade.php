@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @yield('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
 </head>
 <body>
@@ -34,6 +35,7 @@
 
     <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bundle.js') }}"></script>
+    @yield('js')
 
     <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
