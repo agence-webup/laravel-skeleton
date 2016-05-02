@@ -10,12 +10,14 @@ server {
 
     access_log off;
 
-    # On desactive l'accès à index.php ou index.php/page
-    location ~ ^/index.php {
-        return 404;
+    location ~ ^/(.*)/$ {
+        return 301 $scheme://$http_host/$1;
     }
 
-    # Tout le reste est envoyé au index.php
+    location ~ /index.php(.*)$ {
+        return 301 $scheme://$http_host$1;
+    }
+
     location / {
         include        fastcgi_params;
         fastcgi_param  SCRIPT_FILENAME $document_root/index.php;
