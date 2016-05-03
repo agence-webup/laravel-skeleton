@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "webup/laravel-form": "1.0.*",
+        "artesaos/seotools": "0.9.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
