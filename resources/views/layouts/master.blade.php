@@ -7,7 +7,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    {!! SEO::generate() !!}
     @yield('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
     @if(App::environment() == 'prod')
