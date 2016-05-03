@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------- */
-/* == layout */
+/* == main */
 /* ----------------------------------------------------------- */
 
 body {
@@ -12,56 +12,58 @@ body {
   margin-right: auto;
   margin-left: auto;
   padding: 0 10px;
-  max-width: 960px;
+  max-width: 1024px;
 }
 
-/* header
+/* titles
 -------------------------------------------------------------- */
 
-.header {
-
+h1 {
+  .flow(26);
 }
 
-.header ul,
-.header li {
-  margin: 0;
-  padding: 0;
+h2 {
+  .flow(22);
 }
 
-/* navigation
+h3 {
+  .flow(18);
+}
+
+h4 {
+  .flow(16);
+}
+
+
+/* links
 -------------------------------------------------------------- */
 
-.navigation ul {
-  padding-left: 0;
+a {
+  color: @color-link;
 }
 
-.navigation li {
-  display: inline-block;
-  margin: 10px 0;
+a:hover,
+a:visited,
+a:focus {
+  color: lighten(@color-link, 10%);
 }
 
-.navigation li a {
-  display: inline-block;
-  padding: 10px 5px;
-}
-
-/* content
+/* lists
 -------------------------------------------------------------- */
 
-.content {
-
+ul {
+  padding-left: 2rem;
+  list-style-type: circle;
 }
 
-/* footer
+/* divers
 -------------------------------------------------------------- */
 
-.footer {
-  padding: 20px 0;
-  text-align: center;
-}
-
-.footer ul,
-.footer li {
-  margin: 0;
-  padding: 0;
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
 }

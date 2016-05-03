@@ -21,7 +21,21 @@
 /* == module */
 /* ----------------------------------------------------------- */
 
-.placeholder(@input-placeholder-color);
+/* placeholders
+-------------------------------------------------------------- */
+
+input::-webkit-input-placeholder {
+  color: @input-placeholder-color;
+}
+input:-moz-placeholder {
+  color: @input-placeholder-color;
+}
+textarea::-webkit-input-placeholder {
+  color: @input-placeholder-color;
+}
+textarea:-moz-placeholder {
+  color: @input-placeholder-color;
+}
 
 /* block form
 -------------------------------------------------------------- */
@@ -73,8 +87,6 @@ select,
 label,
 .label {
   vertical-align: middle;
-  font-size: inherit;
-  font-family: inherit;
 }
 
 select {
@@ -88,8 +100,6 @@ textarea {
   min-width: 320px;
   min-height: 8em;
   vertical-align: top;
-  font-size: inherit;
-  font-family: inherit;
   resize: vertical;
 }
 
