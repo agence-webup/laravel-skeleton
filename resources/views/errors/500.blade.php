@@ -1,8 +1,8 @@
 <?php
-SEO::setTitle('Be right back');
+SEO::setTitle('An error occured');
 ?>
 
 @extends('layouts.errors')
 @section('content')
-<h1>Be right back</h1>
+<h1>An error occured</h1>
 @endsection
