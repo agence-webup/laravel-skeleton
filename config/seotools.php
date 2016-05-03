@@ -6,7 +6,7 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "SITE_NAME", // set false to total remove
+            'title'        => false, // set false to total remove
             'description'  => 'SITE_DESCRIPTION', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
