@@ -15,8 +15,5 @@
         "gulp-util": "^3.0.6",
         "imagemin-pngquant": "^4.2.0",
         "merge-stream": "^1.0.0"
-    },
-    "scripts": {
-        "maildev": "./node_modules/maildev/bin/maildev --outgoing-user test --outgoing-pass test --open"
     }
 }
