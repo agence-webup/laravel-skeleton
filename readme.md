@@ -1,6 +1,6 @@
 # laravel-skeleton
 
-## Laravel Skeleton Features
+## Features
 
 * Laravel 5.2.x
 * Development environment with docker
