@@ -27,7 +27,6 @@ services:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=db
 
-
   srcbuild:
     build: ops/dockerfiles/srcbuild
     volumes_from: 
