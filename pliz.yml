@@ -23,5 +23,11 @@ tasks:
       - artisan
       - key:generate
 
+backup:
+  files:
+    - storage/app
+  databases:
+    - container: db
+
 checklist:
   - Don't forget to run 'pliz run key:generate' if needed and restart your containers
