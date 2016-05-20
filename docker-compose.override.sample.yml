@@ -6,25 +6,10 @@ services:
 
   proxy:
     ports:
-      - "8000:8000"
+      - 8000:8000
     depends_on:
       - maildev
 
-  app:
-    user: 1000:1000
-    environment:
-      - HOME=/srv/http
-  
-  db:
-    environment:
-      - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_DATABASE=db
-
-  srcbuild:
-    user: 1000:1000
-    environment:
-      - HOME=/srv/http
-
   maildev:
     ports:
-      - "1080:80"
+      - 1080:80

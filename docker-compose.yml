@@ -15,6 +15,9 @@ services:
   
   app:
     build: ops/dockerfiles/app
+    user: 1000:1000
+    environment:
+      - HOME=/srv/http
     volumes:
       - ./:/srv/http/
     env_file: .env
@@ -29,6 +32,9 @@ services:
 
   srcbuild:
     build: ops/dockerfiles/srcbuild
+    user: 1000:1000
+    environment:
+      - HOME=/srv/http
     volumes_from: 
       - app
     env_file: .env
@@ -36,4 +42,3 @@ services:
   maildev:
     image: djfarrelly/maildev:0.13.0
     command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open 
-

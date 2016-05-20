@@ -5,27 +5,18 @@ version: "2"
 services:
 
   proxy:
+    restart: always
     networks:
       - default
       - proxies
-    restart: always
 
   app:
     restart: always
-    user: 1000:1000
-    environment:
-      - HOME=/srv/http
 
   db:
+    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_DATABASE=db
-    restart: always
-
-  srcbuild:
-    user: 1000:1000
-    environment:
-      - HOME=/srv/http
 
 networks:
   default:
