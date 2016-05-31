@@ -13,7 +13,7 @@ install_tasks:
   - composer
   - bower
   - gulp
-  - db-update
+  - db:update
 
 tasks:
   - name: key_generate
