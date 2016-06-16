@@ -2,6 +2,9 @@ FROM php:7.0-fpm
 
 WORKDIR /srv/http
 
+RUN groupadd docker --gid 1000
+RUN useradd docker --uid 1000 --gid 1000 --create-home
+
 # App
 
 RUN apt-get update && apt-get install -y \

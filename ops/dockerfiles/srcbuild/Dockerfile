@@ -1,6 +1,8 @@
 FROM node:5.8.0
 
-RUN npm install -g bower
-RUN git config --system user.name Docker && git config --system user.email docker@localhost 
-
 WORKDIR /srv/http
+
+RUN groupadd docker --gid 1000
+RUN useradd docker --uid 1000 --gid 1000 --create-home
+
+RUN npm install -g bower
