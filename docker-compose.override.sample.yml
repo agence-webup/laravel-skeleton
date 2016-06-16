@@ -10,6 +10,10 @@ services:
     depends_on:
       - maildev
 
+  db:
+    ports:
+      - 9000:3306
+
   maildev:
     ports:
-      - 1080:80
+      - 1000:80
