@@ -27,6 +27,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=db
+    volumes:
+      - ./ops/config/mysql:/etc/mysql/conf.d
 
   srcbuild:
     build: ops/dockerfiles/srcbuild
