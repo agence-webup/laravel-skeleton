@@ -26,7 +26,7 @@ RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql curl mcrypt iconv gettext mb
      && docker-php-ext-install -j$(nproc) gd
 
 RUN php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php \
-    && php composer-setup.php --version=1.0.0-beta1 --filename=composer --install-dir=/usr/local/bin \
+    && php composer-setup.php --version=1.0.0 --filename=composer --install-dir=/usr/local/bin \
     && php -r "unlink('composer-setup.php');"
 
 COPY fpm-docker.conf /usr/local/etc/php-fpm.d/docker.conf
