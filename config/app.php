@@ -170,7 +170,8 @@ return [
         /**
          * Package Service Providers
          */
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Webup\LaravelForm\FormServiceProvider::class,
 
     ],
 
@@ -217,7 +218,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Form' => Webup\LaravelForm\Facades\Form::class,
     ],
 
 ];
