@@ -61,8 +61,8 @@ gulp.task('watch', ['browser-sync'], function() {
     gulp.watch(config.paths.front.js.watch, ['scripts']);
     gulp.watch(config.paths.front.images.watch, ['images']);
 
-    gulp.watch(config.admin.less.watch, ['admin:less']);
-    gulp.watch(config.admin.js.watch, ['admin:scripts']);
+    gulp.watch(config.paths.admin.less.watch, ['admin:less']);
+    gulp.watch(config.paths.admin.js.watch, ['admin:scripts']);
 });
 
 gulp.task('front', ['less', 'images', 'scripts']);

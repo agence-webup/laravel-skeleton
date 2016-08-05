@@ -23,6 +23,12 @@ tasks:
       - sh
       - -c
       - if grep -q -E ^APP_KEY=SomeRandomString$ .env; then php artisan key:generate; fi
+  - name: gulp:watch
+    container: srcbuild
+    command:
+      - sh
+      - -c
+      - ./node_modules/.bin/gulp watch
 
 backup:
   files:
