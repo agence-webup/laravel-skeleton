@@ -21,8 +21,8 @@ tasks:
     container: app
     command:
       - sh
-      - -c 
-      - if ! grep -q -E ^APP_KEY=[A-Za-z0-9]{32}$ .env; then php artisan key:generate; fi 
+      - -c
+      - if grep -q -E ^APP_KEY=SomeRandomString$ .env; then php artisan key:generate; fi
 
 backup:
   files:
