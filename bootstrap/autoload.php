@@ -2,6 +2,7 @@
 
 define('LARAVEL_START', microtime(true));
 
+
 /* Override Laravel's helper functions */
 
 require __DIR__.'/../app/Http/helpers.php';
