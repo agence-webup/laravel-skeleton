@@ -21,7 +21,15 @@
             <a href="#">Page 1</a>
             <a href="#">Page 2</a>
             <a href="#">Page 3</a>
-            <a href="#">Page 4</a>
+            <a href="{{ route('cart.index') }}">Panier</a>
+            @if (Auth::guest())
+                <a href="{{ route('customer.login') }}">Connexion</a>
+            @else
+                <form class="" action="{{ route('customer.logout') }}" method="post">
+                    {{ csrf_field() }}
+                    <button type="submit">Déconnexion</button>
+                </form>
+            @endif
         </nav>
 
         <main>
@@ -35,6 +43,12 @@
 
     <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bundle.js') }}"></script>
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
     @yield('js')
 </body>
 </html>

@@ -12,3 +12,42 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
+
+Route::get('/catalog/{slug}', 'CatalogController@index')->name('catalog')->where(['slug' => '.+']);
+Route::get('/product/{slug}', 'CatalogController@product')->name('catalog.product')->where(['slug' => '.*']);
+
+Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
+    Route::get('', 'CartController@index')->name('cart.index');
+
+    Route::get('/order', 'OrderController@create')->name('order.create');
+    Route::post('/order', 'OrderController@store')->name('order.store');
+    Route::get('/payment', 'PaymentController@index')->name('payment.index');
+    Route::get('/success', 'PaymentController@success')->name('payment.success');
+});
+
+Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Customer'], function () {
+    // Controllers Within The "App\Http\Controllers\Customer" Namespace
+
+    // Authentication Routes...
+    Route::get('/login', 'LoginController@showLoginForm')->name('login');
+    Route::post('/login', 'LoginController@login')->name('postLogin');
+    Route::post('/logout', 'LoginController@logout')->name('logout');
+
+    // Forgot Password Routes...
+    Route::get('/forgot-password', 'ForgotPasswordController@showForgotPasswordForm')->name('forgotPassword');
+    Route::post('/forgot-password', 'ForgotPasswordController@forgotPassword')->name('postForgotPassword');
+
+    // Reset Password Routes...
+    Route::get('/reset-password', 'ResetPasswordController@showResetPasswordForm')->name('resetPassword');
+    Route::post('/reset-password', 'ResetPasswordController@resetPassword')->name('resetPassword');
+
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+
+    // Customer's invoices Routes...
+    Route::get('/address', 'AddressController@edit')->name('address.edit');
+    Route::post('/address', 'AddressController@update')->name('address.update');
+
+    // Customer's invoices Routes...
+    Route::get('/orders', 'OrderController@index')->name('order.index');
+    Route::get('/orders/{id}', 'OrderController@show')->name('order.show');
+});

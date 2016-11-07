@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "tingle": "^0.8.0"
   }
 }
