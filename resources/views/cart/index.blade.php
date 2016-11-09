@@ -12,8 +12,8 @@ SEO::setDescription('Home page description');
 <div class="container">
     <div class="cart">
         <div class="cart-head">
-            <h1 class="cart-headTitle">Ma commande</h1>
-            <span class="cart-headInfo">Info&nbsp;: Il vous reste XX€ ant de bénéficier des frais de port offerts</span>
+            <h1 class="cart-head__title">Ma commande</h1>
+            <span class="cart-head__info">Info&nbsp;: Il vous reste XX€ avant de bénéficier des frais de port offerts</span>
         </div>
 
         <table class="cart-product">

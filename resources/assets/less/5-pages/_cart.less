@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.cart-head__title {
+  flex-shrink: 0;
+  margin-right: 2rem;
+}
+
 /* Cart product list
 -------------------------------------------------------------- */
 
@@ -27,6 +32,13 @@
 .cart-product__content {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  white-space: normal;
+}
+
+.cart-product__content > * {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 .cart-amount {
