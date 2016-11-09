@@ -3,6 +3,9 @@ SEO::setTitle('Home');
 SEO::setDescription('Home page description');
 ?>
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/bower/tingle/dist/tingle.min.css') }}">
+@endsection
 @extends('layouts.master')
 @section('content')
 
@@ -86,12 +89,12 @@ SEO::setDescription('Home page description');
             </div>
         </div>
 
-        <div data-js="orderModal">
-            <div>
-                <a href="{{ route('customer.login') }}">J'ai déjà un compte</a>
+        <div class="cart-orderModal" data-js="orderModal">
+            <div class="mb2">
+                <a class="btn btn--primary" href="{{ route('customer.login') }}">J'ai déjà un compte</a>
             </div>
             <div>
-                <a href="{{ route('order.create') }}">Je n'ai pas de compte</a>
+                <a class="btn btn--primary" href="{{ route('order.create') }}">Je n'ai pas de compte</a>
             </div>
         </div>
     </div>
