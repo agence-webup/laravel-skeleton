@@ -82,8 +82,9 @@ SEO::setDescription('Home page description');
                 <a class="btn btn--secondary" href="">continuer mes achats</a>
             </div>
             <div>
-                <a class="btn btn--primary" "{{ route('order.create') }}" data-js="orderButton" data-open="{{ Auth::guest() }}">Finaliser ma commande &rarr;</a>
+                <a class="btn btn--primary" href="{{ route('order.create') }}" data-js="orderButton" data-open="{{ Auth::guest() }}">Finaliser ma commande &rarr;</a>
             </div>
+        </div>
 
         <div data-js="orderModal">
             <div>
@@ -93,6 +94,7 @@ SEO::setDescription('Home page description');
                 <a href="{{ route('order.create') }}">Je n'ai pas de compte</a>
             </div>
         </div>
+    </div>
 </div>
 @endsection
 
