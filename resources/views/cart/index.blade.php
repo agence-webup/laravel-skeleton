@@ -35,7 +35,7 @@ SEO::setDescription('Home page description');
                     </div>
                 </td>
                 <td class="s-hidden">XXX,XX€</td>
-                <td class="txtcenter cart-amount" data-tabletitle="Quantité">
+                <td class="txtcenter cart-amount">
                     <input class="cart-amount__imput" type="number" name="">
                     <a class="cart-amount__link" href="">&#128465; supprimer
                 </td>
