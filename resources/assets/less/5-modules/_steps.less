@@ -34,16 +34,16 @@
   text-decoration: none;
 }
 
-.steps a:not(.current):hover:before {
+.steps a:not(.current):hover::before {
   background-color: @color-primary;
   transition: background-color .3s ease;
 }
 
-.steps .current:before {
+.steps .current::before {
   background-color: @color-secondary;
 }
 
-.steps a:before {
+.steps a::before {
   position: relative;
   display: block;
   margin: 0 auto;
