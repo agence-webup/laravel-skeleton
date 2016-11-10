@@ -3,5 +3,44 @@
 /* ----------------------------------------------------------- */
 
 @media (max-width: @small) {
+  /* Cart page
+    -------------------------------------------------------------- */
 
+  .cart-table thead {
+    display: none;
+  }
+
+  .cart-table tr {
+    display: block;
+  }
+
+  .cart-table tr:not(:last-of-type) {
+    border-bottom: .3rem solid #cbcbcb;
+  }
+
+  .cart-table td {
+    position: relative;
+    display: block;
+    padding-left: 35%;
+    width: 100%;
+    border: 0px;
+  }
+
+  .cart-table .cart-product__item {
+    display: flex;
+  }
+
+  .cart-table td:not(:last-of-type) {
+    border-bottom: 1px solid #cbcbcb;
+  }
+
+  .cart-table td::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5em 1em;
+    width: 35%;
+    content: attr(data-tabletitle);
+    text-align: left;
+  }
 }
