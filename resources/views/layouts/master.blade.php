@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {!! SEO::generate() !!}
     @yield('css')
-    <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ Bust::url('/assets/css/style.css') }}">
     @if(App::environment() == 'prod')
     @include('elements.marketing.analytics')
     @endif
@@ -33,8 +33,8 @@
         </footer>
     </div>
 
-    <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bundle.js') }}"></script>
+    <script src="{{ Bust::url('bower/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ Bust::url('assets/js/bundle.js') }}"></script>
     @yield('js')
 </body>
 </html>

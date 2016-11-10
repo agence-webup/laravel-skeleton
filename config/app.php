@@ -206,6 +206,7 @@ return [
          */
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Webup\LaravelForm\FormServiceProvider::class,
+        'Themonkeys\Cachebuster\CachebusterServiceProvider',
 
     ],
 
@@ -256,6 +257,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Form' => Webup\LaravelForm\Facades\Form::class,
+        'Bust' => 'Themonkeys\Cachebuster\Cachebuster'
     ],
 
 ];
