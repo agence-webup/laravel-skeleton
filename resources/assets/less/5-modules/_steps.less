@@ -1,0 +1,60 @@
+/* ----------------------------------------------------------- */
+/* == steps */
+/* ----------------------------------------------------------- */
+
+.steps {
+  position: relative;
+  display: flex;
+  list-style-type: none;
+  counter-reset: step;
+
+  justify-content: center;
+  padding-left: 0;
+}
+
+.steps::before {
+  position: absolute;
+  top: 1.5em;
+  right: 0;
+  left: 0;
+  display: block;
+  height: 1px;
+  background-color: #aaaaaa;
+  content: '';
+}
+
+.steps li {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.steps a {
+  display: block;
+  color: @color-dark-text;
+  text-decoration: none;
+}
+
+.steps a:not(.current):hover:before {
+  background-color: @color-primary;
+  transition: background-color .3s ease;
+}
+
+.steps .current:before {
+  background-color: @color-secondary;
+}
+
+.steps a:before {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding-top: .7em;
+  width: 3em;
+  height: 3em;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: #aaaaaa;
+  color: #fff;
+  content: counter(step);
+  counter-increment: step;
+}

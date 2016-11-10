@@ -10,6 +10,7 @@ SEO::setDescription('Home page description');
 @section('content')
 
 <div class="container">
+    @include('elements.steps', ['step' => 1])
     <div class="cart">
         <div class="cart-head">
             <h1 class="cart-head__title">Ma commande</h1>
