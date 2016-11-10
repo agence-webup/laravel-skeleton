@@ -26,34 +26,34 @@ SEO::setDescription('Home page description');
                 </tr>
             </thead>
             <tr>
-                <td class="cart-product__item" data-tabletitle="Produit">
+                <td class="cart-product__item">
                     <img class="cart-product__image" src="https://placehold.it/100x100" alt="">
                     <div class="cart-product__content">
                         <strong class="cart-product__name">Nom et/ou référence de l'article</strong>
                         <a class="cart-product__link" href="">voir l'article</a>
                     </div>
                 </td>
-                <td data-tabletitle="Prix unitaire">XXX,XX€</td>
+                <td class="s-hidden">XXX,XX€</td>
                 <td class="txtcenter cart-amount" data-tabletitle="Quantité">
                     <input class="cart-amount__imput" type="number" name="">
                     <a class="cart-amount__link" href="">&#128465; supprimer
                 </td>
-                <td data-tabletitle="Sous-total">XXX,XX€</td>
+                <td>XXX,XX€</td>
             </tr>
             <tr>
-                <td class="cart-product__item" data-tabletitle="Produit">
+                <td class="cart-product__item">
                     <img class="cart-product__image" src="https://placehold.it/100x100" alt="">
                     <div class="cart-product__content">
                         <strong class="cart-product__name">Nom et/ou référence de l'article</strong>
                         <a class="cart-product__link" href="">voir l'article</a>
                     </div>
                 </td>
-                <td data-tabletitle="Prix unitaire">XXX,XX€</td>
-                <td class="txtcenter cart-amount" data-tabletitle="Quantité">
+                <td class="s-hidden">XXX,XX€</td>
+                <td class="txtcenter cart-amount">
                     <input class="cart-amount__imput" type="number" name="">
                     <a class="cart-amount__link" href="">&#128465; supprimer
                 </td>
-                <td data-tabletitle="Sous-total">XXX,XX€</td>
+                <td>XXX,XX€</td>
             </tr>
         </table>
 
@@ -74,9 +74,9 @@ SEO::setDescription('Home page description');
                 </tr>
             </thead>
             <tr>
-                <td data-tabletitle="Type de réduction">Réduction</td>
-                <td data-tabletitle="Valeur">-XX%</td>
-                <td data-tabletitle="Montant">-XX€</td>
+                <td>Réduction</td>
+                <td class="s-hidden">-XX%</td>
+                <td>-XX€</td>
             </tr>
         </table>
 
