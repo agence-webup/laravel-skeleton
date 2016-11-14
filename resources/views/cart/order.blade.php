@@ -9,23 +9,23 @@ SEO::setDescription('Home page description');
     @include('elements.steps', ['step' => 2])
 
     <form class="" action="{{ route('order.store') }}" method="post">
-        <div class="grid-2">
+        <div class="grid-2 grid-1-s">
             <div>
                 <div class="cart-moduleTitle">
                     <h2>Informations de livraison</h2>
                     <hr/>
                 </div>
                     {{ csrf_field() }}
-                    <div class="grid-2">
+                    <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'firstname')->label('Prénom')->value($customer->firstname)->required() !!}
                         {!! Form::create('text', 'lastname')->label('Nom')->value($customer->lastname)->required() !!}
                     </div>
                     {!! Form::create('text', 'email')->label('Adresse e-mail')->value($customer->email)->required()->attr(['autofocus', 'class' => 'f-100']) !!}
-                    <div class="grid-2">
+                    <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'telnumber')->label('Numéro de téléphone')->value($customer->telnumber)->required() !!}
                     </div>
                     {!! Form::create('text', 'address')->label('Adresse')->value($customer->address)->required()->attr(['class' => 'f-100']) !!}
-                    <div class="grid-2">
+                    <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'postalcode')->label('Code postal')->value($customer->postalcode)->required() !!}
                         {!! Form::create('text', 'city')->label('Ville')->value($customer->city)->required() !!}
                     </div>
@@ -36,16 +36,16 @@ SEO::setDescription('Home page description');
                     <hr/>
                 </div>
                     {{ csrf_field() }}
-                    <div class="grid-2">
+                    <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'firstname')->label('Prénom')->value($customer->firstname)->required() !!}
                         {!! Form::create('text', 'lastname')->label('Nom')->value($customer->lastname)->required() !!}
                     </div>
                     {!! Form::create('text', 'email')->label('Adresse e-mail')->value($customer->email)->required()->attr(['autofocus', 'class' => 'f-100']) !!}
-                    <div class="grid-2">
+                    <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'telnumber')->label('Numéro de téléphone')->value($customer->telnumber)->required() !!}
                     </div>
                     {!! Form::create('text', 'address')->label('Adresse')->value($customer->address)->required()->attr(['class' => 'f-100']) !!}
-                    <div class="grid-2">
+                    <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'postalcode')->label('Code postal')->value($customer->postalcode)->required() !!}
                         {!! Form::create('text', 'city')->label('Ville')->value($customer->city)->required() !!}
                     </div>
@@ -84,7 +84,7 @@ SEO::setDescription('Home page description');
                 </div>
             </fieldset>
         </div>
-        
+
         <div class="cart-moduleTitle">
             <hr/>
         </div>
