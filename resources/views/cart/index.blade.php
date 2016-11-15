@@ -1,6 +1,6 @@
 <?php
-SEO::setTitle('Home');
-SEO::setDescription('Home page description');
+SEO::setTitle('Récapitulatif de ma commande');
+SEO::setDescription('Les articles de mon panier');
 ?>
 
 @section('css')

@@ -1,6 +1,6 @@
 <?php
-SEO::setTitle('Home');
-SEO::setDescription('Home page description');
+SEO::setTitle('Informations');
+SEO::setDescription('Mes informations de livraison et de facturation');
 ?>
 
 @extends('layouts.master')
