@@ -3,6 +3,9 @@ SEO::setTitle('Récapitulatif de ma commande');
 SEO::setDescription('Les articles de mon panier');
 ?>
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/bower/tingle/dist/tingle.min.css') }}">
+@endsection
 @extends('layouts.master')
 @section('content')
 
@@ -76,19 +79,10 @@ SEO::setDescription('Les articles de mon panier');
         </div>
 
         <ul class="cart-action">
-            <li><a class="btn btn--primary" href="{{ route('payment.success') }}">Carte</a></li>
-            <li><a class="btn btn--primary" href="{{ route('payment.success') }}">Virement</a></li>
-            <li><a class="btn btn--primary" href="{{ route('payment.success') }}">Chèque</a></li>
+            <li><button class="btn btn--primary" data-js="paymentButton" data-url="{{ route('payment.success') }}">Carte</button></li>
+            <li><button class="btn btn--primary" data-js="paymentButton" data-url="{{ route('payment.success') }}">Virement</button></li>
+            <li><button class="btn btn--primary" data-js="paymentButton" data-url="{{ route('payment.success') }}">Chèque</button></li>
         </ul>
-
-        <div class="cart-orderModal" data-js="orderModal">
-            <div class="mb2">
-                <a class="btn btn--primary" href="{{ route('customer.login') }}">J'ai déjà un compte</a>
-            </div>
-            <div>
-                <a class="btn btn--primary" href="{{ route('order.create') }}">Je n'ai pas de compte</a>
-            </div>
-        </div>
 
         <div class="cart-moduleTitle">
             <hr/>
@@ -100,9 +94,24 @@ SEO::setDescription('Les articles de mon panier');
             Vous bénécifiez d'une protection renforcée qui vous protège contre l'utilisation froduleuse de votre carte banquaire.</p>
     </div>
 </div>
+
+<div class="cart-paymentModal" data-js="paymentModal">
+    <h2>Conditions Générales de Vente</h2>
+
+    <div class="cart-paymentModal__scrollContent">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <p>En cliquant sur "régler ma commande", vous confirmez avoir lu les <a href="">Conditions Générales de Vente</a>, que vous acceptez sans réserve.</p>
+    <a class="btn btn--primary" data-js="validModal" href="">Régler la commande</a>
+</div>
 @endsection
 
 @section('js')
 <script src="{{ asset('/bower/tingle/dist/tingle.min.js') }}"></script>
-<script src="{{ asset('/assets/js/modules/order-modal.js') }}"></script>
+<script src="{{ asset('/assets/js/modules/payment-modal.js') }}"></script>
 @endsection
