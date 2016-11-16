@@ -11,17 +11,7 @@ if (!function_exists('asset')) {
      */
     function asset($path, $secure = null)
     {
-        $urlGenerator = app('url');
-
-        if (is_null(config('app.assets_url'))) {
-            return $urlGenerator->asset($path, $secure);
-        }
-
-        if ($urlGenerator->isValidUrl($path)) {
-            return $path;
-        }
-
-        return config('app.assets_url').'/'.trim($path, '/');
+        return app('cachebuster.url')->url($path);
     }
 }
 
@@ -35,7 +25,7 @@ if (!function_exists('current_class')) {
      */
     function current_class($routeName, $cssClass = 'current')
     {
-        $currentRoute = Route::current()->getName();
+        $currentRoute = app('router')->current()->getName();
         $rootPath = substr($currentRoute, 0, strlen($routeName));
 
         return ($rootPath == $routeName) ? $cssClass : '';
