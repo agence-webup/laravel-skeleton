@@ -17,7 +17,7 @@ SEO::setDescription('Les articles de mon panier');
             <h1 class="cart-head__title">Ma commande</h1>
         </div>
         @include('elements.steps', ['step' => 3])
-        <div class="cart-moduleTitle">
+        <div class="titleModule">
             <h2>Résumé de ma commande</h2>
             <hr/>
         </div>
@@ -84,7 +84,7 @@ SEO::setDescription('Les articles de mon panier');
             <li><button class="btn btn--primary" data-js="paymentButton" data-url="{{ route('payment.success') }}">Chèque</button></li>
         </ul>
 
-        <div class="cart-moduleTitle">
+        <div class="titleModule">
             <hr/>
         </div>
 

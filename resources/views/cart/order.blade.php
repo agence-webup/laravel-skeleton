@@ -11,7 +11,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
     <form class="" action="{{ route('order.store') }}" method="post">
         <div class="grid-2 grid-1-s">
             <div>
-                <div class="cart-moduleTitle">
+                <div class="titleModule">
                     <h2>Informations de livraison</h2>
                     <hr/>
                 </div>
@@ -31,7 +31,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                     </div>
             </div>
             <div>
-                <div class="cart-moduleTitle">
+                <div class="titleModule">
                     <h2>Informations de facturation</h2>
                     <hr/>
                 </div>
@@ -53,7 +53,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
         </div>
         {!! Form::create('checkbox', 'diffAddress')->label('Mon adresse de facturation est différente de mon adresse de livraison')->value(false) !!}
 
-        <div class="cart-moduleTitle">
+        <div class="titleModule">
             <h2>Choix du transporteur</h2>
             <hr/>
         </div>
@@ -85,7 +85,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
             </fieldset>
         </div>
 
-        <div class="cart-moduleTitle">
+        <div class="titleModule">
             <hr/>
         </div>
         <div class="txtright">
