@@ -51,7 +51,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                     </div>
             </div>
         </div>
-        {!! Form::create('checkbox', 'diffAddress')->label('Mon adresse de facturation est différente de mon adresse de livraison')->value(false)->required() !!}
+        {!! Form::create('checkbox', 'diffAddress')->label('Mon adresse de facturation est différente de mon adresse de livraison')->value(false) !!}
 
         <div class="cart-moduleTitle">
             <h2>Choix du transporteur</h2>

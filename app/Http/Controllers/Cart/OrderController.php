@@ -46,7 +46,7 @@ class OrderController extends Controller
         // store order
         // ...
 
-        return redirect()->route('cart.order')
+        return redirect()->route('payment.index')
             ->withInput($request->input());
             //->withErrors($e->errors());
     }
