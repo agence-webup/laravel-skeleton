@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "tingle": "^0.8.0"
+    "tingle": "^0.8.0",
+    "helium": "^1.1.0"
   }
 }
