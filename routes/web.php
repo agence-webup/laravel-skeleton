@@ -50,4 +50,7 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Custo
     // Customer's invoices Routes...
     Route::get('/orders', 'OrderController@index')->name('order.index');
     Route::get('/orders/{id}', 'OrderController@show')->name('order.show');
+
+    // Customer's Email Routes
+    Route::get('/email', 'EmailController@showEmailForm')->name('email');
 });
