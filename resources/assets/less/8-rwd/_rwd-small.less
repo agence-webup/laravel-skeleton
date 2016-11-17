@@ -43,4 +43,44 @@
   .customer-hidden-s {
       display: none;
   }
+
+  .customer-table thead {
+      display: none;
+  }
+
+  .customer-table tr {
+    display: block;
+    padding: 1rem 2rem;
+  }
+
+  .customer-table tr:not(:last-of-type) {
+    border-bottom: .1rem solid #cbcbcb;
+  }
+
+  .customer-table td {
+    position: relative;
+    display: inline;
+    border: 0px;
+    padding: .5rem 0;
+  }
+
+  td.customer-order__price,
+  td.customer-order__status,
+  td.customer-order__info,
+  .customer-order__infoLink {
+    display: block;
+    width: 100%;
+  }
+
+  .customer-order__infoLink,
+  .customer-order__infoLink:link,
+  .customer-order__infoLink:visited,
+  .customer-order__infoLink:hover,
+  .customer-order__infoLink:active {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    color: @color-light-text;
+    background-color: @color-primary;
+    text-decoration: none;
+  }
 }

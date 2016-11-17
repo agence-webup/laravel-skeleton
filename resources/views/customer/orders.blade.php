@@ -13,7 +13,7 @@ SEO::setDescription('Home page description');
             <hr/>
         </div>
         <article>
-            <table>
+            <table class="customer-table">
                 <thead>
                     <tr>
                         <th>Numéro de commande</th>
@@ -25,18 +25,21 @@ SEO::setDescription('Home page description');
                 </thead>
                 <tbody>
                     <tr>
-                        <td>2143</td>
-                        <td>15/07/2016</td>
-                        <td>139,73 €</td>
-                        <td>En cours</td>
-                        <td><a href="{{ route('customer.order.show', ['id' => 0]) }}">Voir les détails</a></td>
-                    </tr>
+                        <td class="customer-order__id">2143</td>
+                        <td class="customer-order__date">15/07/2016</td>
+                        <td class="customer-order__price">139,73 €</td>
+                        <td class="customer-order__status">En cours</td>
+                        <td class="customer-order__info">
+                            <a class="customer-order__infoLink" href="{{ route('customer.order.show', ['id' => 0]) }}">Voir les détails</a>
+                        </td>                    </tr>
                     <tr>
-                        <td>2143</td>
-                        <td>21/03/2016</td>
-                        <td>139,73 €</td>
-                        <td>Expédié</td>
-                        <td><a href="{{ route('customer.order.show', ['id' => 0]) }}">Voir les détails</a></td>
+                        <td class="customer-order__id">2143</td>
+                        <td class="customer-order__date">15/07/2016</td>
+                        <td class="customer-order__price">139,73 €</td>
+                        <td class="customer-order__status">En cours</td>
+                        <td class="customer-order__info">
+                            <a class="customer-order__infoLink" href="{{ route('customer.order.show', ['id' => 0]) }}">Voir les détails</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
