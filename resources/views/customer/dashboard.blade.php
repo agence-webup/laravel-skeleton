@@ -72,7 +72,7 @@ SEO::setDescription('Home page description');
             </table>
         </article>
 
-        <div class="grid-2">
+        <div class="grid-2 customer-hidden-s">
             <article>
                 <header class="titleModule">
                     <h2>Informations de compte</h2>
