@@ -65,10 +65,10 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                     <legend class="cart-ship__name">Nom du transporteur</legend>
                 </div>
                 <div class="cart-ship__radioItem">
-                    <input type="radio" name="radio" id="radio"> <label for="radio">Livraison à domicile</label>
+                    <input type="radio" name="radio" id="radio"> <label for="radio">Livraison à domicile (4,2€)</label>
                 </div>
                 <div class="cart-ship__radioItem">
-                    <input type="radio" name="radio" id="radio2"> <label for="radio2">Livraison au point relais</label>
+                    <input type="radio" name="radio" id="radio2"> <label for="radio2">Livraison au point relais (4,2€)</label>
                 </div>
             </fieldset>
             <fieldset class="cart-ship__item">
@@ -77,10 +77,10 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                     <legend class="cart-ship__name">Nom du transporteur</legend>
                 </div>
                 <div class="cart-ship__radioItem">
-                    <input type="radio" name="radio" id="radio3"> <label for="radio3">Livraison à domicile</label>
+                    <input type="radio" name="radio" id="radio3"> <label for="radio3">Livraison à domicile (4,2€)</label>
                 </div>
                 <div class="cart-ship__radioItem">
-                    <input type="radio" name="radio" id="radio4"> <label for="radio4">Livraison au point relais</label>
+                    <input type="radio" name="radio" id="radio4"> <label for="radio4">Livraison au point relais (4,2€)</label>
                 </div>
             </fieldset>
         </div>
