@@ -1,13 +1,19 @@
-<form action="{{ route('admin.auth.postLogin') }}" method="POST">
-    {{ csrf_field() }}
+@extends('admin.layouts.auth')
 
-    {!! Form::create('text', 'email')
-    ->label('email')
-    ->required() !!}
+@section('content')
+<div class="login-box">
+    <form action="{{ route('admin.auth.postLogin') }}" method="POST">
+        {{ csrf_field() }}
 
-    {!! Form::create('password', 'password')
-    ->label('password')
-    ->required() !!}
+        {!! Form::create('text', 'email')
+        ->label('Nom d\'utilisateur')
+        ->required() !!}
 
-    <button type="submit">Se connecter</button>
-</form>
+        {!! Form::create('password', 'password')
+        ->label('Mot de passe')
+        ->required() !!}
+
+        <button type="submit">Se connecter</button>
+    </form>
+</div>
+@endsection
