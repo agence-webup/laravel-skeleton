@@ -106,7 +106,8 @@ SEO::setDescription('Les articles de mon panier');
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 
-    <p>En cliquant sur "régler ma commande", vous confirmez avoir lu les <a href="">Conditions Générales de Vente</a>, que vous acceptez sans réserve.</p>
+    <p><a href="">Télécharger les Conditions Générales de Vente</a></p>
+    <p>En cliquant sur "régler ma commande", vous confirmez avoir lu les Conditions Générales de Vente, que vous acceptez sans réserve.</p>
     <a class="btn btn--primary" data-js="validModal" href="">Régler la commande</a>
 </div>
 @endsection
