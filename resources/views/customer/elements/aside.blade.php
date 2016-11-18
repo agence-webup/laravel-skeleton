@@ -12,7 +12,7 @@
                 <a class="customer-nav__link {{current_class('customer.resetPassword', 'customer-nav__link--active')}}" href="{{ route('customer.resetPassword') }}">Modifier mon mot de passe</a>
             </li>
             <li class="customer-nav__listItem">
-                <a class="customer-nav__link {{current_class('customer.email', 'customer-nav__link--active')}}" href="{{ route('customer.email') }}">Modifier mon email</a>
+                <a class="customer-nav__link {{current_class('customer.email.edit', 'customer-nav__link--active')}}" href="{{ route('customer.email.edit') }}">Modifier mon email</a>
             </li>
             <li class="customer-nav__listItem">
                 <a class="customer-nav__link {{current_class('customer.address.edit', 'customer-nav__link--active')}}" href="{{ route('customer.address.edit') }}">Information de livraison</a>

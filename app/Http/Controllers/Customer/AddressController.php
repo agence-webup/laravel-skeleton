@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\Customer\UpdateCustomer;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
@@ -22,6 +23,16 @@ class AddressController extends Controller
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'address' => 'required',
+            'postcode' => 'required',
+            'city' => 'required',
+        ]);
+
+        $this->dispatchNow(new UpdateCustomer($request->user()->id, $request->all()));
+
         return redirect()->route('customer.dashboard');
     }
 }

@@ -13,7 +13,7 @@ SEO::setDescription('Home page description');
             <hr/>
         </div>
         <article>
-            <p>Bonjour, Prénom !</p>
+            <p>Bonjour, {{ $auth->firstname }} !</p>
             <p>Bienvenue sur votre compte client.<br/>
             Depuis le tableau de bord, pous pouvez visualiser en un coup d'oeil vos activités, voir et modifier vos informations personnelles.</p>
         </article>
@@ -51,8 +51,8 @@ SEO::setDescription('Home page description');
                     <h2>Informations de compte</h2>
                     <hr/>
                 </header>
-                <p>Prenom Nom<br/>
-                    prenom.nom@domain.tld</p>
+                <p>{{ $auth->firstname }} {{ $auth->lastname }}<br/>
+                    {{ $auth->email }}</p>
                 <p><a href="">Modifier les préférences</a></p>
             </article>
             <article>
@@ -60,9 +60,9 @@ SEO::setDescription('Home page description');
                     <h2>Informations de compte</h2>
                     <hr/>
                 </header>
-                <p>Prenom Nom<br/>
-                    3, rue des fleurs<br/>
-                    10000 Troyes</p>
+                <p>{{ $auth->firstname }} {{ $auth->lastname }}<br/>
+                    {{ $auth->address }}<br/>
+                    {{ $auth->postcode }} {{ $auth->city }}</p>
                 <p><a href="">Modifier mon adresse de livraison</a></p>
             </article>
         </div>

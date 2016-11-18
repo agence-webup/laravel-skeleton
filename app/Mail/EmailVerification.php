@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use JWTAuth;
 
-class ResetPassword extends Mailable
+class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,9 +31,14 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.reset-password')->with([
+        $queryString = http_build_query([
+            'email' => $this->customer->email,
+            'token' => JWTAuth::fromUser($this->customer),
+        ]);
+
+        return $this->view('emails.email-verification')->with([
             'customer' => $this->customer,
-            'resetUrl' => route('customer.resetPassword') . '?token=' . JWTAuth::fromUser($this->customer),
+            'verifyUrl' => route('customer.email.verify') . '?' . $queryString,
         ]);
     }
 }

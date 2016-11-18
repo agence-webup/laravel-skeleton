@@ -18,12 +18,12 @@ SEO::setDescription('Home page description');
                     {{ csrf_field() }}
 
                     <div class="grid-2">
-                        {!! Form::create('text', 'name')->label('Prénom') !!}
-                        {!! Form::create('text', 'lastname')->label('Nom') !!}
+                        {!! Form::create('text', 'firstname')->label('Prénom')->value($auth->firstname) !!}
+                        {!! Form::create('text', 'lastname')->label('Nom')->value($auth->lastname) !!}
                     </div>
-                    {!! Form::create('text', 'address')->label('Adresse')->attr(['class' => 'f-100']) !!}
-                    {!! Form::create('text', 'zipcode')->label('Code postal')->attr(['class' => 'f-100']) !!}
-                    {!! Form::create('text', 'city')->label('Ville')->attr(['class' => 'f-100']) !!}
+                    {!! Form::create('text', 'address')->label('Adresse')->attr(['class' => 'f-100'])->value($auth->address) !!}
+                    {!! Form::create('text', 'postcode')->label('Code postal')->attr(['class' => 'f-100'])->value($auth->postcode) !!}
+                    {!! Form::create('text', 'city')->label('Ville')->attr(['class' => 'f-100'])->value($auth->city) !!}
 
                     <button class="btn btn--primary" type="submit">Enregistrer</button>
                 </div>

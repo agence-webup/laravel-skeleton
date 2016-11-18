@@ -17,17 +17,17 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                 </div>
                     {{ csrf_field() }}
                     <div class="grid-2 grid-1-s">
-                        {!! Form::create('text', 'firstname')->label('Prénom')->value($customer->firstname)->required() !!}
-                        {!! Form::create('text', 'lastname')->label('Nom')->value($customer->lastname)->required() !!}
+                        {!! Form::create('text', 'deliveryFirstname')->label('Prénom')->value($customer->firstname)->required() !!}
+                        {!! Form::create('text', 'deliveryLastname')->label('Nom')->value($customer->lastname)->required() !!}
                     </div>
-                    {!! Form::create('text', 'email')->label('Adresse e-mail')->value($customer->email)->required()->attr(['autofocus', 'class' => 'f-100']) !!}
+                    {!! Form::create('text', 'deliveryEmail')->label('Adresse e-mail')->value($customer->email)->required()->attr(['autofocus', 'class' => 'f-100']) !!}
                     <div class="grid-2 grid-1-s">
                         {!! Form::create('text', 'telnumber')->label('Numéro de téléphone')->value($customer->telnumber)->required() !!}
                     </div>
-                    {!! Form::create('text', 'address')->label('Adresse')->value($customer->address)->required()->attr(['class' => 'f-100']) !!}
+                    {!! Form::create('text', 'deliveryAddress')->label('Adresse')->value($customer->address)->required()->attr(['class' => 'f-100']) !!}
                     <div class="grid-2 grid-1-s">
-                        {!! Form::create('text', 'postalcode')->label('Code postal')->value($customer->postalcode)->required() !!}
-                        {!! Form::create('text', 'city')->label('Ville')->value($customer->city)->required() !!}
+                        {!! Form::create('text', 'deliveryPostcode')->label('Code postal')->value($customer->postalcode)->required() !!}
+                        {!! Form::create('text', 'deliveryCity')->label('Ville')->value($customer->city)->required() !!}
                     </div>
             </div>
             <div>

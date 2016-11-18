@@ -35,11 +35,22 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // validate order
-        $this->validate($request, ['email' => 'required|email']);
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
 
         // create customer if doesn't exist or he's not logged
         if (!$request->user()) {
-            $customer = $this->dispatchNow(new CreateCustomer($request->get('email')));
+            $customerData = [
+                'email' => $request->get('deliveryEmail', null),
+                'firstname' => $request->get('deliveryFirstname', null),
+                'lastname' => $request->get('deliveryLastname', null),
+                'address' => $request->get('deliveryAddress', null),
+                // 'address2' => $request->get('deliveryAddress2', null),
+                'postcode' => $request->get('deliveryPostcode', null),
+                'city' => $request->get('deliveryCity', null),
+            ];
+            $customer = $this->dispatchNow(new CreateCustomer($customerData));
             Auth::login($customer);
         }
 

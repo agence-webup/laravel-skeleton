@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CustomerCreated extends Mailable
+class NewCustomer extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class CustomerCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.customer-created')->with([
+        return $this->view('emails.new-customer')->with([
             'customer' => $this->customer,
             'password' => $this->password,
         ]);

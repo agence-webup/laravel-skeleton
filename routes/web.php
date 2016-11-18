@@ -43,6 +43,11 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Custo
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
+    // Customer's Email Routes
+    Route::get('/email', 'EmailController@edit')->name('email.edit');
+    Route::post('/email', 'EmailController@update')->name('email.update');
+    Route::get('/email/verify', 'EmailController@verify')->name('email.verify');
+
     // Customer's invoices Routes...
     Route::get('/address', 'AddressController@edit')->name('address.edit');
     Route::post('/address', 'AddressController@update')->name('address.update');
@@ -51,6 +56,5 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Custo
     Route::get('/orders', 'OrderController@index')->name('order.index');
     Route::get('/orders/{id}', 'OrderController@show')->name('order.show');
 
-    // Customer's Email Routes
-    Route::get('/email', 'EmailController@showEmailForm')->name('email');
+
 });

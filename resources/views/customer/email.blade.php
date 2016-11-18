@@ -13,9 +13,10 @@ SEO::setDescription('Home page description');
             <hr/>
         </div>
         <article>
-            <form class="" role="form" action="{{ route('customer.email') }}" method="post">
+            <form class="" role="form" action="{{ route('customer.email.update') }}" method="post">
+                {{ csrf_field() }}
+
                 <div class="customer-formContent">
-                    {{ csrf_field() }}
 
                     {!! Form::create('email', 'email')->label('Email')->attr(['autofocus', 'class' => 'f-100']) !!}
 
