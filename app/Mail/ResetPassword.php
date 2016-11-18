@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use JWTAuth;
 
 class ResetPassword extends Mailable
 {
@@ -32,6 +33,7 @@ class ResetPassword extends Mailable
     {
         return $this->view('mail.reset-password')->with([
             'customer' => $this->customer,
+            'resetUrl' => route('customer.resetPassword') . '?token=' . JWTAuth::fromUser($this->customer),
         ]);
     }
 }

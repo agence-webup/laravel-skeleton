@@ -4,22 +4,30 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Contracts\Auth\Factory as Auth;
 
 class JWTAuthenticate
 {
     /**
-     * @var \Tymon\JWTAuth\JWTAuth
+     * @var \Illuminate\Contracts\Auth\Factory
      */
     protected $auth;
+
+    /**
+     * @var \Tymon\JWTAuth\JWTAuth
+     */
+    protected $jwtAuth;
 
     /**
      * Create a new BaseMiddleware instance.
      *
      * @param \Tymon\JWTAuth\JWTAuth  $auth
+     * @param \Illuminate\Contracts\Auth\Factory  $jwtAuth
      */
-    public function __construct(JWTAuth $auth)
+    public function __construct(Auth $auth, JWTAuth $jwtAuth)
     {
         $this->auth = $auth;
+        $this->jwtAuth = $jwtAuth;
     }
 
     /**
@@ -31,20 +39,21 @@ class JWTAuthenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($request->get('token')) {
+        $token = $request->get('token', null);
+        if ($token) {
             try {
-                $this->auth->setToken($request->get('token'));
+                $this->jwtAuth->setToken($token);
             } catch (\Exception $e) {
                 return redirect()->guest(route('customer.login'));
             }
 
-            $user = $this->auth->authenticate($token);
+            $user = $this->jwtAuth->authenticate($token);
 
             if (! $user) {
                 return redirect()->guest(route('customer.login'));
             }
 
-            Auth::login($user);
+            $this->auth->login($user);
         }
 
         return $next($request);

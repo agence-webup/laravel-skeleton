@@ -1,3 +1,3 @@
 salut {{ $customer->email }},
 
-<a href="{{ route('customer.resetPassword') }}">reset password</a>
+<a href="{{ $resetUrl }}">reset password</a>
