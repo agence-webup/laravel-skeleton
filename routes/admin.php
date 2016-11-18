@@ -14,4 +14,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:admi
         // dd($request->user('admin'));
         return view('admin.layouts.master');
     });
+    Route::get('/customers', 'Admin\Customer\IndexController@index')->name('customer.index');
 });

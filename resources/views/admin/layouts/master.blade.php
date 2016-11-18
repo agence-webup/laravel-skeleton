@@ -21,23 +21,14 @@
             </svg>
         </div>
         <div class="sidebar__user">
-            Hello Richard
+            Bonjour {{ Auth::user()->email }}
         </div>
         <div class="sidebar__links">
-            <li><a href="#"><i class="fa fa-external-link icon"></i> Go to website</a></li>
-            <li><a href="login.html"><i class="fa fa-sign-out icon"></i> Se déconnecter</a></li>
+            <li><a href="/" target="_blank"><i class="fa fa-external-link icon"></i> Go to website</a></li>
+            <li><a href="{{ route('admin.auth.logout') }}"><i class="fa fa-sign-out icon"></i> Se déconnecter</a></li>
         </div>
         <nav class="navigation">
-            <ul>
-                <li class="navigation__header">Menu 1</li>
-                <li class="isActive"><a href="#">Menu 1.a</a></li>
-                <li><a href="#">Menu 1.b</a></li>
-                <li><a href="#">Menu 1.c</a></li>
-                <li class="navigation__header">Menu 2</li>
-                <li><a href="#">Menu 2.a</a></li>
-                <li><a href="#">Menu 2.b</a></li>
-                <li><a href="#">Menu 2.c</a></li>
-            </ul>
+            @include('admin.elements.menu')
         </nav>
     </aside>
     <main class="content">
