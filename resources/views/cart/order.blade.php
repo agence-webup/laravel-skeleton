@@ -62,7 +62,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
             <fieldset class="cart-ship__item">
                 <div class="cart-ship__info">
                     <img class="cart-ship__logo" src="https://placehold.it/80x50" alt="Transporteur"/>
-                    <legend class="cart-ship__name">Nom du transporteur</legend>
+                    <legend class="cart-ship__name">Nom du transporteur (3 à 6 jours environ)</legend>
                 </div>
                 <div class="cart-ship__radioItem">
                     <input type="radio" name="radio" id="radio"> <label for="radio">Livraison à domicile (4,2€)</label>
@@ -74,7 +74,7 @@ SEO::setDescription('Mes informations de livraison et de facturation');
             <fieldset class="cart-ship__item">
                 <div class="cart-ship__info">
                     <img class="cart-ship__logo" src="https://placehold.it/80x50" alt="Transporteur"/>
-                    <legend class="cart-ship__name">Nom du transporteur</legend>
+                    <legend class="cart-ship__name">Nom du transporteur (3 à 6 jours environ)</legend>
                 </div>
                 <div class="cart-ship__radioItem">
                     <input type="radio" name="radio" id="radio3"> <label for="radio3">Livraison à domicile (4,2€)</label>
