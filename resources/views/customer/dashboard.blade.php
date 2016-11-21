@@ -56,7 +56,7 @@ SEO::setDescription('Home page description');
                 </header>
                 <p>{{ $auth->firstname }} {{ $auth->lastname }}<br/>
                     {{ $auth->email }}</p>
-                    @if ($auth->emailVerified)
+                    @if (!$auth->emailVerified)
                     Votre adresse e-mail en attente de validation : {{ $auth->email }}
                     <a href="#">Me renvoyer un email de validation</a>
                     @endif

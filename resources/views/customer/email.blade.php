@@ -16,7 +16,7 @@ SEO::setDescription('Home page description');
 
             @include('flash::message')
 
-            @if ($auth->emailVerified)
+            @if (!$auth->emailVerified)
             Votre adresse e-mail en attente de validation : {{ $auth->email }}
             <a href="#">Me renvoyer un email de validation</a>
             @endif

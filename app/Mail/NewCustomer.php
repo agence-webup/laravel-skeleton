@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use JWTAuth;
 
 class NewCustomer extends Mailable
 {
@@ -32,9 +33,15 @@ class NewCustomer extends Mailable
      */
     public function build()
     {
+        $queryString = http_build_query([
+            'email' => $this->customer->email,
+            'token' => JWTAuth::fromUser($this->customer),
+        ]);
+
         return $this->view('emails.new-customer')->with([
             'customer' => $this->customer,
             'password' => $this->password,
+            'verifyUrl' => route('customer.email.verify') . '?' . $queryString,
         ]);
     }
 }
