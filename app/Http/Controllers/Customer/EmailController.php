@@ -36,6 +36,9 @@ class EmailController extends Controller
     {
         $this->dispatchNow(new UpdateEmail($request->user()->id, $request->get('email')));
 
+        flash()->success("Un email vous a été envoyé à l'adresse ".$request->get('email').". Veuillez confirmer le changement d'adresse e-mail en cliquant sur
+        le lien contenu dans cet email.");
+
         return redirect()->route('customer.email.edit');
     }
 

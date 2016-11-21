@@ -8,6 +8,9 @@ SEO::setDescription('Home page description');
 <div class="container customer-container">
     @include('customer.elements.aside')
     <section class="customer-content">
+
+        @include('flash::message')
+
         <div class="titleModule">
             <h1>Tableau de bord</h1>
             <hr/>
@@ -53,6 +56,10 @@ SEO::setDescription('Home page description');
                 </header>
                 <p>{{ $auth->firstname }} {{ $auth->lastname }}<br/>
                     {{ $auth->email }}</p>
+                    @if ($auth->emailVerified)
+                    Votre adresse e-mail en attente de validation : {{ $auth->email }}
+                    <a href="#">Me renvoyer un email de validation</a>
+                    @endif
                 <p><a href="">Modifier les préférences</a></p>
             </article>
             <article>

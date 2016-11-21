@@ -31,6 +31,8 @@ class ResetPasswordController extends Controller
         $this->validate($request, ['password'=>'required|confirmed']);
         $this->dispatchNow(new ResetPassword($request->user()->id, $request->get('password')));
 
-        return redirect()->route('customer.dashboard');
+        flash()->success('Votre mot de passe a bien été modifié.');
+
+        return redirect()->route('customer.resetPassword');
     }
 }

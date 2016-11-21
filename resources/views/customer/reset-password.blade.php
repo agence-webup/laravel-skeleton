@@ -13,6 +13,9 @@ SEO::setDescription('Home page description');
             <hr/>
         </div>
         <article>
+
+            @include('flash::message')
+
             <form class="" role="form" action="{{ route('customer.resetPassword') }}" method="post">
                 <div class="customer-formContent">
                     {{ csrf_field() }}

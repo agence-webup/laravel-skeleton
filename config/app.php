@@ -207,6 +207,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Webup\LaravelForm\FormServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 

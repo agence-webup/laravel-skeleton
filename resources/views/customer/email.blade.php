@@ -13,6 +13,14 @@ SEO::setDescription('Home page description');
             <hr/>
         </div>
         <article>
+
+            @include('flash::message')
+
+            @if ($auth->emailVerified)
+            Votre adresse e-mail en attente de validation : {{ $auth->email }}
+            <a href="#">Me renvoyer un email de validation</a>
+            @endif
+
             <form class="" role="form" action="{{ route('customer.email.update') }}" method="post">
                 {{ csrf_field() }}
 
