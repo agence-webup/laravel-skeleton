@@ -25,17 +25,16 @@ SEO::setDescription('Home page description');
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="customer-order__id">2143</td>
-                        <td class="customer-order__date">15/07/2016</td>
+                        <td class="customer-order__id"><span class="hidden-s-up">Commande #</span>2143</td>
+                        <td class="customer-order__date"><span class="hidden-s-up">du </span>15/07/2016</td>
                         <td class="customer-order__price">139,73 €</td>
                         <td class="customer-order__status">En cours</td>
                         <td class="customer-order__info">
                             <a class="customer-order__infoLink" href="{{ route('customer.order.show', ['id' => 0]) }}">Voir les détails</a>
                         </td>                    </tr>
                     <tr>
-                        <td class="customer-order__id">2143</td>
-                        <td class="customer-order__date">15/07/2016</td>
-                        <td class="customer-order__price">139,73 €</td>
+                        <td class="customer-order__id"><span class="hidden-s-up">Commande #</span>2143</td>
+                        <td class="customer-order__date"><span class="hidden-s-up">du </span>15/07/2016</td>                        <td class="customer-order__price">139,73 €</td>
                         <td class="customer-order__status">En cours</td>
                         <td class="customer-order__info">
                             <a class="customer-order__infoLink" href="{{ route('customer.order.show', ['id' => 0]) }}">Voir les détails</a>
