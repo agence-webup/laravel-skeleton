@@ -7,7 +7,7 @@
 * Simpler forms [(laravel-form)](https://github.com/agence-webup/laravel-form)
 * Robust SEO [(seotools)](https://github.com/artesaos/seotools)
 * Minimalist CSS framework [(Higgcss)](https://github.com/robinparisi/higgcss)
-* Complete workflow with gulp (images, LESS, scripts)
+* Complete workflow with gulp (images, LESS, scripts) and ES6 support
 * Base template with configurable Analytics
 * Bower
 * Fake SMTP [(maildev)](http://danfarrelly.nyc/MailDev/)
