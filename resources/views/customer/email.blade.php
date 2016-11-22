@@ -16,8 +16,8 @@ SEO::setDescription('Home page description');
 
             @include('flash::message')
 
-            @if (!$auth->emailVerified)
-            Votre adresse e-mail en attente de validation : {{ $auth->email }}
+            @if ($auth->unverifiedEmail)
+            Votre adresse e-mail en attente de validation : {{ $auth->unverifiedEmail }}
             <a href="#">Me renvoyer un email de validation</a>
             @endif
 
@@ -26,7 +26,7 @@ SEO::setDescription('Home page description');
 
                 <div class="customer-formContent">
 
-                    {!! Form::create('email', 'email')->label('Email')->attr(['autofocus', 'class' => 'f-100']) !!}
+                    {!! Form::create('email', 'email')->label('Email')->attr(['autofocus', 'class' => 'f-100'])->value($auth->email) !!}
 
                     <button class="btn btn-primary" type="submit">Modifier l'email</button>
                 </div>

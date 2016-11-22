@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('postcode');
             $table->string('city');
-            $table->boolean('emailVerified');
+            $table->string('unverifiedEmail')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

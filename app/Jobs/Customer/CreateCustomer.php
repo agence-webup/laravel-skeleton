@@ -41,7 +41,7 @@ class CreateCustomer
         $customer->address = $this->data['address'];
         $customer->postcode = $this->data['postcode'];
         $customer->city = $this->data['city'];
-        $customer->emailVerified = false;
+        $customer->unverifiedEmail = $this->data['email'];
 
         $customerRepo->save($customer);
 

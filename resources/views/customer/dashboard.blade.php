@@ -56,21 +56,20 @@ SEO::setDescription('Home page description');
                 </header>
                 <p>{{ $auth->firstname }} {{ $auth->lastname }}<br/>
                     {{ $auth->email }}</p>
-                    @if (!$auth->emailVerified)
-                    Votre adresse e-mail en attente de validation : {{ $auth->email }}
-                    <a href="#">Me renvoyer un email de validation</a>
+                    @if ($auth->unverifiedEmail)
+                    Votre adresse e-mail en attente de validation : {{ $auth->unverifiedEmail }}
+                    <a href="{{ route('customer.email.sendVerification') }}">Me renvoyer un email de validation</a>
                     @endif
-                <p><a href="">Modifier les préférences</a></p>
             </article>
             <article>
                 <header class="titleModule">
-                    <h2>Informations de compte</h2>
+                    <h2>Mon adresse de livraision</h2>
                     <hr/>
                 </header>
                 <p>{{ $auth->firstname }} {{ $auth->lastname }}<br/>
                     {{ $auth->address }}<br/>
                     {{ $auth->postcode }} {{ $auth->city }}</p>
-                <p><a href="">Modifier mon adresse de livraison</a></p>
+                <p><a href="{{ route('customer.address.edit') }}">Modifier mon adresse de livraison</a></p>
             </article>
         </div>
     </section>

@@ -25,6 +25,7 @@
             @if (Auth::guest())
                 <a href="{{ route('customer.login') }}">Connexion</a>
             @else
+            <a href="{{ route('customer.dashboard') }}">Mon compte</a>
                 <form class="" action="{{ route('customer.logout') }}" method="post">
                     {{ csrf_field() }}
                     <button type="submit">Déconnexion</button>

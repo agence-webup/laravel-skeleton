@@ -42,13 +42,15 @@ class VerifyEmail implements ShouldQueue
             throw new ModelNotFoundException();
         }
 
-        if ($customer->email != $this->email) {
+        if ($customer->unverifiedEmail != $this->email) {
             $validator = Validator::make([], []);
-            $validator->errors()->add('email', 'Cette adresse email ne correspond pas à celle de votre compte.');
-            throw new ValidationException($validator);
+            throw new \Exception('Cette adresse email ne correspond pas à celle de votre compte.');
+            // $validator->errors()->add('email', 'Cette adresse email ne correspond pas à celle de votre compte.');
+            // throw new ValidationException($validator);
         }
 
-        $customer->emailVerified = true;
+        $customer->email = $customer->unverifiedEmail;
+        $customer->unverifiedEmail = null;
 
         $customerRepo->save($customer);
     }

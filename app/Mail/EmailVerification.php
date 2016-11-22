@@ -32,7 +32,7 @@ class EmailVerification extends Mailable
     public function build()
     {
         $queryString = http_build_query([
-            'email' => $this->customer->email,
+            'email' => $this->customer->unverifiedEmail,
             'token' => JWTAuth::fromUser($this->customer),
         ]);
 
