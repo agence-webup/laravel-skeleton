@@ -79,7 +79,7 @@ SEO::setDescription('Home page description');
         </aside>
         <section class="catalog-content">
             <div class="catalog-content__head">
-                <h1 class="catalog-content__headTitle">Catégorie de produit</h1>
+                <h2 class="catalog-content__headTitle">Catégorie de produit</h2>
                 <span class="catalog-content__headSubTitle">(8 résultats)</span>
             </div>
             <div class="catalog-grid-product">
@@ -87,7 +87,7 @@ SEO::setDescription('Home page description');
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h2 class="catalog-product__name">Nom du produit</h2>
+                    <h3 class="catalog-product__name">Nom du produit</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
@@ -98,7 +98,7 @@ SEO::setDescription('Home page description');
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h2 class="catalog-product__name">Nom du produit qui prend deux lignes</h2>
+                    <h3 class="catalog-product__name">Nom du produit qui prend deux lignes</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
@@ -109,7 +109,7 @@ SEO::setDescription('Home page description');
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h2 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h2>
+                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
@@ -120,7 +120,7 @@ SEO::setDescription('Home page description');
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h2 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h2>
+                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
@@ -131,7 +131,7 @@ SEO::setDescription('Home page description');
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h2 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h2>
+                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
@@ -142,7 +142,7 @@ SEO::setDescription('Home page description');
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h2 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h2>
+                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
