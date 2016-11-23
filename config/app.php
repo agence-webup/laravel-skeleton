@@ -208,6 +208,7 @@ return [
         Webup\LaravelForm\FormServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        'Themonkeys\Cachebuster\CachebusterServiceProvider',
 
     ],
 
@@ -259,6 +260,7 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Form' => Webup\LaravelForm\Facades\Form::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'Bust' => 'Themonkeys\Cachebuster\Cachebuster'
     ],
 
 ];

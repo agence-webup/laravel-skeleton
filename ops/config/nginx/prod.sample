@@ -24,6 +24,9 @@ server {
         fastcgi_pass   app:9000;
     }
 
+    # cache busting
+    include conf.d/cache.incl;
+
     # On sert aussi les SVG sur le domaine principale
     location ~* \.svg$ {
         try_files $uri =404;
@@ -39,6 +42,9 @@ server {
     # Project public directory
     root /srv/http/public;
     index index.html index.htm index.php;
+
+    # cache busting
+    include conf.d/cache.incl;
 
     location / {
         add_header Access-Control-Allow-Origin 'http://my-domain';
