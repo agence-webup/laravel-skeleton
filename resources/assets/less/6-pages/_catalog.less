@@ -6,9 +6,95 @@
   display: flex;
 }
 
+/* Filter
+-------------------------------------------------------------- */
+
 .catalog-filter {
   flex-shrink: 0;
-  width: 20rem;
+  margin-right: 2rem;
+  min-width: 0;
+  max-width: 25rem;
+}
+
+.catalog-filter__box {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: #ebebeb;
+}
+
+.catalog-filter__boxTitle {
+  position: relative;
+  margin: 0;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.catalog-filter__boxTitle::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  content: ">";
+  font-size: 1.8rem;
+  transition: background-color .4s;
+  transform: translateY(-50%);
+}
+
+.catalog-filter__boxTitle--open::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Checkbox module */
+
+.catalog-filter__checkbox {
+  padding: 0;
+  border: none;
+}
+
+.catalog-filter__checkboxList {
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-filter__checkboxListItem {
+  display: flex;
+  align-items: flex-start;
+  margin: .5rem 0;
+  list-style: none;
+}
+
+.catalog-filter__checkboxListLabel {
+  margin: 0;
+  margin-left: .5rem;
+}
+
+/* Color checkbox module */
+
+.catalog-filter__colorBox {
+  position: absolute;
+  left: -9999px;
+}
+
+.catalog-filter__colorList,
+.catalog-filter__colorListItem {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-filter__colorBox:not(:checked) + label,
+.catalog-filter__colorBox:checked + label {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: .3rem solid white;
+  border-radius: .3rem;
+  box-shadow: 0 0 0 .1rem grey;
+  font-size: .1em;
+}
+
+.catalog-filter__colorBox:checked + label {
+  border-color: @color-dark-text;
 }
 
 /* Content
@@ -23,6 +109,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
 }
 
 .catalog-content__headSubTitle {

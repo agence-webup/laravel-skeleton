@@ -27,7 +27,55 @@ SEO::setDescription('Home page description');
 
     <div class="catalog-container">
         <aside class="catalog-filter">
-            Filtres
+            <div class="catalog-filter__box">
+                <h2 class="catalog-filter__boxTitle catalog-filter__boxTitle--open">Catégories</h2>
+                <fieldset class="catalog-filter__checkbox">
+                    <legend>Polos</legend>
+                    <ul class="catalog-filter__checkboxList">
+                      <li class="catalog-filter__checkboxListItem">
+                          <input type="checkbox" id="cb1" value="courte" />
+                          <label class="catalog-filter__checkboxListLabel" for="cb1">Manches courtes</label>
+                      </li>
+                      <li class="catalog-filter__checkboxListItem">
+                          <input type="checkbox" id="cb2" value="moyenne" />
+                          <label class="catalog-filter__checkboxListLabel" for="cb2">Manches moyennes</label>
+                      </li>
+                      <li class="catalog-filter__checkboxListItem">
+                          <input type="checkbox" id="cb3" value="longue" />
+                          <label class="catalog-filter__checkboxListLabel" for="cb3">Manches longues</label>
+                      </li>
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="catalog-filter__box">
+                <h2 class="catalog-filter__boxTitle">Catégories</h2>
+            </div>
+
+            <div class="catalog-filter__box">
+                <h2 class="catalog-filter__boxTitle catalog-filter__boxTitle--open">Catégories</h2>
+                <ul class="catalog-filter__colorList">
+                    <li class="catalog-filter__colorListItem">
+                        <input class="catalog-filter__colorBox" type="checkbox" id="c1" value="couleur1" />
+                        <label class="catalog-filter__colorLabel" for="c1" style="background-color: #ff0000">Red</label>
+                    </li>
+                    <li class="catalog-filter__colorListItem">
+                        <input class="catalog-filter__colorBox" type="checkbox" id="c1" value="couleur1" />
+                        <label class="catalog-filter__colorLabel" for="c1" style="background-color: #3bff00">Green</label>
+                    </li>
+                    <li class="catalog-filter__colorListItem">
+                        <input class="catalog-filter__colorBox" type="checkbox" id="c1" value="couleur1" />
+                        <label class="catalog-filter__colorLabel" for="c1" style="background-color: #0021ff">Blue</label>
+                    </li>
+                    <li class="catalog-filter__colorListItem">
+                        <input class="catalog-filter__colorBox" type="checkbox" id="c1" value="couleur1" />
+                        <label class="catalog-filter__colorLabel" for="c1" style="background-color: #000">Black</label>
+                    </li>
+                    <li class="catalog-filter__colorListItem">
+                        <input class="catalog-filter__colorBox" type="checkbox" id="c1" value="couleur1" />
+                        <label class="catalog-filter__colorLabel" for="c1" style="background-color: #fff">White</label>
+                    </li>
+                </ul>
+            </div>
         </aside>
         <section class="catalog-content">
             <div class="catalog-content__head">
