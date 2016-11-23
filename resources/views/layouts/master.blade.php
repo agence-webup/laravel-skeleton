@@ -42,8 +42,8 @@
         </footer>
     </div>
 
-    <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bundle.js') }}"></script>
+    <script src="{{ asset('/bower/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/bundle.js') }}"></script>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
