@@ -11,6 +11,7 @@ Homestead.json
 .node-gyp
 .bash_history
 .v8flag*
+.babel.json
 
 public/assets
 public/bower
