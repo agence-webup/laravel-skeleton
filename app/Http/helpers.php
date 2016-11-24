@@ -11,7 +11,11 @@ if (!function_exists('asset')) {
      */
     function asset($path, $secure = null)
     {
-        return app('cachebuster.url')->url($path);
+        try {
+            return app('cachebuster.url')->url($path);
+        } catch (Exception $e) {
+            return config('cachebuster.cdn') . $path;
+        }
     }
 }
 
