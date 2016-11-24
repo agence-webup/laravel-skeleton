@@ -5,6 +5,7 @@ Homestead.yaml
 Homestead.json
 .env
 .npm
+.babel.json
 .cache
 .composer
 .config
