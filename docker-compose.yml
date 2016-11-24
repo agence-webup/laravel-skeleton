@@ -12,16 +12,20 @@ services:
       - app
     depends_on:
       - app
-  
+
   app:
-    build: ops/dockerfiles/app
-    user: 1000:1000
+    build:
+      dockerfile: ops/dockerfiles/app/Dockerfil
+      context: .
+      args:
+        - user=${UID}
+    user: ${UID}:${UID}
     volumes:
       - ./:/srv/http/
     env_file: .env
     depends_on:
       - db
-  
+
   db:
     image: mysql:5.7.8
     environment:
@@ -31,9 +35,13 @@ services:
       - ./ops/config/mysql:/etc/mysql/conf.d
 
   srcbuild:
-    build: ops/dockerfiles/srcbuild
-    user: 1000:1000
-    volumes_from: 
+    build:
+      dockerfile: ops/dockerfiles/srcbuild/Dockerfil
+      context: .
+      args:
+        - user=${UID}
+    user: ${UID}:${UID}
+    volumes_from:
       - app
     env_file: .env
     environment:
@@ -41,4 +49,4 @@ services:
 
   maildev:
     image: djfarrelly/maildev:0.13.0
-    command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open 
+    command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open
