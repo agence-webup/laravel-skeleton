@@ -26,7 +26,7 @@ SEO::setDescription('Home page description');
         </ul>
     </div>
 
-    <div class="product-content">
+    <div class="product-content" itemscope itemtype="http://schema.org/Product">
         <div class="product-preview">
             <ul class="product-views">
                 <li class="product-views__item">
@@ -52,23 +52,30 @@ SEO::setDescription('Home page description');
                 </li>
             </ul>
             <div class="product-visual">
-                <img class="product-visual__image" src="https://placehold.it/600x600" />
+                <img class="product-visual__image" itemprop="image" src="https://placehold.it/600x600" />
             </div>
         </div>
         <form class="product-info">
-            <h1 class="product-info__name">Product name</h1>
-            <div class="product-info__ref">Reference</div>
-            <div class="product-info__price">
-                <div class="product-info__priceItem">11€</div>
+            <h1 class="product-info__name" itemprop="name">Product name</h1>
+            <div class="product-info__ref" itemprop="mpn">Reference</div>
+            <div class="product-info__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <meta itemprop="priceCurrency" content="EUR" /><!-- cf ISO_4217 codes -->
+                <div class="product-info__priceItem" itemprop="price">11€</div>
                 <div class="product-info__priceItem product-info__priceItem--reduct">14,90€</div>
             </div>
             <ol class="product-option">
                 <li class="product-option__item">
                     Une déclinaison
                     <div class="product-option__content">
-                        <a class="product-option__contentItem" href="">Decli 1</a>
-                        <a class="product-option__contentItem" href="">Decli 2</a>
-                        <a class="product-option__contentItem" href="">Decli 3</a>
+                        <span itemprop="isSimilarTo" itemscope itemtype="http://schema.org/Product">
+                            <a class="product-option__contentItem" itemprop="url" href="">Decli 1</a>
+                        </span>
+                        <span itemprop="isSimilarTo" itemscope itemtype="http://schema.org/Product">
+                            <a class="product-option__contentItem" itemprop="url" href="">Decli 2</a>
+                        </span>
+                        <span itemprop="isSimilarTo" itemscope itemtype="http://schema.org/Product">
+                            <a class="product-option__contentItem" itemprop="url" href="">Decli 3</a>
+                        </span>
                     </div>
                 </li>
                 <li class="product-option__item">
@@ -85,7 +92,7 @@ SEO::setDescription('Home page description');
                     </div>
                 </li>
             </ol>
-            <div class="product-about">
+            <div class="product-about" itemprop="description">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div class="product-submit">
@@ -99,18 +106,18 @@ SEO::setDescription('Home page description');
                 <hr/>
             </div>
             <ul class="product-suggest__list grid-3">
-                <li class="product-suggest__item">
-                    <a href="product-suggest__link" href="">
+                <li class="product-suggest__item" itemprop="isRelatedTo" itemscope itemtype="http://schema.org/Product">
+                    <a href="product-suggest__link" itemprop="url" href="">
                         <img class="product-suggest__image" src="https://placehold.it/200x200" />
                     </a>
                 </li>
-                <li class="product-suggest__item">
-                    <a href="product-suggest__link" href="">
+                <li class="product-suggest__item" itemprop="isRelatedTo" itemscope itemtype="http://schema.org/Product">
+                    <a href="product-suggest__link" itemprop="url" href="">
                         <img class="product-suggest__image" src="https://placehold.it/200x200" />
                     </a>
                 </li>
-                <li class="product-suggest__item">
-                    <a href="product-suggest__link" href="">
+                <li class="product-suggest__item" itemprop="isRelatedTo" itemscope itemtype="http://schema.org/Product">
+                    <a href="product-suggest__link" itemprop="url" href="">
                         <img class="product-suggest__image" src="https://placehold.it/200x200" />
                     </a>
                 </li>
@@ -119,10 +126,10 @@ SEO::setDescription('Home page description');
         <div class="product-moreInfo">
             <div class="product-moreInfo__item">
                 <div class="titleModule">
-                    <h1>Info suplémentaire</h1>
+                    <h1>Description</h1>
                     <hr/>
                 </div>
-                <div class="product-moreInfo__about">
+                <div class="product-moreInfo__about" itemprop="description">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
