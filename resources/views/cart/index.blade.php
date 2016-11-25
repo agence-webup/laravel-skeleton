@@ -12,6 +12,15 @@ SEO::setDescription('Les articles de mon panier');
 <div class="container">
     @include('elements.steps', ['step' => 1])
     <div class="cart">
+        <div class="cart-action">
+            <div>
+                <a class="btn btn--secondary" href="">continuer mes achats</a>
+            </div>
+            <div>
+                <a class="btn btn--primary" href="{{ route('order.create') }}" data-js="orderButton" data-open="{{ Auth::guest() }}">Finaliser ma commande &rarr;</a>
+            </div>
+        </div>
+
         <div class="cart-head">
             <h1 class="cart-head__title">Ma commande</h1>
             <span class="cart-head__info">Info&nbsp;: Il vous reste XX€ avant de bénéficier des frais de port offerts</span>
