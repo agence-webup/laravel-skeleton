@@ -41,8 +41,7 @@ SEO::setDescription('Les articles de mon panier');
                 </td>
                 <td class="s-hidden">XXX,XX€</td>
                 <td class="txtcenter cart-amount">
-                    <input class="cart-amount__imput" type="number" name="">
-                    <a class="cart-amount__link" href="">&#128465; supprimer
+                    3
                 </td>
                 <td>XXX,XX€</td>
             </tr>
@@ -56,8 +55,7 @@ SEO::setDescription('Les articles de mon panier');
                 </td>
                 <td class="s-hidden">XXX,XX€</td>
                 <td class="txtcenter cart-amount">
-                    <input class="cart-amount__imput" type="number" name="">
-                    <a class="cart-amount__link" href="">&#128465; supprimer
+                    1
                 </td>
                 <td>XXX,XX€</td>
             </tr>
