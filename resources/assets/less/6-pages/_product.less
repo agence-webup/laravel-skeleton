@@ -39,13 +39,28 @@
   width: ~'calc(40% - 1px)';
 }
 
+.product-info__name {
+  margin: 0;
+  line-height: 1em;
+}
+
+.product-info__ref {
+  margin-bottom: 1rem;
+}
+
 .product-info__price {
   display: flex;
   flex-wrap: wrap;
   margin-top: auto;
-  padding: 1rem 5%;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
   font-weight: bold;
   font-size: 1.6rem;
+}
+
+.product-option {
+  margin: 0;
+  padding-left: 2rem;
 }
 
 .product-info__priceItem:not(:last-child) {
@@ -66,6 +81,14 @@
   background: @color-dark-text;
   content: "";
   transform: rotate(-20deg) translateY(-50%);
+}
+
+.product-submit__info {
+  font-size: 1.4rem;
+}
+
+.product-submit__btn {
+  width: 100%;
 }
 
 
