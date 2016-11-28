@@ -10,7 +10,6 @@ SEO::setDescription('Les articles de mon panier');
 @section('content')
 
 <div class="container">
-    @include('elements.steps', ['step' => 1])
     <div class="cart">
         <div class="cart-action">
             <div>
