@@ -4,6 +4,9 @@ SEO::setDescription('Home page description');
 ?>
 
 @extends('layouts.master')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/bower/tingle/dist/tingle.min.css') }}">
+@endsection
 @section('content')
 <h1>{{ $product->name }}</h1>
 
@@ -97,9 +100,42 @@ SEO::setDescription('Home page description');
             </div>
             <div class="product-submit">
                 <span class="product-submit__info">Plus que <strong>20€</strong> avant de bénéficier des frais de port gratuits.</span>
-                <button class="product-submit__btn btn btn--primary" role="button">Ajouter au panier</button>
+                <button class="product-submit__btn btn btn--primary" data-js="productButton" role="button">Ajouter au panier</button>
             </div>
         </form>
     </div>
 </div>
+
+<div class="product-cartModal" data-js="productModal">
+    <div class="titleModule">
+        <h2>Vous avez ajouté un article à votre panier</h2>
+        <hr/>
+    </div>
+    <div class="product-cartModal__content">
+        <div class="product-cartModal__visual">
+            <img src="http://placehold.it/200x200" alt="" />
+        </div>
+        <div class="product-cartModal__info">
+            <h2 class="product-cartModal__name">Nom du produit</h2>
+            <div class="product-cartModal__about">
+                Déclinaison: <strong>bleu</strong><br/>
+                Taille: <strong>L</strong>
+            </div>
+            <div class="product-cartModal__quantity">
+                <label for="productQuantity">Quantité</label>
+                <input class="product-cartModal__quantityInput" type="number" name="productQuantity" id="productQuantity"/>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+<script src="{{ asset('/bower/tingle/dist/tingle.min.js') }}"></script>
+<script src="{{ asset('/assets/js/modules/product-modal.js') }}"></script>
+<script>
+
+var productModal = new ProductModal({cartLink: '{{ route('cart.index') }}'});
+
+</script>
 @endsection
