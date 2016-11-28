@@ -70,7 +70,7 @@ SEO::setDescription('Les articles de mon panier');
             <label for="cart-promo">Entrez votre code promo</label>
             <div class="cart-promo__form">
                 <input type="text" name="cart-promo">
-                <button class="btn btn-primary" type="submit">ajouter</button>
+                <button class="btn btn-primary cart-promo__btn" type="submit">ajouter</button>
             </div>
         </div>
 
