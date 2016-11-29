@@ -103,6 +103,50 @@ SEO::setDescription('Home page description');
                 <button class="product-submit__btn btn btn--primary" data-js="productButton" role="button">Ajouter au panier</button>
             </div>
         </form>
+        <div class="product-suggest">
+            <div class="titleModule">
+                <h1>Produits similaires</h1>
+                <hr/>
+            </div>
+            <ul class="product-suggest__list grid-3">
+                <li class="product-suggest__item" itemprop="isRelatedTo" itemscope itemtype="http://schema.org/Product">
+                    <a href="product-suggest__link" itemprop="url" href="">
+                        <img class="product-suggest__image" src="https://placehold.it/200x200" />
+                    </a>
+                </li>
+                <li class="product-suggest__item" itemprop="isRelatedTo" itemscope itemtype="http://schema.org/Product">
+                    <a href="product-suggest__link" itemprop="url" href="">
+                        <img class="product-suggest__image" src="https://placehold.it/200x200" />
+                    </a>
+                </li>
+                <li class="product-suggest__item" itemprop="isRelatedTo" itemscope itemtype="http://schema.org/Product">
+                    <a href="product-suggest__link" itemprop="url" href="">
+                        <img class="product-suggest__image" src="https://placehold.it/200x200" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="product-moreInfo">
+            <div class="product-moreInfo__item">
+                <div class="titleModule">
+                    <h1>Description</h1>
+                    <hr/>
+                </div>
+                <div class="product-moreInfo__about" itemprop="description">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+            <div class="product-moreInfo__item">
+                <div class="titleModule">
+                    <h1>Info suplémentaire</h1>
+                    <hr/>
+                </div>
+                <div class="product-moreInfo__about">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
