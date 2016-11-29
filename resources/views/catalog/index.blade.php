@@ -82,6 +82,15 @@ SEO::setDescription('Home page description');
                 <h2 class="catalog-content__headTitle">Catégorie de produit</h2>
                 <span class="catalog-content__headSubTitle">(8 résultats)</span>
             </div>
+            <div class="catalog-classify">
+                <label class="catalog-classify__label" for="classify">Trier par</label>
+                <select class="catalog-classify__select">
+                    <option disabled selected hidden>Trier par</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+            </div>
             <div class="catalog-grid-product">
                 <a class="catalog-product__item" href="">
                     <div class="catalog-product__image">
