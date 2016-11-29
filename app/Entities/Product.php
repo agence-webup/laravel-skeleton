@@ -3,9 +3,20 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Entities\Tag;
+use App\Entities\ProductTag;
 
 class Product extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
+
     public function getSlugAttribute()
     {
         return $this->id;
@@ -13,6 +24,6 @@ class Product extends Model
 
     public function tags()
     {
-        return $this->hasManyThrough(Tag::class, ProductTag::class);
+        return $this->belongsToMany(Tag::class, (new ProductTag())->getTable(), 'product_id', 'tag_id');
     }
 }

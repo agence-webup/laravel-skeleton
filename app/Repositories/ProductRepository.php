@@ -6,11 +6,11 @@ use App\Entities\Product;
 
 class ProductRepository
 {
-    public function allWithTags($tags)
+    public function allWithTags(array $tags)
     {
-        return Product::leftJoin('product_tags', 'products.id', '=', 'product_tags.product_id')
-            ->whereIn('tag_id', $tags)
-            ->get();
+        return Product::whereHas('tags', function ($q) use ($tags) {
+            $q->whereIn('tags.id', $tags);
+        }, '=', count($tags))->get();
     }
 
     public function get($id)
