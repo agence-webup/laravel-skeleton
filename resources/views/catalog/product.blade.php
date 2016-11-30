@@ -143,7 +143,11 @@ SEO::setDescription('Home page description');
                     <hr/>
                 </div>
                 <div class="product-moreInfo__about">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <ul>
+                        <li>key: <strong>value</strong></li>
+                        <li>key: <strong>value</strong></li>
+                        <li>key: <strong>value</strong></li>
+                    </ul>
                 </div>
             </div>
         </div>
