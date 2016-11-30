@@ -6,9 +6,14 @@
   /* Cart page
     -------------------------------------------------------------- */
 
+  .cart-head__info {
+    display: none;
+  }
+
   .cart-table {
     border: none;
   }
+
   .cart-table thead {
     display: none;
   }
@@ -74,15 +79,30 @@
 
   .cart-action {
     display: block;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .cart-action--top {
+    display: flex;
+    flex-wrap: nowrap;
   }
 
   .cart-action > :not(:last-child) {
     margin-right: 0;
   }
 
+  .cart-action--top > *:not(:last-child) {
+    margin-right: 1rem;
+  }
+
   .cart-action .btn {
     display: block;
     width: 100%;
+  }
+
+  .cart-action .cart-action__btnMobile {
+    display: none;
   }
 
   /* Customer page

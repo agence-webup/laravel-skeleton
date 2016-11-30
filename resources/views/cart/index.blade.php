@@ -11,7 +11,7 @@ SEO::setDescription('Les articles de mon panier');
 
 <div class="container">
     <div class="cart">
-        <div class="cart-action">
+        <div class="cart-action cart-action--top">
             <div>
                 <a class="btn btn--secondary" href="">continuer mes achats</a>
             </div>
@@ -106,7 +106,7 @@ SEO::setDescription('Les articles de mon panier');
 
         <div class="cart-action">
             <div>
-                <a class="btn btn--secondary" href="">continuer mes achats</a>
+                <a class="btn btn--secondary cart-action__btnMobile" href="">continuer mes achats</a>
             </div>
             <div>
                 <a class="btn btn--primary" href="{{ route('order.create') }}" data-js="orderButton" data-open="{{ Auth::guest() }}">Finaliser ma commande &rarr;</a>
