@@ -3,19 +3,17 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Entities\Tag;
 use App\Entities\ProductTag;
+use \Dimsav\Translatable\Translatable;
 
 class Product extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-    ];
+    use Translatable;
+
+    protected $fillable = ['reference'];
+
+    public $translatedAttributes = ['name'];
+
 
     public function getSlugAttribute()
     {

@@ -6,6 +6,11 @@ use App\Entities\Product;
 
 class ProductRepository
 {
+    public function all()
+    {
+        return Product::all();
+    }
+
     public function allWithTags(array $tags)
     {
         return Product::whereHas('tags', function ($q) use ($tags) {

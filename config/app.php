@@ -204,12 +204,13 @@ return [
         /**
          * Package Service Providers
          */
+        Yajra\Datatables\DatatablesServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Webup\LaravelForm\FormServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        'Themonkeys\Cachebuster\CachebusterServiceProvider',
-
+        Themonkeys\Cachebuster\CachebusterServiceProvider::class,
+        Dimsav\Translatable\TranslatableServiceProvider::class,
     ],
 
     /*
@@ -260,7 +261,8 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Form' => Webup\LaravelForm\Facades\Form::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'Bust' => 'Themonkeys\Cachebuster\Cachebuster'
+        'Bust' => Themonkeys\Cachebuster\Cachebuster::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];
