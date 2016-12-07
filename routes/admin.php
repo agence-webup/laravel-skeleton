@@ -16,6 +16,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:admi
     });
     Route::get('/customers', 'Admin\Customer\IndexController@index')->name('customer.index');
 
-
-    Route::get('/products', 'Admin\Product\IndexController@index')->name('product.index');
+    Route::get('/products', 'Admin\ProductController@index')->name('product.index');
+    Route::get('/products/create', 'Admin\ProductController@create')->name('product.create');
+    Route::post('/products', 'Admin\ProductController@store')->name('product.store');
+    Route::get('/products/{id}/edit', 'Admin\ProductController@edit')->name('product.edit');
+    Route::put('/products/{id}', 'Admin\ProductController@update')->name('product.update');
+    Route::delete('/products/{id}', 'Admin\ProductController@destroy')->name('product.destroy');
 });

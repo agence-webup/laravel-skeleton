@@ -10,9 +10,9 @@ class Product extends Model
 {
     use Translatable;
 
-    protected $fillable = ['reference'];
+    protected $fillable = ['reference', 'price'];
 
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['title'];
 
 
     public function getSlugAttribute()
