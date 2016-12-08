@@ -10,7 +10,7 @@ SEO::setDescription('Les articles de mon panier');
 @section('content')
 
 <div class="container">
-    <div class="cart">
+    <div class="cart" data-js="cartVue">
         <div class="cart-action cart-action--top">
             <div>
                 <a class="btn btn--secondary" href="">continuer mes achats</a>
@@ -34,35 +34,20 @@ SEO::setDescription('Les articles de mon panier');
                     <th>Sous-total</th>
                 </tr>
             </thead>
-            <tr>
+            <tr v-for="item in cart.items">
                 <td class="cart-product__item">
                     <img class="cart-product__image" src="https://placehold.it/100x100" alt="">
                     <div class="cart-product__content">
-                        <strong class="cart-product__name">Nom et/ou référence de l'article</strong>
+                        <strong class="cart-product__name">@{{ item.name }}</strong>
                         <a class="cart-product__link" href="">voir l'article</a>
                     </div>
                 </td>
-                <td class="s-hidden">XXX,XX€</td>
+                <td class="s-hidden">@{{ item.taxedPrice | price }}</td>
                 <td class="txtcenter cart-amount">
-                    <input class="cart-amount__imput" type="number" name="">
-                    <a class="cart-amount__link" href="">&#128465; supprimer
+                    <input class="cart-amount__imput" type="number" v-model="item.quantity" v-on:change.prevent="update(item)">
+                    <a class="cart-amount__link" href="" v-on:click.prevent="remove(item)">&#128465; supprimer
                 </td>
-                <td>XXX,XX€</td>
-            </tr>
-            <tr>
-                <td class="cart-product__item">
-                    <img class="cart-product__image" src="https://placehold.it/100x100" alt="">
-                    <div class="cart-product__content">
-                        <strong class="cart-product__name">Nom et/ou référence de l'article</strong>
-                        <a class="cart-product__link" href="">voir l'article</a>
-                    </div>
-                </td>
-                <td class="s-hidden">XXX,XX€</td>
-                <td class="txtcenter cart-amount">
-                    <input class="cart-amount__imput" type="number" name="">
-                    <a class="cart-amount__link" href="">&#128465; supprimer
-                </td>
-                <td>XXX,XX€</td>
+                <td>@{{ item.totalTaxedPrice | price }}</td>
             </tr>
         </table>
 
@@ -100,7 +85,7 @@ SEO::setDescription('Les articles de mon panier');
             </div>
             <div class="cart-total__subtotal">
                 <span>Total</span>
-                <strong>XXX,XX€</strong>
+                <strong>@{{ cart.taxedPrice | price }}</strong>
             </div>
         </div>
 
@@ -126,6 +111,9 @@ SEO::setDescription('Les articles de mon panier');
 @endsection
 
 @section('js')
+<script src="{{ asset('/bower/vue/dist/vue.min.js') }}"></script>
 <script src="{{ asset('/bower/tingle/dist/tingle.min.js') }}"></script>
 <script src="{{ asset('/assets/js/modules/order-modal.js') }}"></script>
+<script src="{{ asset('/assets/js/modules/cart-service.js') }}"></script>
+<script src="{{ asset('/assets/js/pages/cart.js') }}"></script>
 @endsection

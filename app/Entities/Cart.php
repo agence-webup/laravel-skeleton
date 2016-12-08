@@ -47,7 +47,13 @@ class Cart implements JsonSerializable
      */
     public function price()
     {
-        return 0;
+        $price = 0;
+
+        foreach ($this->items as $item) {
+            $price += $item->totalPrice();
+        }
+
+        return $price;
     }
 
     /**
@@ -56,7 +62,13 @@ class Cart implements JsonSerializable
      */
     public function taxedPrice()
     {
-        return 0;
+        $taxedPrice = 0;
+
+        foreach ($this->items as $item) {
+            $taxedPrice += $item->totalTaxedPrice();
+        }
+
+        return $taxedPrice;
     }
 
     /**
@@ -65,7 +77,13 @@ class Cart implements JsonSerializable
      */
     public function tax()
     {
-        return 0;
+        $tax = 0;
+
+        foreach ($this->items as $item) {
+            $tax += $item->totalTax();
+        }
+
+        return $tax;
     }
 
     /**
@@ -74,7 +92,13 @@ class Cart implements JsonSerializable
      */
     public function weight()
     {
-        return 0;
+        $weight = 0;
+
+        foreach ($this->items as $item) {
+            $weight += $item->totalWeight();
+        }
+
+        return $weight;
     }
 
     /**
@@ -84,7 +108,7 @@ class Cart implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'items' => $this->items,
+            'items' => $this->items->values(),
             'price' => $this->price(),
             'taxedPrice' => $this->taxedPrice(),
             'tax' => $this->tax(),

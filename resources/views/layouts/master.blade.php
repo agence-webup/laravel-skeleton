@@ -46,6 +46,7 @@
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
+            'cartUrl' => route('cart.index'),
         ]); ?>
     </script>
     @yield('js')
