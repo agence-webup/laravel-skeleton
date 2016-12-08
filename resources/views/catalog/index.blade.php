@@ -96,72 +96,19 @@ SEO::setDescription('Home page description');
 
             </div>
             <div class="catalog-grid-product">
-                <a class="catalog-product__item" href="">
+                @foreach ($products as $product)
+                <a class="catalog-product__item" href="{{ route('catalog.product', ['slug' => $product->slug]) }}">
                     <div class="catalog-product__image">
                         <img src="http://placehold.it/200x250" alt="Product"/>
                     </div>
-                    <h3 class="catalog-product__name">Nom du produit</h3>
+                    <h3 class="catalog-product__name">{{ $product->title }}</h3>
                     <div class="catalog-product__info">Des infos suplémentaires</div>
                     <div class="catalog-product__price">
                         <div class="catalog-product__priceItem">11€</div>
                         <div class="catalog-product__priceItem catalog-product__priceItem--reduct">14,90€</div>
                     </div>
                 </a>
-                <a class="catalog-product__item" href="">
-                    <div class="catalog-product__image">
-                        <img src="http://placehold.it/200x250" alt="Product"/>
-                    </div>
-                    <h3 class="catalog-product__name">Nom du produit qui prend deux lignes</h3>
-                    <div class="catalog-product__info">Des infos suplémentaires</div>
-                    <div class="catalog-product__price">
-                        <div class="catalog-product__priceItem">11€</div>
-                        <div class="catalog-product__priceItem catalog-product__priceItem--reduct">14,90€</div>
-                    </div>
-                </a>
-                <a class="catalog-product__item" href="">
-                    <div class="catalog-product__image">
-                        <img src="http://placehold.it/200x250" alt="Product"/>
-                    </div>
-                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
-                    <div class="catalog-product__info">Des infos suplémentaires</div>
-                    <div class="catalog-product__price">
-                        <div class="catalog-product__priceItem">11€</div>
-                        <div class="catalog-product__priceItem catalog-product__priceItem--reduct">14,90€</div>
-                    </div>
-                </a>
-                <a class="catalog-product__item" href="">
-                    <div class="catalog-product__image">
-                        <img src="http://placehold.it/200x250" alt="Product"/>
-                    </div>
-                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
-                    <div class="catalog-product__info">Des infos suplémentaires</div>
-                    <div class="catalog-product__price">
-                        <div class="catalog-product__priceItem">11€</div>
-                        <div class="catalog-product__priceItem catalog-product__priceItem--reduct">14,90€</div>
-                    </div>
-                </a>
-                <a class="catalog-product__item" href="">
-                    <div class="catalog-product__image">
-                        <img src="http://placehold.it/200x250" alt="Product"/>
-                    </div>
-                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
-                    <div class="catalog-product__info">Des infos suplémentaires</div>
-                    <div class="catalog-product__price">
-                        <div class="catalog-product__priceItem">11€</div>
-                        <div class="catalog-product__priceItem catalog-product__priceItem--reduct">14,90€</div>
-                    </div>
-                </a>
-                <a class="catalog-product__item" href="">
-                    <div class="catalog-product__image">
-                        <img src="http://placehold.it/200x250" alt="Product"/>
-                    </div>
-                    <h3 class="catalog-product__name">Nom du produit qui peut prendre plusieurs lignes</h3>
-                    <div class="catalog-product__info">Des infos suplémentaires</div>
-                    <div class="catalog-product__price">
-                        <div class="catalog-product__priceItem">11€</div>
-                        <div class="catalog-product__priceItem catalog-product__priceItem--reduct">14,90€</div>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </section>
     </div>

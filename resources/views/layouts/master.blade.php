@@ -18,9 +18,7 @@
         </header>
 
         <nav class="navigation">
-            <a href="#">Page 1</a>
-            <a href="#">Page 2</a>
-            <a href="#">Page 3</a>
+            <a href="{{ route('catalog') }}">Catalogue</a>
             <a href="{{ route('cart.index') }}">Panier</a>
             @if (Auth::guest())
                 <a href="{{ route('customer.login') }}">Connexion</a>

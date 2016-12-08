@@ -13,11 +13,15 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 
-Route::get('/catalog/{slug}', 'CatalogController@index')->name('catalog')->where(['slug' => '.+']);
+Route::get('/catalog/{slug?}', 'CatalogController@index')->name('catalog')->where(['slug' => '.+']);
 Route::get('/product/{slug}', 'CatalogController@product')->name('catalog.product')->where(['slug' => '.*']);
 
 Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
     Route::get('', 'CartController@index')->name('cart.index');
+
+    Route::post('items', 'ItemController@store')->name('item.store');
+    Route::put('items/{id}', 'ItemController@update')->name('item.update');
+    Route::delete('items/{id}', 'ItemController@destroy')->name('item.destroy');
 
     Route::get('/order', 'OrderController@create')->name('order.create');
     Route::post('/order', 'OrderController@store')->name('order.store');
@@ -56,6 +60,4 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Custo
     // Customer's invoices Routes...
     Route::get('/orders', 'OrderController@index')->name('order.index');
     Route::get('/orders/{id}', 'OrderController@show')->name('order.show');
-
-
 });

@@ -32,6 +32,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\JWTAuthenticate::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\ShareAuthUser::class,
+            \App\Http\Middleware\ShareCart::class,
         ],
 
         'api' => [

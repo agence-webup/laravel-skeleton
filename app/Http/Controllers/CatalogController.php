@@ -15,10 +15,15 @@ class CatalogController extends Controller
         $this->repo = $repo;
     }
 
-    public function index($slug)
+    public function index($slug = null)
     {
-        $tags = explode('/', $slug);
-        $products = $this->repo->allWithTags($tags);
+        $products;
+        if ($slug) {
+            $tags = explode('/', $slug);
+            $products = $this->repo->allWithTags($tags);
+        } else {
+            $products = $this->repo->all();
+        }
 
         return view('catalog.index', ['products' => $products]);
     }
