@@ -25,4 +25,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:admi
         Route::delete('/{id}', 'Admin\Product\DestroyController@destroy')->name('destroy');
     });
 
+
+    Route::group(['prefix' => 'categories', 'as' => 'category.'], function () {
+        Route::get('/', 'Admin\Category\IndexController@index')->name('index');
+        Route::get('/create', 'Admin\Category\CreateController@create')->name('create');
+        Route::post('/', 'Admin\Category\CreateController@store')->name('store');
+        Route::get('/{id}/edit', 'Admin\Category\EditController@edit')->name('edit');
+        Route::put('/{id}', 'Admin\Category\EditController@update')->name('update');
+        Route::delete('/{id}', 'Admin\Category\DestroyController@destroy')->name('destroy');
+    });
 });
