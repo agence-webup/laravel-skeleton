@@ -5,11 +5,11 @@
 
 
     <span class="dropmic" data-dropmic="{{ $category->id }}" data-dropmic-direction="bottom-left">
-        <i class="fa fa-cog menuItem__icon"></i>
+        <button class="btn btn--action menuItem__icon" data-dropmic-btn><i class="fa fa-cog"></i></button>
         <div class="dropmic-menu">
             <ul class="dropmic-menu__list">
                 <li class="dropmic-menu__listItem">
-                    <a href="">Modifier</a>
+                    <a href="{{ route('admin.category.edit', $category->id) }}" class="dropmic-menu__listContent"><i class="fa fa-pencil"></i> Modifier</a>
                 </li>
                 <li class="dropmic-menu__listItem">
                      <form action="{{ route('admin.category.destroy', $category->id) }}" method="post" class="inline">

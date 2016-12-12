@@ -32,6 +32,11 @@ class CategoryRepository
         return Category::find($id);
     }
 
+    public function delete(Category $category)
+    {
+        $category->delete();
+    }
+
     public function save(Category $category)
     {
         $category->save();

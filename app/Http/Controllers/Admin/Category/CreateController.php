@@ -41,7 +41,6 @@ class CreateController extends Controller
         try {
             $this->dispatchNow(new CreateCategory($request->all()));
         } catch (ValidationException $e) {
-            dd($e->validator->errors());
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($e->validator->errors());

@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin\Category;
 use App\Http\Controllers\Admin\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\CategoryRepository;
+use App\Jobs\Category\DeleteCategory;
 
-class IndexController extends Controller
+class DestroyController extends Controller
 {
     private $categoryRepo;
 
@@ -15,10 +16,16 @@ class IndexController extends Controller
         $this->categoryRepo = $categoryRepo;
     }
 
-    public function index()
+    public function destroy($id)
     {
-        return view('admin.category.index', [
-            'categories' => $this->categoryRepo->all(),
-        ]);
+        try {
+            $this->dispatchNow(new DeleteCategory($id));
+        } catch (ValidationException $e) {
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($e->validator->errors());
+        }
+
+        return redirect()->route('admin.category.index');
     }
 }

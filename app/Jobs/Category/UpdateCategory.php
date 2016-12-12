@@ -2,19 +2,21 @@
 
 namespace App\Jobs\Category;
 
-use App\Entities\Category;
-use App\Repositories\CategoryRepository;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
+use App\Repositories\CategoryRepository;
+use App\Entities\Category;
 use Validator;
 
-class CreateCategory implements ShouldQueue
+class UpdateCategory implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
+    private $id;
     private $data;
 
     /**
@@ -22,8 +24,9 @@ class CreateCategory implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($id, $data)
     {
+        $this->id = $id;
         $this->data = $data;
     }
 
@@ -34,12 +37,16 @@ class CreateCategory implements ShouldQueue
      */
     public function handle(CategoryRepository $categoryRepo)
     {
+        $category = $categoryRepo->get($this->id);
+        if (!$category) {
+            throw new ModelNotFoundException();
+        }
+
         $validator = $this->getValidator($this->data);
         if ($validator->fails()) {
             throw new ValidationException($validator);
         }
 
-        $category = new Category();
         $category->fill($validator->getData());
         $category->translate('fr')->fill($validator->getData());
         $categoryRepo->save($category);
