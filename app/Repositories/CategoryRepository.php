@@ -20,7 +20,7 @@ class CategoryRepository
     {
         $categories = ['' => 'Aucune'];
         foreach (Category::all() as $key => $category) {
-            if (!in_array($category->id, $exeptIds)) {
+            if (!in_array($category->id, $exeptIds) && $category->level < config('catalog.category.max_childs')) {
                 $categories[$category->id] = $category->title;
             }
         }

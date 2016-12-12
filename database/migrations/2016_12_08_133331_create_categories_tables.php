@@ -18,6 +18,7 @@ class CreateCategoriesTables extends Migration
             $table->integer('category_id')->unsigned()->nullable();
             $table->boolean('published');
             $table->integer('position')->unsigned()->nullable();
+            $table->integer('level')->unsigned()->nullable();
             $table->timestamps();
         });
 

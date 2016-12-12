@@ -18,6 +18,7 @@ class UpdateCategory implements ShouldQueue
 
     private $id;
     private $data;
+    private $categoryRepo;
 
     /**
      * Create a new job instance.
@@ -37,7 +38,8 @@ class UpdateCategory implements ShouldQueue
      */
     public function handle(CategoryRepository $categoryRepo)
     {
-        $category = $categoryRepo->get($this->id);
+        $this->categoryRepo = $categoryRepo;
+        $category = $this->categoryRepo->get($this->id);
         if (!$category) {
             throw new ModelNotFoundException();
         }
@@ -49,7 +51,7 @@ class UpdateCategory implements ShouldQueue
 
         $category->fill($validator->getData());
         $category->translate('fr')->fill($validator->getData());
-        $categoryRepo->save($category);
+        $this->categoryRepo->save($category);
     }
 
     private function getValidator(array $data)
@@ -57,6 +59,7 @@ class UpdateCategory implements ShouldQueue
         $validator = Validator::make($data, [
             'category_id' => '',
             'published' => '',
+            'level' => '',
             // 'position' => 'required',
             'title' => 'required',
             'description' => 'required',
@@ -81,6 +84,10 @@ class UpdateCategory implements ShouldQueue
 
             if ($data['category_id'] == "") {
                 $data['category_id'] = null;
+                $data['level'] = 1;
+            } else {
+                $parentCategory = $this->categoryRepo->get($data['category_id']);
+                $data['level'] = $parentCategory->level + 1;
             }
 
             $data['position'] = 0;//Get last Position

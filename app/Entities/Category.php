@@ -9,7 +9,7 @@ class Category extends Model
 {
     use Translatable;
 
-    protected $fillable = ['category_id', 'published', 'position'];
+    protected $fillable = ['category_id', 'published', 'position','level'];
 
     public $translatedAttributes = [
         'title',

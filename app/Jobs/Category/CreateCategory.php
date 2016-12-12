@@ -16,6 +16,7 @@ class CreateCategory implements ShouldQueue
     use InteractsWithQueue, Queueable, SerializesModels;
 
     private $data;
+    private $categoryRepo;
 
     /**
      * Create a new job instance.
@@ -34,6 +35,7 @@ class CreateCategory implements ShouldQueue
      */
     public function handle(CategoryRepository $categoryRepo)
     {
+        $this->categoryRepo = $categoryRepo;
         $validator = $this->getValidator($this->data);
         if ($validator->fails()) {
             throw new ValidationException($validator);
@@ -42,7 +44,7 @@ class CreateCategory implements ShouldQueue
         $category = new Category();
         $category->fill($validator->getData());
         $category->translate('fr')->fill($validator->getData());
-        $categoryRepo->save($category);
+        $this->categoryRepo->save($category);
     }
 
     private function getValidator(array $data)
@@ -50,6 +52,7 @@ class CreateCategory implements ShouldQueue
         $validator = Validator::make($data, [
             'category_id' => '',
             'published' => '',
+            'level' => '',
             // 'position' => 'required',
             'title' => 'required',
             'description' => 'required',
@@ -74,6 +77,10 @@ class CreateCategory implements ShouldQueue
 
             if ($data['category_id'] == "") {
                 $data['category_id'] = null;
+                $data['level'] = 1;
+            } else {
+                $parentCategory = $this->categoryRepo->get($data['category_id']);
+                $data['level'] = $parentCategory->level + 1;
             }
 
             $data['position'] = 0;//Get last Position

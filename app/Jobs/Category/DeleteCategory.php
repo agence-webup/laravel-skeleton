@@ -35,6 +35,7 @@ class DeleteCategory implements ShouldQueue
         if ($category) {
             foreach ($category->subCategories as $key => $subCategory) {
                 $subCategory->category_id = null;
+                $subCategory->level -= 1;
                 $categoryRepo->save($subCategory);
             }
             $categoryRepo->delete($category);
