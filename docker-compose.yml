@@ -15,7 +15,7 @@ services:
 
   app:
     build:
-      dockerfile: ops/dockerfiles/app/Dockerfil
+      dockerfile: ops/dockerfiles/app/Dockerfile
       context: .
       args:
         - user=${UID}
@@ -36,7 +36,7 @@ services:
 
   srcbuild:
     build:
-      dockerfile: ops/dockerfiles/srcbuild/Dockerfil
+      dockerfile: ops/dockerfiles/srcbuild/Dockerfile
       context: .
       args:
         - user=${UID}
