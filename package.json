@@ -20,6 +20,7 @@
     "merge-stream": "^1.0.0"
   },
   "dependencies": {
+    "helium-admin": "^1.0.0",
     "tingle.js": "^0.8.4"
   }
 }
