@@ -71,7 +71,7 @@ gulp.task('browser-sync', () => {
  * Copy NPM dependencies to public folder
  */
 gulp.task('copy-npm', function() {
-  gulp.src(plugins.npmFiles(), {base:'./'}).pipe(gulp.dest('./public/assets/'));
+  gulp.src(plugins.npmFiles(), {base:'./'}).pipe(gulp.dest('./public/'));
 });
 
 /**

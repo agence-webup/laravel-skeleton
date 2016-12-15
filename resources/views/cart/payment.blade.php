@@ -4,7 +4,7 @@ SEO::setDescription('Les articles de mon panier');
 ?>
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('/assets/node_modules/tingle/dist/tingle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/node_modules/tingle/dist/tingle.min.css') }}">
 @endsection
 @extends('layouts.master')
 @section('content')
@@ -111,6 +111,6 @@ SEO::setDescription('Les articles de mon panier');
 @endsection
 
 @section('js')
-<script src="{{ asset('/assets/node_modules/tingle/dist/tingle.min.js') }}"></script>
+<script src="{{ asset('/node_modules/tingle/dist/tingle.min.js') }}"></script>
 <script src="{{ asset('/assets/js/modules/payment-modal.js') }}"></script>
 @endsection
