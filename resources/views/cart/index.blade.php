@@ -110,7 +110,7 @@ SEO::setDescription('Les articles de mon panier');
 @section('js')
 <script src="{{ asset('/node_modules/vue/dist/vue.min.js') }}"></script>
 <script src="{{ asset('/node_modules/tingle.js/dist/tingle.min.js') }}"></script>
-<script src="{{ asset('/assets/js/modules/order-modal.js') }}"></script>
 <script src="{{ asset('/assets/js/modules/cart-service.js') }}"></script>
 <script src="{{ asset('/assets/js/pages/cart.js') }}"></script>
+<script src="{{ asset('/assets/js/modules/order-modal.js') }}"></script>
 @endsection

@@ -3,13 +3,17 @@
         var modal = new tingle.modal({});
         modal.setContent(document.querySelector('[data-js=orderModal]'));
 
-        document.querySelector('[data-js=orderButton]').addEventListener('click', function(event) {
-            // if not logged
-            if (this.getAttribute('data-open') == '1') {
-                event.preventDefault();
-                modal.open();
-            }
+        Array.prototype.forEach.call(document.querySelectorAll('[data-js=orderButton]'), function(el) {
+            el.addEventListener('click', function(event) {
+                // if not logged
+                if (this.getAttribute('data-open') == '1') {
+                    event.preventDefault();
+                    modal.open();
+                }
+            });
         })
+
+
     }
 
     init();
