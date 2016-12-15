@@ -28,7 +28,7 @@ server {
     }
 
     # cache busting
-    include conf.d/cache.incl;
+    include conf.d/incl/cache-busting.incl;
 
     # On sert aussi les SVG sur le domaine principale
     location ~* \.svg$ {
@@ -48,7 +48,7 @@ server {
 
     # optimization
     include conf.d/incl/base.incl;
-    
+
     # cache busting
     include conf.d/incl/cache-busting.incl;
 
