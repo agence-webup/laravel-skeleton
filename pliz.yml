@@ -12,7 +12,6 @@ install_tasks:
   - npm
   - composer
   - key:generate
-  - bower
   - gulp
   - gulp:copy-npm
   - db:update
