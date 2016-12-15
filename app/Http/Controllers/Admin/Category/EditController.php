@@ -29,9 +29,14 @@ class EditController extends Controller
             abort(404);
         }
 
+        $exeptedCategories = [$category->id];
+        foreach ($category->subCategories as $key => $subCategory) {
+            $exeptedCategories[] = $subCategory->id;
+        }
+
         return view('admin.category.edit', [
             'category' => $category,
-            'categoriesForSelect' => $this->categoryRepo->allForSelect([$category->id]),
+            'categoriesForSelect' => $this->categoryRepo->allForSelect($exeptedCategories, true),
         ]);
     }
 

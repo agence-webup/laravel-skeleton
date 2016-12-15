@@ -16,11 +16,15 @@ class CategoryRepository
         return Category::whereNull('category_id')->get();
     }
 
-    public function allForSelect(array $exeptIds = [])
+    public function allForSelect(array $exeptIds = [], $editMode = false)
     {
+        $maxChild = config('catalog.category.max_childs');
+        if ($editMode) {
+            $maxChild++;
+        }
         $categories = ['' => 'Aucune'];
         foreach (Category::all() as $key => $category) {
-            if (!in_array($category->id, $exeptIds) && $category->level < config('catalog.category.max_childs')) {
+            if (!in_array($category->id, $exeptIds) && $category->level < $maxChild) {
                 $categories[$category->id] = $category->title;
             }
         }

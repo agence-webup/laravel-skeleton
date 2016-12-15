@@ -49,7 +49,18 @@ class UpdateCategory implements ShouldQueue
             throw new ValidationException($validator);
         }
 
-        $category->fill($validator->getData());
+        $data = $validator->getData();
+        if (count($category->subCategories) > 0) {
+            foreach ($category->subCategories as $key => $subCategory) {
+                $subCategory->category_id = null;
+                $subCategory->level -= 1;
+                $categoryRepo->save($subCategory);
+            }
+
+            $data['level'] -= 1;
+        }
+
+        $category->fill($data);
         $category->translate('fr')->fill($validator->getData());
         $this->categoryRepo->save($category);
     }
