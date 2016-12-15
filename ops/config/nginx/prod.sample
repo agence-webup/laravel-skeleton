@@ -10,6 +10,9 @@ server {
 
     access_log off;
 
+    # optimization
+    include conf.d/incl/base.incl;
+
     location ~ ^/(.*)/$ {
         return 301 $scheme://$http_host/$1;
     }
@@ -43,8 +46,11 @@ server {
     root /srv/http/public;
     index index.html index.htm index.php;
 
+    # optimization
+    include conf.d/incl/base.incl;
+    
     # cache busting
-    include conf.d/cache.incl;
+    include conf.d/incl/cache-busting.incl;
 
     location / {
         add_header Access-Control-Allow-Origin 'http://my-domain';

@@ -1,10 +1,13 @@
 /vendor
 /node_modules
 /public/storage
+/public/node_modules
+
 Homestead.yaml
 Homestead.json
 .env
 .npm
+.babel.json
 .cache
 .composer
 .config

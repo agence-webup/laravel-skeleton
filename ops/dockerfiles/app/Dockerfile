@@ -1,9 +1,11 @@
 FROM php:7.0-fpm
 
+ARG user=1000
+
 WORKDIR /srv/http
 
-RUN groupadd docker --gid 1000
-RUN useradd docker --uid 1000 --gid 1000 --create-home
+RUN groupadd docker --gid ${user}
+RUN useradd docker --uid ${user} --gid ${user} --create-home
 
 # App
 
@@ -29,8 +31,8 @@ RUN php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
     && php composer-setup.php --version=1.0.0 --filename=composer --install-dir=/usr/local/bin \
     && php -r "unlink('composer-setup.php');"
 
-COPY fpm-docker.conf /usr/local/etc/php-fpm.d/docker.conf
-COPY php.ini /usr/local/etc/php/
+COPY ops/dockerfiles/app/fpm-docker.conf /usr/local/etc/php-fpm.d/docker.conf
+COPY ops/dockerfiles/app/php.ini /usr/local/etc/php/
 
 # Timezone
 
@@ -40,4 +42,3 @@ RUN echo 'Europe/Paris' > /etc/timezone
 
 RUN sed -i '/^# fr_FR.UTF-8 /c fr_FR.UTF-8 UTF-8' /etc/locale.gen
 RUN locale-gen
-
