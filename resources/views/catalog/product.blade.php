@@ -4,9 +4,7 @@ SEO::setDescription('Home page description');
 ?>
 
 @extends('layouts.master')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('/node_modules/tingle/dist/tingle.min.css') }}">
-@endsection
+
 @section('content')
 <h1>{{ $product->name }}</h1>
 
@@ -179,7 +177,7 @@ SEO::setDescription('Home page description');
 @endsection
 
 @section('js')
-<script src="{{ asset('/node_modules/tingle/dist/tingle.min.js') }}"></script>
+<script src="{{ asset('/node_modules/tingle.js/dist/tingle.min.js') }}"></script>
 <script src="{{ asset('/assets/js/modules/product-modal.js') }}"></script>
 <script>
 
