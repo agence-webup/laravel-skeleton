@@ -20,7 +20,10 @@
     "merge-stream": "^1.0.0"
   },
   "dependencies": {
+    "dropmic": "^0.1.5",
     "helium-admin": "^1.0.0",
-    "tingle.js": "^0.8.4"
+    "jquery": "^3.1.1",
+    "tingle.js": "^0.8.4",
+    "vue": "^2.1.6"
   }
 }

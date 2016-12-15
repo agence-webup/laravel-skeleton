@@ -40,7 +40,7 @@
         </footer>
     </div>
 
-    <script src="{{ asset('/bower/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('/assets/js/bundle.js') }}"></script>
     <!-- Scripts -->
     <script>
