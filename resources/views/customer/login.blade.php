@@ -6,6 +6,10 @@ SEO::setDescription('Home page description');
 @extends('layouts.master')
 @section('content')
 
+@if(session()->has('loginMessage'))
+    <p>{{ session()->get('loginMessage') }}</p>
+@endif
+
 <form class="" action="{{ route('customer.postLogin') }}" method="post">
     {{ csrf_field() }}
 

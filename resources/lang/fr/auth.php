@@ -15,5 +15,5 @@ return [
 
     'failed'   => 'Ces identifiants ne correspondent pas à nos enregistrements',
     'throttle' => 'Trop de tentatives de connexion. Veuillez essayer de nouveau dans :seconds secondes.',
-
+    'account_already_exist' => 'Une compte existe déjà avec cette adresse mail, veuillez vous connecter.',
 ];

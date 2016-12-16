@@ -15,5 +15,5 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'account_already_exist' => 'An account already exist with your email address, please login.',
 ];
