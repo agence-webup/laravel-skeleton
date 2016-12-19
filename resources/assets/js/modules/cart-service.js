@@ -24,7 +24,7 @@ class CartService {
     add(id, quantity) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', this.url + '/items', true);
+            xhr.open('POST', this.url + '/products', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
                     resolve();
@@ -45,7 +45,7 @@ class CartService {
     update(id, quantity) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('PUT', this.url + '/items/' + id, true);
+            xhr.open('PUT', this.url + '/products/' + id, true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
                     resolve();
@@ -65,7 +65,7 @@ class CartService {
     remove(id) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('DELETE', this.url + '/items/' + id, true);
+            xhr.open('DELETE', this.url + '/products/' + id, true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
                     resolve();

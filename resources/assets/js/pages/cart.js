@@ -3,7 +3,8 @@ var cartService = new CartService(Laravel.cartUrl, Laravel.csrfToken);
 var cartVue = new Vue({
     el: '[data-js=cartVue]',
     data: {
-        cart: {}
+        cart: {},
+        couponCode: '',
     },
     created: function() {
         this.get();
@@ -15,13 +16,13 @@ var cartVue = new Vue({
                 Vue.set(this, 'cart', cart);
             });
         },
-        update: function(item) {
-            cartService.update(item.id, item.quantity).then((cart) => {
+        update: function(product) {
+            cartService.update(product.id, product.quantity).then((cart) => {
                 this.get();
             });
         },
-        remove: function(item) {
-            cartService.remove(item.id).then((cart) => {
+        remove: function(product) {
+            cartService.remove(product.id).then((cart) => {
                 this.get();
             });
         }

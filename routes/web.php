@@ -19,9 +19,9 @@ Route::get('/product/{slug}', 'CatalogController@product')->name('catalog.produc
 Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
     Route::get('', 'CartController@index')->name('cart.index');
 
-    Route::post('items', 'ItemController@store')->name('item.store');
-    Route::put('items/{id}', 'ItemController@update')->name('item.update');
-    Route::delete('items/{id}', 'ItemController@destroy')->name('item.destroy');
+    Route::post('products', 'ProductController@store')->name('products.store');
+    Route::put('products/{id}', 'ProductController@update')->name('products.update');
+    Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
 
     Route::get('/order', 'OrderController@create')->name('order.create');
     Route::post('/order', 'OrderController@store')->name('order.store');

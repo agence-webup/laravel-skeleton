@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class ProductController extends Controller
 {
     private $productRepo;
 
@@ -23,7 +23,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $product = $this->productRepo->get($request->get('productId'));
+        $product = $this->productRepo->get($request->get('id'));
         $quantity = $request->get('quantity');
         if (!$product) {
             throw new Exception("product not found", 1);
@@ -31,13 +31,15 @@ class ItemController extends Controller
 
         $cart = $request->session()->get('cart');
 
-        $item = new \App\Entities\CartItem($product->id);
-        $item->setName($product->title);
-        $item->setPrice($product->price);
-        $item->setTaxRate(0.2);
-        $item->setQuantity($quantity);
-        $item->setWeight(0.250);
-        $cart->add($item);
+        $cartProduct = new \App\Ecommerce\Cart\Product($product->id);
+        $cartProduct->setName($product->title);
+        $cartProduct->setLink(route('catalog.product', ['slug' => $product->slug]));
+        $cartProduct->setImage('https://placehold.it/100x100');
+        $cartProduct->setPrice($product->price);
+        $cartProduct->setTaxRate(0.2);
+        $cartProduct->setQuantity($quantity);
+        $cartProduct->setWeight(0.250);
+        $cart->addProduct($cartProduct);
     }
 
     /**
@@ -52,7 +54,7 @@ class ItemController extends Controller
         $quantity = $request->get('quantity');
         $cart = $request->session()->get('cart');
 
-        $cart->update($id, $quantity);
+        $cart->updateProduct($id, $quantity);
     }
 
     /**
@@ -65,6 +67,6 @@ class ItemController extends Controller
     public function destroy(Request $request, $id)
     {
         $cart = $request->session()->get('cart');
-        $cart->remove($id);
+        $cart->removeProduct($id);
     }
 }

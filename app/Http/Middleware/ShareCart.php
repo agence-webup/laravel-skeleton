@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\View\Factory as ViewFactory;
-use App\Entities\Cart;
+use App\Ecommerce\Cart\Cart;
 
 class ShareCart
 {
