@@ -25,6 +25,22 @@ var cartVue = new Vue({
             cartService.remove(product.id).then((cart) => {
                 this.get();
             });
+        },
+        useCoupon: function() {
+            cartService.useCoupon(this.couponCode).then((cart) => {
+                this.get();
+            }).catch((data) => {
+                var modal = new tingle.modal({
+                    footer: true,
+                });
+
+                modal.addFooterBtn('OK', 'tingle-btn tingle-btn--primary', function() {
+                    modal.close();
+                });
+
+                modal.setContent(data.error);
+                modal.open();
+            });
         }
     },
     filters: {

@@ -8,9 +8,9 @@ use JsonSerializable;
 
 /**
  * Cart
- * @property-read float $totalPrice
- * @property-read float $totalTaxedPrice
- * @property-read float $totalTax
+ * @property-read float $price
+ * @property-read float $tax
+ * @property-read float $taxedPrice
  */
 class Cart implements JsonSerializable
 {
@@ -33,16 +33,16 @@ class Cart implements JsonSerializable
     protected $price = 0;
 
     /**
-     * Total price including tax
-     * @var float
-     */
-    protected $taxedPrice = 0;
-
-    /**
      * Total tax amount
      * @var float
      */
     protected $tax = 0;
+
+    /**
+     * Total price including tax
+     * @var float
+     */
+    protected $taxedPrice = 0;
 
     /**
      * Add a product
@@ -89,22 +89,37 @@ class Cart implements JsonSerializable
         $this->update();
     }
 
+     /**
+      * Get the total price excluding tax
+      * @return float
+      */
     public function getPrice()
     {
         return $this->price;
     }
 
+    /**
+     * Get the total tax amount
+     * @var float
+     */
     public function getTax()
     {
         return $this->tax;
     }
 
+    /**
+     * Get the total price including tax
+     * @var float
+     */
     public function getTaxedPrice()
     {
         return $this->taxedPrice;
     }
 
-    public function update()
+    /**
+     * Update the cart price values
+     */
+    protected function update()
     {
         $price = 0;
         $tax = 0;

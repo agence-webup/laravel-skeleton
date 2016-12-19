@@ -76,7 +76,6 @@ class CartTest extends TestCase
         $cart->addProduct($product);
         $cart->addDiscount($discount);
         $cart->addDiscount($discount2);
-        $cart->update();
 
         $this->assertEquals(8.1666666667, $cart->price);
         $this->assertEquals(1.6333333333, $cart->tax);

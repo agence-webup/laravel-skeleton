@@ -80,4 +80,25 @@ class CartService {
             }));
         });
     }
+
+    useCoupon(code) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', this.url + '/coupons/use', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                    resolve();
+                } else if (xhr.readyState == XMLHttpRequest.DONE) {
+                    const data = JSON.parse(xhr.response);
+                    reject(data);
+                }
+            };
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({
+                _token: this.csrfToken,
+                code: code
+            }));
+        });
+    }
 }

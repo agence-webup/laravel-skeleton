@@ -23,6 +23,8 @@ Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
     Route::put('products/{id}', 'ProductController@update')->name('products.update');
     Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
 
+    Route::post('coupons/use', 'CouponController@use')->name('coupons.use');
+
     Route::get('/order', 'OrderController@create')->name('order.create');
     Route::post('/order', 'OrderController@store')->name('order.store');
     Route::get('/payment', 'PaymentController@index')->name('payment.index');

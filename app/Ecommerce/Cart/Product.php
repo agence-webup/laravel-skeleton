@@ -4,6 +4,22 @@ namespace App\Ecommerce\Cart;
 
 use JsonSerializable;
 
+/**
+ * Product
+ * @property-read mixed $id
+ * @property float $name
+ * @property float $price
+ * @property float $taxRate
+ * @property float $quantity
+ * @property-read float $tax
+ * @property-read float $taxedPrice
+ * @property-read float $totalPrice
+ * @property-read float $totalTax
+ * @property-read float $totalTaxedPrice
+ * @property float $weight
+ * @property float $link
+ * @property float $image
+ */
 class Product implements JsonSerializable
 {
     protected $id;
