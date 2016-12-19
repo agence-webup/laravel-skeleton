@@ -101,6 +101,15 @@ class Cart implements JsonSerializable
         }
     }
 
+    /*
+     * Get the products
+     * @return array products associated to the cart
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
      /**
       * Get the total price excluding tax
       * @return float
@@ -112,7 +121,7 @@ class Cart implements JsonSerializable
 
     /**
      * Get the total tax amount
-     * @var float
+     * @return float
      */
     public function getTax()
     {

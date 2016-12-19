@@ -4,54 +4,71 @@ var cartVue = new Vue({
         diffAddress:false,
         deliveryLastname: "",
         deliveryFirstname: "",
-        deliveryTelnumber: "",
+        deliveryPhone: "",
         deliveryEmail: "",
         deliveryAddress: "",
-        deliveryPostcode: "",
+        deliveryAddress2: "",
+        deliveryPostalcode: "",
         deliveryCity: "",
-        lastname: "",
-        firstname: "",
-        telnumber: "",
-        email: "",
-        address: "",
-        postalcode: "",
-        city: ""
+        billingFirstname: "",
+        billingLastname: "",
+        billingEmail: "",
+        billingPhone: "",
+        billingAddress: "",
+        billingAddress2: "",
+        billingPostalcode: "",
+        billingCity: ""
     },
     watch: {
         deliveryLastname: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.lastname = val;
+                this.billingLastname = val;
             }
         },
         deliveryFirstname: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.firstname = val;
+                this.billingFirstname = val;
             }
         },
-        deliveryTelnumber: function (val, oldVal) {
+        deliveryPhone: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.telnumber = val;
+                this.billingPhone = val;
             }
         },
         deliveryEmail: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.email = val;
+                this.billingEmail = val;
             }
         },
         deliveryAddress: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.address = val;
+                this.billingAddress = val;
             }
         },
-        deliveryPostcode: function (val, oldVal) {
+        deliveryAddress2: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.postalcode = val;
+                this.billingAddress2 = val;
+            }
+        },
+        deliveryPostalcode: function (val, oldVal) {
+            if (!this.diffAddress) {
+                this.billingPostalcode = val;
             }
         },
         deliveryCity: function (val, oldVal) {
             if (!this.diffAddress) {
-                this.city = val;
+                this.billingCity = val;
             }
-        },
+        }
+    },
+    created: function () {
+        // prefill input fields with existing values (because of Vue 2...)
+        this.deliveryLastname = document.querySelector('input[name="deliveryLastname"]').value;
+        this.deliveryFirstname = document.querySelector('input[name="deliveryFirstname"]').value;
+        this.deliveryPhone = document.querySelector('input[name="deliveryPhone"]').value;
+        this.deliveryEmail = document.querySelector('input[name="deliveryEmail"]').value;
+        this.deliveryAddress = document.querySelector('input[name="deliveryAddress"]').value;
+        this.deliveryPostalcode = document.querySelector('input[name="deliveryPostalcode"]').value;
+        this.deliveryCity = document.querySelector('input[name="deliveryCity"]').value;
     }
 });

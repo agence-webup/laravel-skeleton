@@ -39,7 +39,7 @@ class CreateCustomer
         $customer->firstname = $this->data['firstname'];
         $customer->lastname = $this->data['lastname'];
         $customer->address = $this->data['address'];
-        $customer->postcode = $this->data['postcode'];
+        $customer->postcode = $this->data['postalcode'];
         $customer->city = $this->data['city'];
         $customer->unverifiedEmail = $this->data['email'];
 

@@ -8,6 +8,7 @@ use JsonSerializable;
  * Product
  * @property-read mixed $id
  * @property float $name
+ * @property string $reference
  * @property float $price
  * @property float $taxRate
  * @property float $quantity
@@ -16,6 +17,7 @@ use JsonSerializable;
  * @property-read float $totalPrice
  * @property-read float $totalTax
  * @property-read float $totalTaxedPrice
+ * @property-read float $totalWeight
  * @property float $weight
  * @property float $link
  * @property float $image
@@ -24,6 +26,7 @@ class Product implements JsonSerializable
 {
     protected $id;
     protected $name;
+    protected $reference;
     protected $price = 0;
     protected $taxRate = 0;
     protected $quantity = 0;
@@ -49,6 +52,16 @@ class Product implements JsonSerializable
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
     }
 
     public function getPrice()
@@ -114,6 +127,11 @@ class Product implements JsonSerializable
     public function setWeight($weight)
     {
         $this->weight = $weight;
+    }
+
+    public function getTotalWeight()
+    {
+        return $this->weight * $this->quantity;
     }
 
     public function getLink()

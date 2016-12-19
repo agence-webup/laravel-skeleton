@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\Customer\CreateCustomer;
+use App\Jobs\Order\CreateOrder;
 use App\Repositories\CustomerRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Validator;
 
 class OrderController extends Controller
 {
@@ -18,6 +21,12 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        try {
+            $this->checkCartValidity($request);
+        } catch (\Exception $e) {
+            return redirect()->route('cart.index');
+        }
+
         // Fill address with logged user
         $customer = $request->user();
         if (!$customer) {
@@ -35,35 +44,80 @@ class OrderController extends Controller
      */
     public function store(Request $request, CustomerRepository $customerRepo)
     {
-        // validate order
-        $this->validate($request, [
-            'email' => 'required|email',
-        ]);
+        $this->checkCartValidity($request);
+
+        $customer = $request->user();
 
         // create customer if doesn't exist or he's not logged
-        if (!$request->user()) {
-            if ($customerRepo->getByEmail($request->get('email'))) {
-                return redirect(route('customer.login'))->with('loginMessage', trans("auth.account_already_exist"))->withInput(['email' => $request->get('email')]);
-            } else {
-                $customerData = [
-                    'email' => $request->get('deliveryEmail', null),
-                    'firstname' => $request->get('deliveryFirstname', null),
-                    'lastname' => $request->get('deliveryLastname', null),
-                    'address' => $request->get('deliveryAddress', null),
-                    // 'address2' => $request->get('deliveryAddress2', null),
-                    'postcode' => $request->get('deliveryPostcode', null),
-                    'city' => $request->get('deliveryCity', null),
-                ];
-                $customer = $this->dispatchNow(new CreateCustomer($customerData));
-                Auth::login($customer);
+        if (!$customer) {
+            try {
+                $customerData = $this->validateCustomerFromOrderForm($request->all());
+
+                if ($customerRepo->getByEmail($customerData['email'])) {
+                    return redirect(route('customer.login'))->with('loginMessage', trans("auth.account_already_exist"))->withInput(['email' => $customerData['email']]);
+                } else {
+                    $customer = $this->dispatchNow(new CreateCustomer($customerData));
+                    Auth::login($customer);
+                }
+            } catch (ValidationException $e) {
+                return redirect()->back()
+                    ->withInput($request->input())
+                    ->withErrors($e->validator->errors());
             }
         }
 
-        // store order
-        // ...
+        $data = $request->all();
+        $data['customer_id'] = $customer->id;
+
+        try {
+            $cart = $request->session()->get('cart');
+            $this->dispatchNow(new CreateOrder($data, $cart));
+        } catch (ValidationException $e) {
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($e->validator->errors());
+        }
 
         return redirect()->route('payment.index')
             ->withInput($request->input());
             //->withErrors($e->errors());
+    }
+
+    private function checkCartValidity(Request $request)
+    {
+        // check if cart is not empty
+        $cart = $request->session()->get('cart');
+        if (count($cart->products) == 0) {
+            throw new \Exception("Cart is empty", 1);
+        }
+    }
+
+    private function validateCustomerFromOrderForm(array $data)
+    {
+        $validator = Validator::make($data, [
+            'billingFirstname' => 'required',
+            'billingLastname' => 'required',
+            'billingEmail' => 'required',
+            'billingPhone' => 'required',
+            'billingAddress' => 'required',
+            'billingPostalcode' => 'required',
+            'billingCity' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        $data = $validator->getData();
+
+        return [
+            'firstname' => $data['billingFirstname'],
+            'lastname' => $data['billingLastname'],
+            'email' => $data['billingEmail'],
+            'phone' => $data['billingPhone'],
+            'address' => $data['billingAddress'],
+            'postalcode' => $data['billingPostalcode'],
+            'city' => $data['billingCity'],
+        ];
     }
 }

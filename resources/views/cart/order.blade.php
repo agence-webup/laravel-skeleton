@@ -20,47 +20,52 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                         <div class="grid-2 grid-1-s">
                             {!! Form::create('text', 'deliveryFirstname')
                                 ->label('Prénom')
-                                ->value(old('deliveryFirstname',$customer->firstname))
+                                ->value(old('deliveryFirstname', $customer->firstname))
                                 ->attr(['v-model' => 'deliveryFirstname'])
                                 ->required() !!}
 
                             {!! Form::create('text', 'deliveryLastname')
                                 ->label('Nom')
-                                ->value(old('deliveryLastname',$customer->lastname))
+                                ->value(old('deliveryLastname', $customer->lastname))
                                 ->attr(['v-model' => 'deliveryLastname'])
                                 ->required() !!}
 
                         </div>
                         {!! Form::create('text', 'deliveryEmail')
                             ->label('Adresse e-mail')
-                            ->value(old('deliveryEmail',$customer->email))
+                            ->value(old('deliveryEmail', $customer->email))
                             ->required()
                             ->attr(['autofocus', 'class' => 'f-100','v-model' => 'deliveryEmail']) !!}
 
                         <div class="grid-2 grid-1-s">
-                            {!! Form::create('text', 'deliveryTelnumber')
+                            {!! Form::create('text', 'deliveryPhone')
                                 ->label('Numéro de téléphone')
-                                ->value(old('deliveryTelnumber',$customer->deliveryTelnumber))
-                                ->attr(['v-model' => 'deliveryTelnumber'])
+                                ->value(old('deliveryPhone'))
+                                ->attr(['v-model' => 'deliveryPhone'])
                                 ->required() !!}
 
                         </div>
                         {!! Form::create('text', 'deliveryAddress')
                             ->label('Adresse')
-                            ->value(old('deliveryAddress',$customer->address))
+                            ->value(old('deliveryAddress', $customer->address))
                             ->required()
                             ->attr(['class' => 'f-100','v-model' => 'deliveryAddress']) !!}
 
+                        {!! Form::create('text', 'deliveryAddress2')
+                            ->label('Complément d\'adresse')
+                            ->value(old('deliveryAddressComplement'))
+                            ->attr(['class' => 'f-100','v-model' => 'deliveryAddress2']) !!}
+
                         <div class="grid-2 grid-1-s">
-                            {!! Form::create('text', 'deliveryPostcode')
+                            {!! Form::create('text', 'deliveryPostalcode')
                                 ->label('Code postal')
-                                ->value(old('deliveryPostcode',$customer->postalcode))
-                                ->attr(['v-model' => 'deliveryPostcode'])
+                                ->value(old('deliveryPostalcode', $customer->postcode))
+                                ->attr(['v-model' => 'deliveryPostalcode'])
                                 ->required() !!}
 
                             {!! Form::create('text', 'deliveryCity')
                                 ->label('Ville')
-                                ->value(old('deliveryCity',$customer->city))
+                                ->value(old('deliveryCity', $customer->city))
                                 ->attr(['v-model' => 'deliveryCity'])
                                 ->required() !!}
 
@@ -73,50 +78,55 @@ SEO::setDescription('Mes informations de livraison et de facturation');
                     </div>
                         <div v-bind:class="{ active: diffAddress }">
                             <div class="grid-2 grid-1-s" >
-                                {!! Form::create('text', 'firstname')
+                                {!! Form::create('text', 'billingFirstname')
                                     ->label('Prénom')
-                                    ->value(old('firstname',$customer->firstname))
-                                    ->attr(['v-model' => 'firstname'])
+                                    ->value(old('billingFirstname', $customer->firstname))
+                                    ->attr(['v-model' => 'billingFirstname'])
                                     ->required() !!}
 
-                                {!! Form::create('text', 'lastname')
+                                {!! Form::create('text', 'billingLastname')
                                     ->label('Nom')
-                                    ->value(old('lastname',$customer->lastname))
-                                    ->attr(['v-model' => 'lastname'])
+                                    ->value(old('billingLastname', $customer->lastname))
+                                    ->attr(['v-model' => 'billingLastname'])
                                     ->required() !!}
 
                             </div>
-                            {!! Form::create('text', 'email')
+                            {!! Form::create('text', 'billingEmail')
                                 ->label('Adresse e-mail')
-                                ->value(old('email',$customer->email))
+                                ->value(old('billingEmail', $customer->email))
                                 ->required()
-                                ->attr(['autofocus', 'class' => 'f-100','v-model' => 'email']) !!}
+                                ->attr(['autofocus', 'class' => 'f-100','v-model' => 'billingEmail']) !!}
 
                             <div class="grid-2 grid-1-s">
-                                {!! Form::create('text', 'telnumber')
+                                {!! Form::create('text', 'billingPhone')
                                     ->label('Numéro de téléphone')
-                                    ->value(old('telnumber',$customer->telnumber))
-                                    ->attr(['v-model' => 'telnumber'])
+                                    ->value(old('billingPhone'))
+                                    ->attr(['v-model' => 'billingPhone'])
                                     ->required() !!}
 
                             </div>
-                            {!! Form::create('text', 'address')
+                            {!! Form::create('text', 'billingAddress')
                                 ->label('Adresse')
-                                ->value(old('address',$customer->address))
+                                ->value(old('billingAddress', $customer->address))
                                 ->required()
-                                ->attr(['class' => 'f-100','v-model' => 'address']) !!}
+                                ->attr(['class' => 'f-100','v-model' => 'billingAddress']) !!}
+
+                            {!! Form::create('text', 'billingAddress2')
+                                ->label('Complément d\'adresse')
+                                ->value(old('billingAddress2'))
+                                ->attr(['class' => 'f-100','v-model' => 'billingAddress2']) !!}
 
                             <div class="grid-2 grid-1-s">
-                                {!! Form::create('text', 'postalcode')
+                                {!! Form::create('text', 'billingPostalcode')
                                     ->label('Code postal')
-                                    ->value(old('postalcode',$customer->postalcode))
-                                    ->attr(['v-model' => 'postalcode'])
+                                    ->value(old('billingPostalcode', $customer->postcode))
+                                    ->attr(['v-model' => 'billingPostalcode'])
                                     ->required() !!}
 
-                                {!! Form::create('text', 'city')
+                                {!! Form::create('text', 'billingCity')
                                     ->label('Ville')
-                                    ->value(old('city',$customer->city))
-                                    ->attr(['v-model' => 'city'])
+                                    ->value(old('billingCity', $customer->city))
+                                    ->attr(['v-model' => 'billingCity'])
                                     ->required() !!}
 
                             </div>
