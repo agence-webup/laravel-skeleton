@@ -89,6 +89,18 @@ class Cart implements JsonSerializable
         $this->update();
     }
 
+    /**
+     * Remove a discount
+     * @param mixed $id
+     */
+    public function removeDiscount($id)
+    {
+        if (array_key_exists($id, $this->discounts)) {
+            unset($this->discounts[$id]);
+            $this->update();
+        }
+    }
+
      /**
       * Get the total price excluding tax
       * @return float

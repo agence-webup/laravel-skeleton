@@ -12,7 +12,6 @@ var cartVue = new Vue({
     methods: {
         get: function() {
             cartService.get().then((cart) => {
-                console.log(this);
                 Vue.set(this, 'cart', cart);
             });
         },
@@ -26,8 +25,8 @@ var cartVue = new Vue({
                 this.get();
             });
         },
-        useCoupon: function() {
-            cartService.useCoupon(this.couponCode).then((cart) => {
+        addCoupon: function() {
+            cartService.addCoupon(this.couponCode).then((cart) => {
                 this.get();
             }).catch((data) => {
                 var modal = new tingle.modal({
@@ -40,6 +39,11 @@ var cartVue = new Vue({
 
                 modal.setContent(data.error);
                 modal.open();
+            });
+        },
+        removeCoupon: function(coupon) {
+            cartService.removeCoupon(coupon.id).then((cart) => {
+                this.get();
             });
         }
     },

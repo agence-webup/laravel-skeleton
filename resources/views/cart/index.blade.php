@@ -52,19 +52,21 @@ SEO::setDescription('Les articles de mon panier');
             <label for="cart-promo">Entrez votre code promo</label>
             <div class="cart-promo__form">
                 <input type="text" name="cart-promo" v-model='couponCode'>
-                <button class="btn btn-primary cart-promo__btn" type="submit" v-on:click="useCoupon">ajouter</button>
+                <button class="btn btn-primary cart-promo__btn" type="submit" v-on:click="addCoupon">ajouter</button>
             </div>
         </div>
 
         <table class="cart-table">
             <thead>
                 <tr>
-                    <th class="w80">Type de réduction</th>
+                    <th class="w70">Type de réduction</th>
+                    <th></th>
                     <th>Montant</th>
                 </tr>
             </thead>
             <tr v-for="discount in cart.discounts">
                 <td>@{{ discount.name }}</td>
+                <td><a class="" href="" v-on:click.prevent="removeCoupon(discount)">&#128465; supprimer</td>
                 <td>@{{ discount.amount | price }}</td>
             </tr>
         </table>

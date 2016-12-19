@@ -22,7 +22,7 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function use(Request $request)
+    public function store(Request $request)
     {
         $coupon = $this->couponRepo->getWithCode($request->get('code'));
         if (!$coupon) {
@@ -30,12 +30,17 @@ class CouponController extends Controller
             return response()->json($error, 404);
         }
 
+        if ($coupon->usedDate) {
+            $error = ['error' => "Ce coupon a déjà été utilisé."];
+            return response()->json($error, 422);
+        }
+
         if ($coupon->expirationDate && $coupon->expirationDate < new \DateTime()) {
             $error = ['error' => "Ce coupon a expiré."];
             return response()->json($error, 422);
         }
 
-        if ($coupon->customerId) {
+        if ($coupon->customer_id) {
             if (!$request->user()) {
                 $error = ['error' => "Vous devez être connecté pour utilisé ce coupon."];
                 return response()->json($error, 422);
@@ -54,5 +59,18 @@ class CouponController extends Controller
         $discount->valueType = $coupon->valueType;
         $discount->value = $coupon->value;
         $cart->addDiscount($discount);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, $id)
+    {
+        $cart = $request->session()->get('cart');
+        $cart->removeDiscount($id);
     }
 }

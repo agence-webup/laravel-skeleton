@@ -81,10 +81,10 @@ class CartService {
         });
     }
 
-    useCoupon(code) {
+    addCoupon(code) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', this.url + '/coupons/use', true);
+            xhr.open('POST', this.url + '/coupons', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
                     resolve();
@@ -98,6 +98,25 @@ class CartService {
             xhr.send(JSON.stringify({
                 _token: this.csrfToken,
                 code: code
+            }));
+        });
+    }
+
+    removeCoupon(id) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('DELETE', this.url + '/coupons/' + id, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                    resolve();
+                } else if (xhr.readyState == XMLHttpRequest.DONE) {
+                    reject();
+                }
+            };
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({
+                _token: this.csrfToken,
             }));
         });
     }
