@@ -160,6 +160,9 @@ class Cart implements JsonSerializable
 
         $this->price = $price - $discountedPrice;
         $this->tax = $tax - $discountedTax;
+
+        $this->price = $this->price < 0 ? 0 : $this->price;
+        $this->tax = $this->tax < 0 ? 0 : $this->tax;
         $this->taxedPrice = $this->price + $this->tax;
     }
 

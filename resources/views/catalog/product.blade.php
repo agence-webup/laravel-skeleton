@@ -178,10 +178,14 @@ SEO::setDescription('Home page description');
 
 @section('js')
 <script src="{{ asset('/node_modules/tingle.js/dist/tingle.min.js') }}"></script>
+<script src="{{ asset('/assets/js/modules/cart-service.js') }}"></script>
 <script src="{{ asset('/assets/js/modules/product-modal.js') }}"></script>
 <script>
 
-var productModal = new ProductModal({cartLink: '{{ route('cart.index') }}'});
+var productModal = new ProductModal({
+    productId: '{{ $product->id }}',
+    cartLink: '{{ route('cart.index') }}'
+});
 
 </script>
 @endsection
