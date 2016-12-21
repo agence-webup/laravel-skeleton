@@ -35,8 +35,7 @@ class ProductController extends Controller
         $cartProduct->setName($product->title);
         $cartProduct->setLink(route('catalog.product', ['slug' => $product->slug]));
         $cartProduct->setImage('https://placehold.it/100x100');
-        $cartProduct->setPrice($product->price);
-        $cartProduct->setTaxRate(0.2);
+        $cartProduct->price = \App\Ecommerce\Values\Price::createWithRate(10, 0.2);
         $cartProduct->setQuantity($quantity);
         $cartProduct->setWeight(0.250);
         $cart->addProduct($cartProduct);

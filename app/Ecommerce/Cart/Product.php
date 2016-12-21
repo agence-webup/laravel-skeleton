@@ -2,6 +2,8 @@
 
 namespace App\Ecommerce\Cart;
 
+use App\Ecommerce\Traits\MutatorTrait;
+use App\Ecommerce\Values\Price;
 use JsonSerializable;
 
 /**
@@ -9,14 +11,9 @@ use JsonSerializable;
  * @property-read mixed $id
  * @property float $name
  * @property string $reference
- * @property float $price
- * @property float $taxRate
+ * @property \App\Ecommerce\Values\Price $price unit price
  * @property float $quantity
- * @property-read float $tax
- * @property-read float $taxedPrice
- * @property-read float $totalPrice
- * @property-read float $totalTax
- * @property-read float $totalTaxedPrice
+ * @property \App\Ecommerce\Values\Price $total
  * @property-read float $totalWeight
  * @property float $weight
  * @property float $link
@@ -24,11 +21,12 @@ use JsonSerializable;
  */
 class Product implements JsonSerializable
 {
+    use MutatorTrait;
+
     protected $id;
     protected $name;
     protected $reference;
-    protected $price = 0;
-    protected $taxRate = 0;
+    protected $price;
     protected $quantity = 0;
     protected $weight;
     protected $link;
@@ -37,6 +35,8 @@ class Product implements JsonSerializable
     public function __construct($id)
     {
         $this->id = $id;
+        $this->price = new Price();
+        $this->total = new Price();
     }
 
     public function getId()
@@ -69,19 +69,16 @@ class Product implements JsonSerializable
         return $this->price;
     }
 
-    public function setPrice($price)
+    public function setPrice(Price $price)
     {
         $this->price = $price;
     }
 
-    public function getTaxRate()
+    public function getTotal()
     {
-        return $this->taxRate;
-    }
+        $total = clone $this->price;
 
-    public function setTaxRate($taxRate)
-    {
-        $this->taxRate = $taxRate;
+        return $total->multiply($this->quantity);
     }
 
     public function getQuantity()
@@ -89,34 +86,9 @@ class Product implements JsonSerializable
         return $this->quantity;
     }
 
-    public function setQuantity($quantity)
+    public function setQuantity(float $quantity)
     {
         $this->quantity = $quantity;
-    }
-
-    public function getTax()
-    {
-        return $this->price * $this->taxRate;
-    }
-
-    public function getTaxedPrice()
-    {
-        return $this->price + $this->tax;
-    }
-
-    public function getTotalPrice()
-    {
-        return $this->price * $this->quantity;
-    }
-
-    public function getTotalTax()
-    {
-        return $this->tax * $this->quantity;
-    }
-
-    public function getTotalTaxedPrice()
-    {
-        return $this->taxedPrice * $this->quantity;
     }
 
     public function getWeight()
@@ -124,7 +96,7 @@ class Product implements JsonSerializable
         return $this->weight;
     }
 
-    public function setWeight($weight)
+    public function setWeight(float $weight)
     {
         $this->weight = $weight;
     }
@@ -164,43 +136,12 @@ class Product implements JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->price,
-            'taxedPrice' => $this->taxedPrice,
-            'tax' => $this->tax,
-            'taxRate' => $this->taxRate,
             'quantity' => $this->quantity,
-            'totalPrice' => $this->totalPrice,
-            'totalTaxedPrice' => $this->totalTaxedPrice,
-            'totalTax' => $this->totalTax,
+            'total' => $this->total,
             'weight' => $this->weight,
             'totalWeight' => $this->totalWeight,
             'link' => $this->link,
             'image' => $this->image,
         ];
-    }
-
-    /**
-     * Use the setter like a property
-     * @param string $key
-     * @param mixed $value
-     */
-    public function __set($key, $value)
-    {
-        $method = 'set'.ucfirst($key);
-        if (method_exists($this, $method)) {
-            $this->{$method}($value);
-        }
-    }
-
-    /**
-     * Use the getter like a property
-     * @param  string $key
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        $method = 'get'.ucfirst($key);
-        if (method_exists($this, $method)) {
-            return $this->{$method}();
-        }
     }
 }

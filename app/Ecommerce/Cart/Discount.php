@@ -2,10 +2,14 @@
 
 namespace App\Ecommerce\Cart;
 
+use App\Ecommerce\Traits\MutatorTrait;
+use App\Ecommerce\Values\Price;
 use JsonSerializable;
 
 class Discount implements JsonSerializable
 {
+    use MutatorTrait;
+
     const VALUE_TYPE_AMOUNT = 1;
     const VALUE_TYPE_RATE = 2;
 
@@ -13,6 +17,7 @@ class Discount implements JsonSerializable
     protected $name;
     protected $valueType;
     protected $value;
+    protected $amount;
 
     public function __construct($id)
     {
@@ -54,6 +59,23 @@ class Discount implements JsonSerializable
         $this->value = $value;
     }
 
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    public function apply($price)
+    {
+        if ($this->valueType == Discount::VALUE_TYPE_AMOUNT) {
+            $rate = 1 - ($price->taxedPrice - $this->value) / $price->taxedPrice;
+            $this->amount = $price->copy()->multiply($rate);
+        } elseif ($this->valueType == Discount::VALUE_TYPE_RATE) {
+            $this->amount = $price->copy()->multiply($this->value);
+        }
+
+        return $this->amount;
+    }
+
     /**
      * Convert the object into something JSON serializable.
      * @return array
@@ -65,32 +87,7 @@ class Discount implements JsonSerializable
             'name' => $this->name,
             'valueType' => $this->valueType,
             'value' => $this->value,
+            'amount' => $this->amount,
         ];
-    }
-
-    /**
-     * Use the setter like a property
-     * @param string $key
-     * @param mixed $value
-     */
-    public function __set($key, $value)
-    {
-        $method = 'set'.ucfirst($key);
-        if (method_exists($this, $method)) {
-            $this->{$method}($value);
-        }
-    }
-
-    /**
-     * Use the getter like a property
-     * @param  string $key
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        $method = 'get'.ucfirst($key);
-        if (method_exists($this, $method)) {
-            return $this->{$method}();
-        }
     }
 }

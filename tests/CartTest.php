@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Ecommerce\Cart\Cart;
 use App\Ecommerce\Cart\Product;
 use App\Ecommerce\Cart\Discount;
+use App\Ecommerce\Values\Price;
 
 class CartTest extends TestCase
 {
@@ -17,19 +18,17 @@ class CartTest extends TestCase
     public function testProduct()
     {
         $product = new Product(1);
-        $product->price = 10;
-        $product->taxRate = 0.2;
+        $product->price = Price::createWithRate(10, 0.2);
         $product->quantity = 10;
 
-        $this->assertEquals(10, $product->price);
-        $this->assertEquals(0.2, $product->taxRate);
-        $this->assertEquals(2, $product->tax);
-        $this->assertEquals(12, $product->taxedPrice);
+        $this->assertEquals(10, $product->price->price);
+        $this->assertEquals(2, $product->price->tax);
+        $this->assertEquals(12, $product->price->taxedPrice);
 
         $this->assertEquals(10, $product->quantity);
-        $this->assertEquals(100, $product->totalPrice);
-        $this->assertEquals(20, $product->totalTax);
-        $this->assertEquals(120, $product->totalTaxedPrice);
+        $this->assertEquals(100, $product->total->price);
+        $this->assertEquals(20, $product->total->tax);
+        $this->assertEquals(120, $product->total->taxedPrice);
     }
 
     /**
@@ -40,16 +39,15 @@ class CartTest extends TestCase
     public function testCart()
     {
         $product = new Product(1);
-        $product->price = 10;
-        $product->taxRate = 0.2;
+        $product->price = Price::createWithRate(10, 0.2);
         $product->quantity = 1;
 
         $cart = new Cart();
         $cart->addProduct($product);
 
-        $this->assertEquals(10, $cart->price);
-        $this->assertEquals(2, $cart->tax);
-        $this->assertEquals(12, $cart->taxedPrice);
+        $this->assertEquals(10, $cart->total->price);
+        $this->assertEquals(2, $cart->total->tax);
+        $this->assertEquals(12, $cart->total->taxedPrice);
     }
 
     /**
@@ -60,8 +58,7 @@ class CartTest extends TestCase
     public function testCartWithDiscount()
     {
         $product = new Product(1);
-        $product->price = 10;
-        $product->taxRate = 0.2;
+        $product->price = Price::createWithRate(10, 0.2);
         $product->quantity = 1;
 
         $discount = new Discount(1);
@@ -77,8 +74,8 @@ class CartTest extends TestCase
         $cart->addDiscount($discount);
         $cart->addDiscount($discount2);
 
-        $this->assertEquals(8.1666666667, $cart->price);
-        $this->assertEquals(1.6333333333, $cart->tax);
-        $this->assertEquals(9.8, $cart->taxedPrice);
+        $this->assertEquals(8.1666666667, $cart->total->price);
+        $this->assertEquals(1.6333333333, $cart->total->tax);
+        $this->assertEquals(9.8, $cart->total->taxedPrice);
     }
 }

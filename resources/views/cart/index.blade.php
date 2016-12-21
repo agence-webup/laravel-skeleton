@@ -39,12 +39,12 @@ SEO::setDescription('Les articles de mon panier');
                         <a class="cart-product__link" :href="product.link">voir l'article</a>
                     </div>
                 </td>
-                <td class="s-hidden">@{{ product.taxedPrice | price }}</td>
+                <td class="s-hidden">@{{ product.price.taxedPrice | price }}</td>
                 <td class="txtcenter cart-amount">
                     <input class="cart-amount__imput" type="number" v-model="product.quantity" v-on:change.prevent="update(product)">
                     <a class="cart-amount__link" href="" v-on:click.prevent="remove(product)">&#128465; supprimer
                 </td>
-                <td>@{{ product.totalTaxedPrice | price }}</td>
+                <td>@{{ product.total.taxedPrice | price }}</td>
             </tr>
         </table>
 
@@ -67,22 +67,22 @@ SEO::setDescription('Les articles de mon panier');
             <tr v-for="discount in cart.discounts">
                 <td>@{{ discount.name }}</td>
                 <td><a class="" href="" v-on:click.prevent="removeCoupon(discount)">&#128465; supprimer</td>
-                <td>@{{ discount.amount | price }}</td>
+                <td>@{{ discount.amount.taxedPrice | price }}</td>
             </tr>
         </table>
 
         <div class="cart-total">
             <div class="cart-total__subtotal">
                 <span>Sous-total</span>
-                <span>XXX,XX€</span>
+                <span>@{{ cart.subtotal.taxedPrice | price }}</span>
             </div>
             <div class="cart-total__subtotal">
                 <span>Frais de port estimés</span>
-                <span>XX,XX€</span>
+                <span>@{{ cart.shippingCost.taxedPrice | price }}</span>
             </div>
             <div class="cart-total__subtotal">
                 <span>Total</span>
-                <strong>@{{ cart.taxedPrice | price }}</strong>
+                <strong>@{{ cart.total.taxedPrice | price }}</strong>
             </div>
         </div>
 

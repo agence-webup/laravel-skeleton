@@ -3,7 +3,11 @@ var cartService = new CartService(Laravel.cartUrl, Laravel.csrfToken);
 var cartVue = new Vue({
     el: '[data-js=cartVue]',
     data: {
-        cart: {},
+        cart: {
+            subtotal: {},
+            shippingCost: {},
+            total: {},
+        },
         couponCode: '',
     },
     created: function() {

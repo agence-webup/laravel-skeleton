@@ -4,49 +4,65 @@ namespace App\Ecommerce\Cart;
 
 use App\Ecommerce\Cart\Discount;
 use App\Ecommerce\Cart\Product;
+use App\Ecommerce\Traits\MutatorTrait;
+use App\Ecommerce\Values\Price;
 use JsonSerializable;
 
 /**
  * Cart
- * @property-read float $price
- * @property-read float $tax
- * @property-read float $taxedPrice
+ * @property-read array $products
+ * @property-read array $discounts
+ * @property-read \App\Ecommerce\Values\Price $shippingCost
+ * @property-read \App\Ecommerce\Values\Price $subtotal
+ * @property-read \App\Ecommerce\Values\Price $total
  */
 class Cart implements JsonSerializable
 {
+    use MutatorTrait;
+
     /**
      * Products
-     * @var array
+     * @var array of \App\Ecommerce\Cart\Product
      */
     protected $products = [];
 
     /**
      * Discounts
-     * @var array
+     * @var array of \App\Ecommerce\Cart\Discount
      */
     protected $discounts = [];
 
     /**
-     * Total price excluding tax
-     * @var float
+     * Shipping and packing costs
+     * @var \App\Ecommerce\Values\Price
      */
-    protected $price = 0;
+    protected $shippingCost;
 
     /**
-     * Total tax amount
-     * @var float
+     * Total of products and discounts
+     * @var \App\Ecommerce\Values\Price
      */
-    protected $tax = 0;
+    protected $subtotal;
 
     /**
-     * Total price including tax
-     * @var float
+     * Total to paid with shipping cost
+     * @var \App\Ecommerce\Values\Price
      */
-    protected $taxedPrice = 0;
+    protected $total;
+
+    /**
+     * Create a new Cart.
+     */
+    public function __construct()
+    {
+        $this->shippingCost = new Price();
+        $this->subtotal = new Price();
+        $this->total = new Price();
+    }
 
     /**
      * Add a product
-     * @param App\Ecommerce\Cart\Product $product
+     * @param \App\Ecommerce\Cart\Product $product
      */
     public function addProduct(Product $product)
     {
@@ -81,7 +97,7 @@ class Cart implements JsonSerializable
 
     /**
      * Add a discount
-     * @param App\Ecommerce\Cart\Discount $discount
+     * @param \App\Ecommerce\Cart\Discount $discount
      */
     public function addDiscount(Discount $discount)
     {
@@ -101,40 +117,49 @@ class Cart implements JsonSerializable
         }
     }
 
-    /*
+    /**
      * Get the products
-     * @return array products associated to the cart
+     * @return array of \App\Ecommerce\Cart\Product
      */
     public function getProducts()
     {
         return $this->products;
     }
 
-     /**
-      * Get the total price excluding tax
-      * @return float
-      */
-    public function getPrice()
+    /**
+     * Get the discounts
+     * @return array of \App\Ecommerce\Cart\Discount
+     */
+    public function getDiscounts()
     {
-        return $this->price;
+        return $this->discounts;
     }
 
     /**
-     * Get the total tax amount
-     * @return float
+     * Get the shipping cost
+     * @var \App\Ecommerce\Values\Price
      */
-    public function getTax()
+    public function getShippingCost()
     {
-        return $this->tax;
+        return $this->shippingCost;
     }
 
     /**
-     * Get the total price including tax
-     * @var float
+     * Get the total of products with discounts
+     * @var \App\Ecommerce\Values\Price
      */
-    public function getTaxedPrice()
+    public function getSubtotal()
     {
-        return $this->taxedPrice;
+        return $this->subtotal;
+    }
+
+    /**
+     * Get the total to paid
+     * @var \App\Ecommerce\Values\Price
+     */
+    public function getTotal()
+    {
+        return $this->total;
     }
 
     /**
@@ -142,37 +167,26 @@ class Cart implements JsonSerializable
      */
     protected function update()
     {
-        $price = 0;
-        $tax = 0;
-        $taxedPrice = 0;
-
+        $productSum = new Price();
         foreach ($this->products as $product) {
-            $price += $product->totalPrice;
-            $tax += $product->totalTax;
+            $productSum->add($product->total);
         }
 
-        $taxedPrice = $price + $tax;
-
-        $discountedPrice = 0;
-        $discountedTax = 0;
-
+        $discountSum = new Price();
         foreach ($this->discounts as $discount) {
-            if ($discount->valueType == Discount::VALUE_TYPE_AMOUNT) {
-                $rate = 1 - ($taxedPrice - $discount->value) / $taxedPrice;
-                $discountedPrice += $price * $rate;
-                $discountedTax += $tax * $rate;
-            } elseif ($discount->valueType == Discount::VALUE_TYPE_RATE) {
-                $discountedPrice += $price * $discount->value;
-                $discountedTax += $tax * $discount->value;
-            }
+            $amount = $discount->apply($productSum);
+            $discountSum->add($amount);
         }
 
-        $this->price = $price - $discountedPrice;
-        $this->tax = $tax - $discountedTax;
+        $price = $productSum->price - $discountSum->price;
+        $tax = $productSum->tax - $discountSum->tax;
+        $price = $price < 0 ? 0 : $price;
+        $tax = $tax < 0 ? 0 : $tax;
+        $this->subtotal = new Price($price, $tax);
 
-        $this->price = $this->price < 0 ? 0 : $this->price;
-        $this->tax = $this->tax < 0 ? 0 : $this->tax;
-        $this->taxedPrice = $this->price + $this->tax;
+        $total = clone $this->subtotal;
+        $total->add($this->shippingCost);
+        $this->total = $total;
     }
 
     /**
@@ -184,35 +198,9 @@ class Cart implements JsonSerializable
         return [
             'products' => $this->products,
             'discounts' => $this->discounts,
-            'price' => $this->price,
-            'taxedPrice' => $this->taxedPrice,
-            'tax' => $this->tax,
+            'shippingCost' => $this->shippingCost,
+            'subtotal' => $this->subtotal,
+            'total' => $this->total,
         ];
-    }
-
-    /**
-     * Use the setter like a property
-     * @param string $key
-     * @param mixed $value
-     */
-    public function __set($key, $value)
-    {
-        $method = 'set'.ucfirst($key);
-        if (method_exists($this, $method)) {
-            $this->{$method}($value);
-        }
-    }
-
-    /**
-     * Use the getter like a property
-     * @param  string $key
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        $method = 'get'.ucfirst($key);
-        if (method_exists($this, $method)) {
-            return $this->{$method}();
-        }
     }
 }
