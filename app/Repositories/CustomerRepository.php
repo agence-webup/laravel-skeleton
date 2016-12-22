@@ -20,4 +20,9 @@ class CustomerRepository
     {
         $customer->save();
     }
+
+    public function query()
+    {
+        return Customer::query();
+    }
 }

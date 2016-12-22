@@ -14,7 +14,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:admi
         // dd($request->user('admin'));
         return view('admin.layouts.master');
     });
+
     Route::get('/customers', 'Admin\Customer\IndexController@index')->name('customer.index');
+    Route::get('/customers/datatable', 'Admin\Customer\IndexController@datatable')->name('customer.datatable');
+    Route::post('/customers/{id}/edit', 'Admin\Customer\EditController@edit')->name('customer.edit');
 
     Route::group(['prefix' => 'products', 'as' => 'product.'], function () {
         Route::get('/', 'Admin\Product\IndexController@index')->name('index');

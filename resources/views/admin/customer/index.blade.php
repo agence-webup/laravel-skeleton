@@ -1,44 +1,50 @@
 @extends('admin.layouts.master')
 
 @section('content')
-
 <article class="box">
     <header class="box__header">Liste des clients</header>
     <div class="box__content">
-        <table class="txtcenter">
-            <tbody><tr>
-                <td>row 1 col 1</td>
-                <td>row 1 col 2</td>
-                <td><span class="tag tag--green">green</span></td>
-            </tr>
-            <tr>
-                <td>row 2 col 1</td>
-                <td>row 2 col 2</td>
-                <td><span class="tag tag--red">red</span></td>
-            </tr>
-            <tr>
-                <td>row 3 col 1</td>
-                <td>row 3 col 2</td>
-                <td><span class="tag tag--blue">blue</span></td>
-            </tr>
-            <tr>
-                <td>row 4 col 1</td>
-                <td>row 4 col 2</td>
-                <td><span class="tag tag--orange">orange</span></td>
-            </tr>
-            <tr>
-                <td>row 5 col 1</td>
-                <td>row 5 col 2</td>
-                <td><span class="tag tag--yellow">yellow</span></td>
-            </tr>
-            <tr>
-                <td>row 5 col 1</td>
-                <td>row 5 col 2</td>
-                <td><span class="tag tag--grey">grey</span></td>
-            </tr>
-        </tbody></table>
+        <table class="table table-bordered table-hover dataTable js-datatable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </article>
+@endsection
 
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('/node_modules/dropmic/dist/dropmic.css') }}">
+@endsection
+
+@section('js')
+<script src="{{ asset('/node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('/node_modules/datatables.net/js/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('/node_modules/dropmic/dist/dropmic.js') }}"></script>
+<script src="{{ asset('/assets/admin/js/modules/datatable.js') }}"></script>
+<script>
+$(function () {
+    $('.js-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('admin.customer.datatable') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'lastname', name: 'lastname'},
+            {data: 'actions', name: 'actions', orderable: false, searchable: false, className: 'table-actions'}
+        ],
+        rowCallback: function( row, data, index ) {
+            new Dropmic(row.querySelector('[data-dropmic]'));
+        },
+        pageLength: 100,
+    });
+});
+</script>
 @endsection
