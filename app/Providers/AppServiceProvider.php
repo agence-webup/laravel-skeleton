@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        setlocale(LC_MONETARY, 'fr_FR.UTF-8');
     }
 }

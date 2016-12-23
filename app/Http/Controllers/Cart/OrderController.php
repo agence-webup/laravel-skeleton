@@ -71,12 +71,14 @@ class OrderController extends Controller
 
         try {
             $cart = $request->session()->get('cart');
-            $this->dispatchNow(new CreateOrder($data, $cart));
+            $order = $this->dispatchNow(new CreateOrder($data, $cart));
         } catch (ValidationException $e) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($e->validator->errors());
         }
+
+        $request->session()->put('orderId', $order->id);
 
         return redirect()->route('payment.index')
             ->withInput($request->input());

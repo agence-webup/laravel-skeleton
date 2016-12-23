@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3be33ebbd502c98767739378dc28219c",
-    "content-hash": "d5c908e8d3bae01e62bb37b77af77636",
+    "hash": "fc693520d56866e8125f82c0973e90b5",
+    "content-hash": "1da9edaab62ba3ecb7141c55558b6313",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -1648,6 +1648,61 @@
             "time": "2016-10-02 15:51:17"
         },
         {
+            "name": "stripe/stripe-php",
+            "version": "v4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "234bcbd7483873c8762a67dfbdf2e6594b0a2ecc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/234bcbd7483873c8762a67dfbdf2e6594b0a2ecc",
+                "reference": "234bcbd7483873c8762a67dfbdf2e6594b0a2ecc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "time": "2016-11-30 19:16:32"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.3",
             "source": {
@@ -2740,6 +2795,65 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "webup/ecommerce-stripe-provider",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./stripe/",
+                "reference": "53922aaf1cc27c01f37f82c917af6b81d93e5e55",
+                "shasum": null
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "laravel/framework": "5.3.*",
+                "php": ">=5.6.4",
+                "stripe/stripe-php": "~4.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webup\\Ecommerce\\PaymentProvider\\Stripe\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Webup\\LaravelForm\\Test\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthieu MARTIN",
+                    "email": "matthieu@agence-webup.com",
+                    "homepage": "http://agence-webup.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package implementing Stripe to be used as payment provider",
+            "homepage": "https://github.com/agence-webup/ecommerce-stripe-provider",
+            "keywords": [
+                "ecommerce",
+                "stripe",
+                "webup"
+            ]
         },
         {
             "name": "webup/laravel-form",
@@ -4374,8 +4488,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "webup/ecommerce-stripe-provider": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

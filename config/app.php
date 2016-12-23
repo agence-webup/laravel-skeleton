@@ -211,6 +211,12 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Themonkeys\Cachebuster\CachebusterServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
+
+        /*
+         * Ecommerce Service Providers...
+         */
+        App\Ecommerce\Payment\PaymentServiceProvider::class,
+        Webup\Ecommerce\PaymentProvider\Stripe\StripeServiceProvider::class,
     ],
 
     /*

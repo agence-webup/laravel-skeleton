@@ -50,7 +50,7 @@ class CreateOrder implements ShouldQueue
             throw new ValidationException($validator);
         }
 
-        DB::transaction(function () use ($orderRepo, $validator) {
+        $order = DB::transaction(function () use ($orderRepo, $validator) {
             $order = new Order();
             $order->fill($validator->getData());
             $order->status = OrderStatus::CREATED;
@@ -71,7 +71,11 @@ class CreateOrder implements ShouldQueue
                 $orderProduct->order()->associate($order);
                 $orderProduct->save();
             }
+
+            return $order;
         });
+
+        return $order;
     }
 
     private function getValidator(array $data)

@@ -28,8 +28,12 @@ Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
 
     Route::get('/order', 'OrderController@create')->name('order.create');
     Route::post('/order', 'OrderController@store')->name('order.store');
+
     Route::get('/payment', 'PaymentController@index')->name('payment.index');
-    Route::get('/success', 'PaymentController@success')->name('payment.success');
+    Route::get('/payment/credit-card', 'PaymentController@creditCard')->name('payment.creditcard');
+    Route::post('/payment/credit-card', 'PaymentController@validateCreditCard')->name('payment.validateCreditCard');
+
+    Route::get('/confirmation', 'PaymentController@confirmation')->name('payment.confirmation');
 });
 
 Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Customer'], function () {

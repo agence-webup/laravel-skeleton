@@ -1,0 +1,48 @@
+
+{
+    "name": "webup/ecommerce-stripe-provider",
+    "description": "A package implementing Stripe to be used as payment provider",
+    "keywords": [
+        "webup",
+        "ecommerce",
+        "stripe"
+    ],
+    "homepage": "https://github.com/agence-webup/ecommerce-stripe-provider",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthieu MARTIN",
+            "email": "matthieu@agence-webup.com",
+            "homepage": "http://agence-webup.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
+        "stripe/stripe-php": "~4.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webup\\Ecommerce\\PaymentProvider\\Stripe\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webup\\LaravelForm\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

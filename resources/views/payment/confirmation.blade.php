@@ -1,4 +1,5 @@
 <?php
+use App\Values\OrderStatus;
 SEO::setTitle('Confirmation de la commande');
 SEO::setDescription('Commande effectuée avec succès');
 ?>
@@ -8,6 +9,8 @@ SEO::setDescription('Commande effectuée avec succès');
 <div class="container">
     @include('elements.steps', ['step' => 4])
     <div class="container container--small txtcenter">
+
+        @if ($order->status == OrderStatus::PAID)
         <h1>Merci de votre commande !</h1>
 
         <p>Un e-mail récapitulatif a été envoyé à l’adresse : martin.durand@fai.com.<br/>
@@ -20,6 +23,9 @@ SEO::setDescription('Commande effectuée avec succès');
             <p>Si votre adresse e-mail est erronée, nous vous invitons à vous connecter à l’aide du lien ci-dessous pour le corriger.</p>
             <a class="btn btn--primary" href="{{ route('customer.dashboard') }}">J'accède à mon compte</a>
         </div>
+        @else
+        <h1>Paiement refusé !</h1>
+        @endif
 
         <a href="{{ route('home') }}">Retourner sur le site</a>
     </div>
