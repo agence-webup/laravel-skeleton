@@ -35,8 +35,7 @@ COPY ops/dockerfiles/app/fpm-docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY ops/dockerfiles/app/php.ini /usr/local/etc/php/
 
 # Timezone
-
-RUN echo 'Europe/Paris' > /etc/timezone
+RUN echo 'Europe/Paris' > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 # Locales
 
