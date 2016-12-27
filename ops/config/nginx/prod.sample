@@ -1,7 +1,7 @@
 # Domain principale
 server {
     server_name my-domain;
-    listen 80;
+    listen 443;
 
     root /srv/http/public;
     index index.html index.htm index.php;
@@ -9,6 +9,13 @@ server {
     client_max_body_size 15M;
 
     access_log off;
+
+    # https redirect when in backend of Traefik
+    if ($http_x_forwarded_proto != 'https'){
+        return 301 https://$http_host/;
+    }
+
+    add_header Strict-Transport-Security "max-age=86400; includeSubDomains" always;
 
     # optimization
     include conf.d/incl/base.incl;
@@ -40,7 +47,7 @@ server {
 # Domain static
 server {
     server_name static.my-domain;
-    listen 80;
+    listen 443;
 
     # Project public directory
     root /srv/http/public;
@@ -53,9 +60,16 @@ server {
     include conf.d/incl/cache-busting.incl;
 
     location / {
-        add_header Access-Control-Allow-Origin 'http://my-domain';
+        add_header Access-Control-Allow-Origin 'https://my-domain';
         try_files $uri =404;
     }
+}
+
+# Redirections
+server {
+    server_name www.my-domain;
+    listen 443;
+    return 301 https://my-domain$request_uri;
 }
 
 # # Domain 404 - utile pour les démos
@@ -65,9 +79,3 @@ server {
 #     return 404;
 # }
 
-# # Redirections
-# server {
-#     server_name www.my-domain;
-#     listen 80;
-#     return 301 http://my-domain$request_uri;
-# }

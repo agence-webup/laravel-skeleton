@@ -1,0 +1,7 @@
+name: my-slug
+backups:
+  - ttl: 30
+    min_age: 15
+  - ttl: 3
+    min_age: 1
+

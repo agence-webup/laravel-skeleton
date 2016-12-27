@@ -6,9 +6,9 @@ services:
 
   proxy:
     restart: always
-    networks:
-      - default
-      - proxies
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:my-domain.fr,static.my-domain.fr,www.my-domain.fr
 
   app:
     restart: always
@@ -17,10 +17,3 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=pass
-
-networks:
-  default:
-    driver: overlay
-  proxies:
-    external: true
-
