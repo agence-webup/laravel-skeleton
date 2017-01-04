@@ -7,7 +7,7 @@ config_files:
   docker-compose.prod.sample.yml: docker-compose.prod.yml
   .env.example: .env
   ops/config/nginx/prod.sample: ops/config/nginx/prod.conf
-  backups.sample.yml: backups.yml
+  backup.sample.yml: backup.yml
 
 install_tasks:
   - npm
