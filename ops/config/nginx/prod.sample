@@ -15,8 +15,6 @@ server {
         return 301 https://$http_host/;
     }
 
-    add_header Strict-Transport-Security "max-age=86400; includeSubDomains" always;
-
     # optimization
     include conf.d/incl/base.incl;
 
