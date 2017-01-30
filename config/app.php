@@ -16,18 +16,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
-    |--------------------------------------------------------------------------
-    |
-    | This value is the name of your application. This value is used when the
-    | framework needs to place the application's name in a notification or
-    | any other location as required by the application or its packages.
-    */
-
-    'name' => 'Laravel',
-
-    /*
-    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -189,8 +177,10 @@ return [
         /*
          * Package Service Providers...
          */
-
-        //
+        Laravel\Tinker\TinkerServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        // Themonkeys\Cachebuster\CachebusterServiceProvider::class,
+        Webup\LaravelForm\FormServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -200,13 +190,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        /**
-         * Package Service Providers
-         */
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Webup\LaravelForm\FormServiceProvider::class,
-        'Themonkeys\Cachebuster\CachebusterServiceProvider',
 
     ],
 
@@ -227,6 +210,7 @@ return [
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
+        'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
@@ -257,7 +241,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Form' => Webup\LaravelForm\Facades\Form::class,
-        'Bust' => 'Themonkeys\Cachebuster\Cachebuster'
+        'Bust' => Themonkeys\Cachebuster\Cachebuster::class,
+
     ],
 
 ];
