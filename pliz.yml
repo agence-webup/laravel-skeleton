@@ -36,6 +36,10 @@ tasks:
       - sh
       - -c
       - ./node_modules/.bin/gulp copy-npm
+  - name: npm
+    command:
+      - yarn
+      - install
 
 backup:
   files:
