@@ -6,5 +6,3 @@ WORKDIR /srv/http
 
 RUN groupadd docker --gid ${user}
 RUN useradd docker --uid ${user} --gid ${user} --create-home
-
-RUN npm install -g bower

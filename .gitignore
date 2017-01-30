@@ -1,7 +1,6 @@
 # Project
 /node_modules
 /public/assets
-/public/bower
 /public/hot
 /public/node_modules
 /public/storage
