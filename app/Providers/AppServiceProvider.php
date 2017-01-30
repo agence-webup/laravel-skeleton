@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('cachebuster.url', function () {
+            return new \Themonkeys\Cachebuster\AssetURLGenerator();
+        });
     }
 }
