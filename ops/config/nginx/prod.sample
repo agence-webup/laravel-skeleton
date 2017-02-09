@@ -15,9 +15,6 @@ server {
         return 301 https://$http_host/;
     }
 
-    # optimization
-    include conf.d/incl/base.incl;
-
     location ~ ^/(.*)/$ {
         return 301 $scheme://$http_host/$1;
     }
@@ -32,14 +29,11 @@ server {
         fastcgi_pass   app:9000;
     }
 
-    # cache busting
-    include conf.d/incl/cache-busting.incl;
-
-    # On sert aussi les SVG sur le domaine principale
-    location ~* \.svg$ {
-        try_files $uri =404;
-    }
-
+    ### Maildev - uncomment to enable mydomain.com/maildev (needs to change the command)
+    # location ^~ /maildev {
+    #     proxy_pass_request_headers on;
+    #     proxy_pass http://maildev;
+    # }
 }
 
 # Domain static

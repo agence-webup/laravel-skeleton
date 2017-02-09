@@ -9,6 +9,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:my-domain.fr,static.my-domain.fr,www.my-domain.fr
+    # depends_on:
+    #   - maildev
 
   app:
     restart: always
@@ -17,3 +19,6 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=pass
+
+  # maildev:
+  #   command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open --base-pathname "/maildev"
