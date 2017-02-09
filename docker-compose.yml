@@ -48,5 +48,5 @@ services:
       - HOME=/srv/http
 
   maildev:
-    image: djfarrelly/maildev:0.13.0
+    image: djfarrelly/maildev:0.14.0
     command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open
