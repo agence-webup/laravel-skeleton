@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->make('config')->get('app.https')) {
+            $this->app->url->forceScheme('https');
+        }
     }
 
     /**
