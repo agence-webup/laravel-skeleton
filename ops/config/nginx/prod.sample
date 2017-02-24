@@ -12,7 +12,7 @@ server {
 
     # https redirect when in backend of Traefik
     if ($http_x_forwarded_proto != 'https'){
-        return 301 https://$http_host/;
+        return 301 https://$http_host$request_uri;
     }
 
     location ~ ^/(.*)/$ {
