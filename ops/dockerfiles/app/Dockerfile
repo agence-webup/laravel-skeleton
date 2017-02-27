@@ -10,22 +10,25 @@ RUN useradd docker --uid ${user} --gid ${user} --create-home
 # App
 
 RUN apt-get update && apt-get install -y \
-        build-essential \
-        locales \
-	git \
-	unzip \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng12-dev \
-        curl \
-        libcurl3 \
-        libcurl4-gnutls-dev \
-        gettext
+    build-essential \
+    locales \
+    git \
+    unzip \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libmcrypt-dev \
+    libpng12-dev \
+    imagemagick \
+    libmagickwand-dev \
+    curl \
+    libcurl3 \
+    libcurl4-gnutls-dev \
+    gettext
+
+RUN pecl install imagick-3.4.1
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql curl mcrypt iconv gettext mbstring zip \
-     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-     && docker-php-ext-install -j$(nproc) gd
+    && docker-php-ext-enable imagick
 
 RUN php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php \
     && php composer-setup.php --version=1.0.0 --filename=composer --install-dir=/usr/local/bin \
