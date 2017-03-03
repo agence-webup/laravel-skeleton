@@ -20,22 +20,22 @@ function getValue(values) {
 }
 
 module.exports = {
-    proxy: getValue([process.env['GULP_BS_PROXY'], plugins.util.env.proxy, "127.0.0.1:8000"]),
-    port: getValue([process.env['GULP_BS_PORT'], plugins.util.env.port, 3000]),
-    tunnel: getValue([process.env['GULP_BS_TUNNEL'], plugins.util.env.tunnel, false]),
-    assetsBaseUrl: getValue([process.env['GULP_ASSETS_BASE_URL'], false]),
-    env: getValue([process.env['GULP_ENV'], plugins.util.env.env, 'production']),
+    proxy: getValue([plugins.util.env.proxy, "127.0.0.1:8000"]),
+    port: getValue([plugins.util.env.port, 3000]),
+    tunnel: getValue([plugins.util.env.tunnel, false]),
+    env: getValue([process.env['APP_ENV'], plugins.util.env.env, 'production']),
+    cachebuster: getValue([process.env['CACHEBUSTER_ENABLED'], 'false']),
     paths: {
         front: {
             less: {
-                src: srcFolder + '/less/style.less',
-                dist: distFolder + '/css',
-                watch: srcFolder + '/less/**/*'
+                src: path.join(srcFolder, '/less/style.less'),
+                dist: path.join(distFolder, '/css'),
+                watch: path.join(srcFolder, '/less/**/*')
             },
             images: {
-                src: srcFolder + '/img/**/*',
-                dist: distFolder + '/img/',
-                watch: srcFolder + '/img/**/*'
+                src: path.join(srcFolder, '/img/**/*'),
+                dist: path.join(distFolder, '/img/'),
+                watch: path.join(srcFolder,'/img/**/*')
             },
             js: {
                 src: path.join(srcFolder, '/js/**/*.js'),

@@ -9,10 +9,10 @@ module.exports = function(gulp, plugins, path, config, reload) {
             browsers: ['> 1%', 'last 2 versions'],
             cascade: false
         }))
-        .pipe(config.env == 'production' && config.env.assetsBaseUrl ? plugins.cssUrlPrefixer(
-            config.env.assetsBaseUrl) : plugins.util.noop())
+        .pipe(config.cachebuster == 'true' ? plugins.cssBuster({
+            assetsPath: 'resources/assets/less'
+        }) : plugins.util.noop())
         .pipe(config.env == 'production' ? plugins.minifyCss() : plugins.util.noop())
         .pipe(gulp.dest(path.less.dist))
         .pipe(reload({ stream: true }));
-
 };
