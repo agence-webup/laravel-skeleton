@@ -12,6 +12,7 @@ Homestead.yaml
 # env
 .env
 .npm
+.yarnrc
 .babel.json
 .cache
 .composer
