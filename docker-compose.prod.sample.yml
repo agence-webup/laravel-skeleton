@@ -22,3 +22,4 @@ services:
 
   # maildev:
   #   command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open --base-pathname "/maildev"
+  #   restart: always
