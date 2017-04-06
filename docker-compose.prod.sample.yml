@@ -6,9 +6,11 @@ services:
 
   proxy:
     restart: always
-    networks:
-      - default
-      - proxies
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:my-domain.fr,static.my-domain.fr,www.my-domain.fr
+    # depends_on:
+    #   - maildev
 
   app:
     restart: always
@@ -18,9 +20,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
 
-networks:
-  default:
-    driver: overlay
-  proxies:
-    external: true
-
+  # maildev:
+  #   command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open --base-pathname "/maildev"
+  #   restart: always

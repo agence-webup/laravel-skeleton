@@ -7,7 +7,7 @@
     {!! SEO::generate() !!}
     @yield('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
-    @if(App::environment() == 'prod')
+    @if(App::environment('production'))
     @include('elements.marketing.analytics')
     @endif
 </head>

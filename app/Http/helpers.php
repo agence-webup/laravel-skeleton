@@ -2,8 +2,9 @@
 
 if (!function_exists('asset')) {
     /**
-     * Generate a URL to an application asset.
-     * Override the Laravel's asset function to use the config app.assets_url
+     * Override the Laravel's asset function
+     * Generate a URL to an application asset,
+     * and suffix the file with its checksum for cache busting.
      *
      * @param  string  $path
      * @param  bool|null  $secure
@@ -22,9 +23,9 @@ if (!function_exists('asset')) {
 if (!function_exists('current_class')) {
     /**
      * Handle CSS class for current route
+     *
      * @param string  $routeName  Current route name for the page
      * @param string  $cssClass  CSS class for current state (default is current)
-     *
      * @return string  Current class if match, else empty string
      */
     function current_class($routeName, $cssClass = 'current')

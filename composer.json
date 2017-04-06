@@ -13,22 +13,22 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "webup/laravel-form": "1.0.*",
         "artesaos/seotools": "0.9.*",
         "tymon/jwt-auth": "0.5.*",
         "laracasts/flash": "^2.0",
-        "themonkeys/cachebuster": "^2.0",
         "dimsav/laravel-translatable": "^6.0",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "webup/ecommerce-stripe-provider": "^1.0@dev"
+        "webup/ecommerce-stripe-provider": "^1.0@dev",
+        "guzzlehttp/guzzle": "^6.2",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0",
+        "themonkeys/cachebuster": "^2.0",
+        "webup/laravel-form": "^1.0.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
-        "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "phpunit/phpunit": "~5.0"
     },
     "autoload": {
         "classmap": [
@@ -39,9 +39,9 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "scripts": {
         "post-root-package-install": [
@@ -60,6 +60,7 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }

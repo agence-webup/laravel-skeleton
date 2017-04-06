@@ -1,12 +1,18 @@
-/vendor
+# Project
 /node_modules
-/public/storage
+/public/assets
+/public/hot
 /public/node_modules
-
-Homestead.yaml
+/public/storage
+/storage/*.key
+/vendor
 Homestead.json
+Homestead.yaml
+
+# env
 .env
 .npm
+.yarnrc
 .babel.json
 .cache
 .composer
@@ -15,9 +21,6 @@ Homestead.json
 .bash_history
 .v8flag*
 .babel.json
-
-public/assets
-public/bower
 
 # OPS
 docker_ports.yml

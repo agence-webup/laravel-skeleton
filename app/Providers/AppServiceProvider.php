@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->make('config')->get('app.https')) {
+            $this->app->url->forceScheme('https');
+        }
     }
 
     /**
@@ -24,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         setlocale(LC_MONETARY, 'fr_FR.UTF-8');
+
+        $this->app->singleton('cachebuster.url', function () {
+            return new \Themonkeys\Cachebuster\AssetURLGenerator();
+        });
     }
 }

@@ -1,7 +1,7 @@
 # Domain principale
 server {
     server_name my-domain;
-    listen 80;
+    listen 443;
 
     root /srv/http/public;
     index index.html index.htm index.php;
@@ -10,8 +10,10 @@ server {
 
     access_log off;
 
-    # optimization
-    include conf.d/incl/base.incl;
+    # https redirect when in backend of Traefik
+    if ($http_x_forwarded_proto != 'https'){
+        return 301 https://$http_host$request_uri;
+    }
 
     location ~ ^/(.*)/$ {
         return 301 $scheme://$http_host/$1;
@@ -27,20 +29,17 @@ server {
         fastcgi_pass   app:9000;
     }
 
-    # cache busting
-    include conf.d/incl/cache-busting.incl;
-
-    # On sert aussi les SVG sur le domaine principale
-    location ~* \.svg$ {
-        try_files $uri =404;
-    }
-
+    ### Maildev - uncomment to enable mydomain.com/maildev (needs to change the command)
+    # location ^~ /maildev {
+    #     proxy_pass_request_headers on;
+    #     proxy_pass http://maildev;
+    # }
 }
 
 # Domain static
 server {
     server_name static.my-domain;
-    listen 80;
+    listen 443;
 
     # Project public directory
     root /srv/http/public;
@@ -53,9 +52,16 @@ server {
     include conf.d/incl/cache-busting.incl;
 
     location / {
-        add_header Access-Control-Allow-Origin 'http://my-domain';
+        add_header Access-Control-Allow-Origin 'https://my-domain';
         try_files $uri =404;
     }
+}
+
+# Redirections
+server {
+    server_name www.my-domain;
+    listen 443;
+    return 301 https://my-domain$request_uri;
 }
 
 # # Domain 404 - utile pour les démos
@@ -65,9 +71,3 @@ server {
 #     return 404;
 # }
 
-# # Redirections
-# server {
-#     server_name www.my-domain;
-#     listen 80;
-#     return 301 http://my-domain$request_uri;
-# }

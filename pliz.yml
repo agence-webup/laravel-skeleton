@@ -7,12 +7,12 @@ config_files:
   docker-compose.prod.sample.yml: docker-compose.prod.yml
   .env.example: .env
   ops/config/nginx/prod.sample: ops/config/nginx/prod.conf
+  backup.sample.yml: backup.yml
 
 install_tasks:
   - npm
   - composer
   - key:generate
-  - bower
   - gulp
   - gulp:copy-npm
   - db:update
@@ -23,7 +23,7 @@ tasks:
     command:
       - sh
       - -c
-      - if grep -q -E ^APP_KEY=SomeRandomString$ .env; then php artisan key:generate; fi
+      - if grep -q -E ^APP_KEY=$ .env; then php artisan key:generate; fi
   - name: gulp:watch
     container: srcbuild
     command:
@@ -36,6 +36,10 @@ tasks:
       - sh
       - -c
       - ./node_modules/.bin/gulp copy-npm
+  - name: npm
+    command:
+      - yarn
+      - install
 
 backup:
   files:

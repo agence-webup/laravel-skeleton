@@ -22,12 +22,12 @@ class PaymentServiceProvider extends ServiceProvider
     {
         $this->app->alias('ecommerce.payment', 'App\Ecommerce\Payment\PaymentInterface');
 
-        $this->app['ecommerce.payment.manager'] = $this->app->share(function ($app) {
+        $this->app->singleton('ecommerce.payment.manager', function ($app) {
             $manager = new PaymentManager($app);
             return $manager;
         });
 
-        $this->app['ecommerce.payment'] = $this->app->share(function ($app) {
+        $this->app->singleton('ecommerce.payment', function ($app) {
             return $app['ecommerce.payment.manager']->driver();
         });
     }

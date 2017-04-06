@@ -16,18 +16,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
-    |--------------------------------------------------------------------------
-    |
-    | This value is the name of your application. This value is used when the
-    | framework needs to place the application's name in a notification or
-    | any other location as required by the application or its packages.
-    */
-
-    'name' => 'Laravel',
-
-    /*
-    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -67,14 +55,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Asset URL
+    | Application HTTPS URL
     |--------------------------------------------------------------------------
     |
-    | This URL is used to generate asset URLs with a custom domain.
+    | Force to generate URL with HTTPS scheme
     |
     */
 
-    'assets_url' => env('APP_ASSETS_URL', null),
+    'https' => env('APP_HTTPS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -189,8 +177,20 @@ return [
         /*
          * Package Service Providers...
          */
+        Laravel\Tinker\TinkerServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        // Themonkeys\Cachebuster\CachebusterServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Webup\LaravelForm\FormServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Dimsav\Translatable\TranslatableServiceProvider::class,
 
-        //
+        // /*
+        //  * Ecommerce Service Providers...
+        //  */
+        App\Ecommerce\Payment\PaymentServiceProvider::class,
+        Webup\Ecommerce\PaymentProvider\Stripe\StripeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -200,23 +200,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        /**
-         * Package Service Providers
-         */
-        Yajra\Datatables\DatatablesServiceProvider::class,
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Webup\LaravelForm\FormServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
-        Themonkeys\Cachebuster\CachebusterServiceProvider::class,
-        Dimsav\Translatable\TranslatableServiceProvider::class,
-
-        /*
-         * Ecommerce Service Providers...
-         */
-        App\Ecommerce\Payment\PaymentServiceProvider::class,
-        Webup\Ecommerce\PaymentProvider\Stripe\StripeServiceProvider::class,
     ],
 
     /*
@@ -236,6 +219,7 @@ return [
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
+        'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
@@ -266,9 +250,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Form' => Webup\LaravelForm\Facades\Form::class,
+
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'Bust' => Themonkeys\Cachebuster\Cachebuster::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+
     ],
 
 ];
