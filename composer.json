@@ -17,7 +17,7 @@
         "tymon/jwt-auth": "0.5.*",
         "laracasts/flash": "^2.0",
         "dimsav/laravel-translatable": "^6.0",
-        "yajra/laravel-datatables-oracle": "~6.0",
+        "yajra/laravel-datatables-oracle": "~7.0",
         "webup/ecommerce-stripe-provider": "^1.0@dev",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",
