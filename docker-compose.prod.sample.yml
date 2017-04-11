@@ -7,8 +7,11 @@ services:
   proxy:
     restart: always
     labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:my-domain.fr,static.my-domain.fr,www.my-domain.fr
+      - proxy.port=443
+      - proxy.scheme=https
+      - proxy.domain=my-domain.fr
+      - proxy.other_domains=static.my-domain.fr
+      - proxy.redirects=https://www.my-domain.fr
     # depends_on:
     #   - maildev
 
