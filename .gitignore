@@ -26,6 +26,7 @@ docker_ports.yml
 docker-compose.override.yml
 docker-compose.prod.yml
 ops/config/nginx/prod.conf
+backup.yml
 
 # OS
 .DS_Store
