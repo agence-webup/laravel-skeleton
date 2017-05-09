@@ -5,7 +5,7 @@ version: "2"
 services:
 
   proxy:
-    image: nginx:1.9.12
+    image: nginx:1.12.0
     volumes:
       - ./ops/config/nginx:/etc/nginx/conf.d
     volumes_from:
