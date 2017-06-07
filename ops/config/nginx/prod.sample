@@ -44,6 +44,9 @@ server {
     # Project public directory
     root /srv/http/public;
     index index.html index.htm index.php;
+    
+    # CORS
+    add_header Access-Control-Allow-Origin 'https://my-domain';
 
     # optimization
     include conf.d/incl/base.incl;
@@ -52,7 +55,6 @@ server {
     include conf.d/incl/cache-busting.incl;
 
     location / {
-        add_header Access-Control-Allow-Origin 'https://my-domain';
         try_files $uri =404;
     }
 }
