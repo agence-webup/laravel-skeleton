@@ -179,7 +179,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        // Themonkeys\Cachebuster\CachebusterServiceProvider::class,
+        // Themonkeys\Cachebuster\CachebusterServiceProvider::class, Desactivated because incompatible with our laravel version
         Webup\LaravelForm\FormServiceProvider::class,
 
         /*
