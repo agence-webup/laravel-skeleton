@@ -12,7 +12,7 @@ module.exports = function(gulp, plugins, path, config, reload) {
         .pipe(config.cachebuster == 'true' ? plugins.cssBuster({
             assetsPath: 'resources/assets/less'
         }) : plugins.util.noop())
-        .pipe(config.env == 'production' ? plugins.minifyCss() : plugins.util.noop())
+        .pipe(config.env == 'production' ? plugins.cleanCss() : plugins.util.noop())
         .pipe(gulp.dest(path.less.dist))
         .pipe(reload({ stream: true }));
 };

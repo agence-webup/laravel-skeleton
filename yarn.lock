@@ -60,10 +60,6 @@ align-text@^0.1.1, align-text@^0.1.3:
     longest "^1.0.1"
     repeat-string "^1.5.2"
 
-amdefine@>=0.0.4:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -820,12 +816,6 @@ buffer-to-vinyl@^1.0.0:
     uuid "^2.0.1"
     vinyl "^1.0.0"
 
-bufferstreams@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/bufferstreams/-/bufferstreams-1.0.1.tgz#cfb1ad9568d3ba3cfe935ba9abdd952de88aab2a"
-  dependencies:
-    readable-stream "^1.0.33"
-
 builtin-modules@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
@@ -912,12 +902,11 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-clean-css@^3.3.3:
-  version "3.4.25"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.25.tgz#9e9a52d5c1e6bc5123e1b2783fa65fe958946ede"
+clean-css@4.1.7:
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.1.7.tgz#b9aea4f85679889cf3eae8b40349ec4ebdfdd032"
   dependencies:
-    commander "2.8.x"
-    source-map "0.4.x"
+    source-map "0.5.x"
 
 cliui@^2.1.0:
   version "2.1.0"
@@ -987,7 +976,7 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2.8.x, commander@^2.2.0, commander@~2.8.1:
+commander@^2.2.0, commander@~2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
   dependencies:
@@ -1954,6 +1943,15 @@ gulp-babel@^6.1.2:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
+gulp-clean-css@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/gulp-clean-css/-/gulp-clean-css-3.7.0.tgz#54b33526dc899930949fb37b4cacf851c5d5d93b"
+  dependencies:
+    clean-css "4.1.7"
+    gulp-util "3.0.8"
+    through2 "2.0.3"
+    vinyl-sourcemaps-apply "0.2.1"
+
 gulp-concat@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/gulp-concat/-/gulp-concat-2.6.1.tgz#633d16c95d88504628ad02665663cee5a4793353"
@@ -2028,17 +2026,6 @@ gulp-load-plugins@^1.0.0:
     micromatch "^2.3.8"
     resolve "^1.1.7"
 
-gulp-minify-css@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/gulp-minify-css/-/gulp-minify-css-1.2.4.tgz#b6164957602ea27f9e5ad88227695dd205778c06"
-  dependencies:
-    clean-css "^3.3.3"
-    gulp-util "^3.0.5"
-    object-assign "^4.0.1"
-    readable-stream "^2.0.0"
-    vinyl-bufferstream "^1.0.1"
-    vinyl-sourcemaps-apply "^0.2.0"
-
 gulp-npm-files@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/gulp-npm-files/-/gulp-npm-files-0.1.3.tgz#075150e2099bc04b958540a881c6d15ed968565b"
@@ -2077,7 +2064,7 @@ gulp-uglify@^2.0.0:
     uglify-save-license "^0.4.1"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@^3, gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.5, gulp-util@^3.0.6, gulp-util@^3.0.7, gulp-util@^3.0.8:
+gulp-util@3.0.8, gulp-util@^3, gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.6, gulp-util@^3.0.7, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -3515,15 +3502,6 @@ read-pkg@^1.0.0:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@^1.0.33, readable-stream@~1.1.9:
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
-  dependencies:
-    core-util-is "~1.0.0"
-    inherits "~2.0.1"
-    isarray "0.0.1"
-    string_decoder "~0.10.x"
-
 readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.5, readable-stream@^2.1.5, readable-stream@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.3.tgz#9cf49463985df016c8ae8813097a9293a9b33729"
@@ -3535,6 +3513,15 @@ readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.
     process-nextick-args "~1.0.6"
     string_decoder "~0.10.x"
     util-deprecate "~1.0.1"
+
+readable-stream@~1.1.9:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
 
 readable-stream@~2.1.4:
   version "2.1.5"
@@ -3896,13 +3883,7 @@ source-map-support@^0.4.2:
   dependencies:
     source-map "^0.5.3"
 
-source-map@0.4.x:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
-  dependencies:
-    amdefine ">=0.0.4"
-
-source-map@^0.5.0, source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
+source-map@0.5.x, source-map@^0.5.0, source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
@@ -4139,19 +4120,19 @@ through2-filter@^2.0.0:
     through2 "~2.0.0"
     xtend "~4.0.0"
 
+through2@2.0.3, through2@^2, through2@^2.0.0, through2@^2.0.1, through2@^2.0.3, through2@~2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
+  dependencies:
+    readable-stream "^2.1.5"
+    xtend "~4.0.1"
+
 through2@^0.6.0, through2@^0.6.1:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-0.6.5.tgz#41ab9c67b29d57209071410e1d7a7a968cd3ad48"
   dependencies:
     readable-stream ">=1.0.33-1 <1.1.0-0"
     xtend ">=4.0.0 <4.1.0-0"
-
-through2@^2, through2@^2.0.0, through2@^2.0.1, through2@^2.0.3, through2@~2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
-  dependencies:
-    readable-stream "^2.1.5"
-    xtend "~4.0.1"
 
 tildify@^1.0.0:
   version "1.2.0"
@@ -4342,12 +4323,6 @@ vinyl-assign@^1.0.1:
     object-assign "^4.0.1"
     readable-stream "^2.0.0"
 
-vinyl-bufferstream@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vinyl-bufferstream/-/vinyl-bufferstream-1.0.1.tgz#0537869f580effa4ca45acb47579e4b9fe63081a"
-  dependencies:
-    bufferstreams "1.0.1"
-
 vinyl-fs@^0.3.0:
   version "0.3.14"
   resolved "https://registry.yarnpkg.com/vinyl-fs/-/vinyl-fs-0.3.14.tgz#9a6851ce1cac1c1cea5fe86c0931d620c2cfa9e6"
@@ -4383,7 +4358,7 @@ vinyl-fs@^2.2.0, vinyl-fs@^2.2.1:
     vali-date "^1.0.0"
     vinyl "^1.0.0"
 
-vinyl-sourcemaps-apply@^0.2.0:
+vinyl-sourcemaps-apply@0.2.1, vinyl-sourcemaps-apply@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz#ab6549d61d172c2b1b87be5c508d239c8ef87705"
   dependencies:
