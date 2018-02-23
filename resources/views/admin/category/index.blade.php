@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('helium::layouts.master')
 
 @section('content')
 <article class="box">

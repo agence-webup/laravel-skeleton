@@ -16,6 +16,10 @@ Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 Route::get('/catalog/{slug?}', 'CatalogController@index')->name('catalog')->where(['slug' => '.+']);
 Route::get('/product/{slug}', 'CatalogController@product')->name('catalog.product')->where(['slug' => '.*']);
 
+// web
+Route::get('/contact', '\Webup\LaravelHelium\Contact\Http\Controllers\ContactController@form')->name('contact');
+Route::post('/contact', '\Webup\LaravelHelium\Contact\Http\Controllers\ContactController@store')->name('contact.store');
+
 Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
     Route::get('', 'CartController@index')->name('cart.index');
 

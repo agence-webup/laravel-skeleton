@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -33,13 +34,13 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function map()
+    public function map(Request $request)
     {
         $this->mapApiRoutes();
 
         $this->mapAdminRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapWebRoutes($request);
 
         //
     }
@@ -51,17 +52,26 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapWebRoutes(Request $request)
     {
+        // Set locale for translated routes
+        $locale = $request->segment(1);
+        if (!array_key_exists($locale, config('app.locales'))) {
+            $locale = config('app.locale');
+        }
+        $this->app->setLocale($locale);
+
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+          ->namespace($this->namespace)
+          ->group(function ($router) use ($locale) {
+              require base_path('routes/web.php');
+          });
     }
 
     /**
      * Define the "admin" routes for the application.
      *
-     * These routes all receive session state, CSRF protection, etc.
+     * These routes are typically stateless.
      *
      * @return void
      */
@@ -69,7 +79,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'web',
-            'namespace' => $this->namespace,
+            'namespace' => $this->namespace.'\Admin',
+            'prefix' => 'admin',
+            'as' => 'admin.',
         ], function ($router) {
             require base_path('routes/admin.php');
         });

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('helium::layouts.master')
 
 @section('content')
 <article class="box">
@@ -20,15 +20,7 @@
 @endsection
 
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('/node_modules/dropmic/dist/dropmic.css') }}">
-@endsection
-
 @section('js')
-<script src="{{ asset('/node_modules/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('/node_modules/datatables.net/js/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('/node_modules/dropmic/dist/dropmic.js') }}"></script>
-<script src="{{ asset('/assets/admin/js/modules/datatable.js') }}"></script>
 <script>
 $(function () {
     $('.js-datatable').DataTable({

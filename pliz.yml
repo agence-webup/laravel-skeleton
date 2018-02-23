@@ -4,10 +4,7 @@ version: 1
 
 config_files:
   docker-compose.override.sample.yml: docker-compose.override.yml
-  docker-compose.prod.sample.yml: docker-compose.prod.yml
   .env.example: .env
-  ops/config/nginx/prod.sample: ops/config/nginx/prod.conf
-  backup.sample.yml: backup.yml
 
 install_tasks:
   - npm
@@ -36,10 +33,6 @@ tasks:
       - sh
       - -c
       - ./node_modules/.bin/gulp copy-npm
-  - name: npm
-    command:
-      - yarn
-      - install
 
 backup:
   files:

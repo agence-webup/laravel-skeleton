@@ -1,40 +1,54 @@
 <?php
 
 // Admin public routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    // Authentication Routes
-    Route::get('/auth/login', ['as' => 'auth.login', 'uses' => 'Admin\AuthController@showLoginForm']);
-    Route::post('/auth/login', ['as' => 'auth.postLogin', 'uses' => 'Admin\AuthController@login']);
-    Route::get('/auth/logout', ['as' => 'auth.logout', 'uses' => 'Admin\AuthController@logout']);
-});
+
+Route::get('/login', '\Webup\LaravelHelium\Core\Http\Controllers\AuthController@showLoginForm')->name('login');
+Route::post('/login', '\Webup\LaravelHelium\Core\Http\Controllers\AuthController@login')->name('postLogin');
+Route::post('/logout', '\Webup\LaravelHelium\Core\Http\Controllers\AuthController@logout')->name('logout');
 
 // Admin authenticated routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:admin']], function () {
-    Route::get('/', function (\Illuminate\Http\Request $request) {
-        // dd($request->user('admin'));
-        return view('admin.layouts.master');
-    });
+Route::group(['middleware' => ['auth:admin','locale']], function () {
+    Route::get('/', function () {
+        return view('helium::layouts.master');
+    })->name('home');
 
-    Route::get('/customers', 'Admin\Customer\IndexController@index')->name('customer.index');
-    Route::get('/customers/datatable', 'Admin\Customer\IndexController@datatable')->name('customer.datatable');
-    Route::post('/customers/{id}/edit', 'Admin\Customer\EditController@edit')->name('customer.edit');
+    Route::get('/logs', 'LogController@logs')->name('logs');
+
+    Route::get('/customers', 'Customer\IndexController@index')->name('customer.index');
+    Route::get('/customers/datatable', 'Customer\IndexController@datatable')->name('customer.datatable');
+    Route::post('/customers/{id}/edit', 'Customer\EditController@edit')->name('customer.edit');
 
     Route::group(['prefix' => 'products', 'as' => 'product.'], function () {
-        Route::get('/', 'Admin\Product\IndexController@index')->name('index');
-        Route::get('/create', 'Admin\Product\CreateController@create')->name('create');
-        Route::post('/', 'Admin\Product\CreateController@store')->name('store');
-        Route::get('/{id}/edit', 'Admin\Product\EditController@edit')->name('edit');
-        Route::put('/{id}', 'Admin\Product\EditController@update')->name('update');
-        Route::delete('/{id}', 'Admin\Product\DestroyController@destroy')->name('destroy');
+        Route::get('/', 'Product\IndexController@index')->name('index');
+        Route::get('/create', 'Product\CreateController@create')->name('create');
+        Route::post('/', 'Product\CreateController@store')->name('store');
+        Route::get('/{id}/edit', 'Product\EditController@edit')->name('edit');
+        Route::put('/{id}', 'Product\EditController@update')->name('update');
+        Route::delete('/{id}', 'Product\DestroyController@destroy')->name('destroy');
     });
 
 
     Route::group(['prefix' => 'categories', 'as' => 'category.'], function () {
-        Route::get('/', 'Admin\Category\IndexController@index')->name('index');
-        Route::get('/create', 'Admin\Category\CreateController@create')->name('create');
-        Route::post('/', 'Admin\Category\CreateController@store')->name('store');
-        Route::get('/{id}/edit', 'Admin\Category\EditController@edit')->name('edit');
-        Route::put('/{id}', 'Admin\Category\EditController@update')->name('update');
-        Route::delete('/{id}', 'Admin\Category\DestroyController@destroy')->name('destroy');
+        Route::get('/', 'Category\IndexController@index')->name('index');
+        Route::get('/create', 'Category\CreateController@create')->name('create');
+        Route::post('/', 'Category\CreateController@store')->name('store');
+        Route::get('/{id}/edit', 'Category\EditController@edit')->name('edit');
+        Route::put('/{id}', 'Category\EditController@update')->name('update');
+        Route::delete('/{id}', 'Category\DestroyController@destroy')->name('destroy');
     });
+
+
+    // Contact
+    Route::get('/contacts', '\Webup\LaravelHelium\Contact\Http\Controllers\Admin\ContactController@index')->name('contact.index');
+    Route::get('/contacts/datatable', '\Webup\LaravelHelium\Contact\Http\Controllers\Admin\ContactController@datatable')->name('contact.datatable');
+    Route::get('/contacts/{id}', '\Webup\LaravelHelium\Contact\Http\Controllers\Admin\ContactController@show')->name('contact.show');
+    Route::delete('/contacts/{id}', '\Webup\LaravelHelium\Contact\Http\Controllers\Admin\ContactController@destroy')->name('contact.destroy');
+
+    // Settings
+    Route::get('/settings', '\Webup\LaravelHelium\Setting\Http\Controllers\SettingController@edit')->name('setting.edit');
+    Route::post('/settings', '\Webup\LaravelHelium\Setting\Http\Controllers\SettingController@update')->name('setting.update');
+    //
+    // // Settings
+    // Route::post('/images/upload/{id?}', 'ImageUploaderController@upload')->name('images.upload');
+    // Route::post('/files/upload/{id?}', 'FileUploaderController@upload')->name('files.upload');
 });

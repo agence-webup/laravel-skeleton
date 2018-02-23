@@ -7,8 +7,8 @@
     {!! SEO::generate() !!}
     @yield('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
-    @if(App::environment('production'))
-    @include('elements.marketing.analytics')
+    @if(config('analytics.gtm_id'))
+        @include('elements.marketing.gtm')
     @endif
 </head>
 <body>
@@ -40,7 +40,7 @@
         </footer>
     </div>
 
-    <script src="{{ asset('/node_modules/jquery/dist/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('/node_modules/jquery/dist/jquery.min.js') }}"></script> --}}
     <script src="{{ asset('/assets/js/bundle.js') }}"></script>
     <!-- Scripts -->
     <script>

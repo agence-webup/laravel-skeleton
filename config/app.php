@@ -10,9 +10,10 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+    |
     */
 
-    'name' => 'Laravel',
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +77,19 @@ return [
     */
 
     'timezone' => 'UTC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locales
+    |--------------------------------------------------------------------------
+    |
+    | Contains an array with the applications available locales.
+    |
+    */
+    'locales' => [
+        'fr' => 'Français',
+        'en' => 'English',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -179,9 +193,13 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        // Themonkeys\Cachebuster\CachebusterServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        // Themonkeys\Cachebuster\CachebusterServiceProvider::class, Desactivated because incompatible with our laravel version
         Webup\LaravelForm\FormServiceProvider::class,
+        Webup\LaravelHelium\Core\CoreServiceProvider::class,
+        Webup\LaravelHelium\Contact\ContactServiceProvider::class,
+        Webup\LaravelHelium\Setting\SettingServiceProvider::class,
+        anlutro\LaravelSettings\ServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
@@ -190,7 +208,7 @@ return [
         //  * Ecommerce Service Providers...
         //  */
         App\Ecommerce\Payment\PaymentServiceProvider::class,
-        Webup\Ecommerce\PaymentProvider\Stripe\StripeServiceProvider::class,
+        // Webup\Ecommerce\PaymentProvider\Stripe\StripeServiceProvider::class,
 
         /*
          * Application Service Providers...
