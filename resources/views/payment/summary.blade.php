@@ -109,7 +109,7 @@ SEO::setDescription('Les articles de mon panier');
 @endsection
 
 @section('js')
-<script src="{{ asset('/node_modules/tingle/dist/tingle.min.js') }}"></script>
+<script src="{{ asset('/node_modules/tingle.js/dist/tingle.min.js') }}"></script>
 <script src="{{ asset('/assets/js/modules/payment-modal.js') }}"></script>
 
 <script src="{{ $stripe['checkout_url'] }}"></script>
