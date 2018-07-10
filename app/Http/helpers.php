@@ -10,13 +10,32 @@ if (!function_exists('asset')) {
      * @param  bool|null  $secure
      * @return string
      */
-    function asset($path, $secure = null)
+    function asset($file, $buildDirectory = '')
     {
-        try {
-            return app('cachebuster.url')->url($path);
-        } catch (Exception $e) {
-            return config('cachebuster.cdn') . $path;
+        static $manifest = [];
+        static $manifestPath;
+        if (empty($manifest) || $manifestPath !== $buildDirectory) {
+            $path = public_path($buildDirectory.'/rev-manifest.json');
+            if (file_exists($path)) {
+                $manifest = json_decode(file_get_contents($path), true);
+                $manifestPath = $buildDirectory;
+            }
         }
+        $file = ltrim($file, '/');
+        if (isset($manifest[$file])) {
+            $publicPath = env('ASSETS_URL') . '/' .trim($buildDirectory.'/'.$manifest[$file], '/');
+            return $publicPath;
+        }
+
+        // remove query string
+        $unversioned = public_path(parse_url($file, PHP_URL_PATH));
+
+        if (file_exists($unversioned)) {
+            $publicPath = env('ASSETS_URL') . '/' .trim($file, '/');
+            return $publicPath;
+        }
+
+        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
 
