@@ -1,25 +1,31 @@
 {
   "private": true,
   "devDependencies": {
-    "babel-preset-es2015": "^6.16.0",
-    "browser-sync": "^2.9.11",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-clean-css": "^3.7.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-css-buster": "^1.0.0",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-less": "^3.0.3",
-    "gulp-load-plugins": "^1.0.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.24.5",
+    "del": "^3.0.0",
+    "fancy-log": "^1.3.2",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-load-plugins": "^1.5.0",
     "gulp-npm-files": "^0.1.3",
-    "gulp-plumber": "^1.0.1",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.6",
-    "imagemin-pngquant": "^5.0.0",
-    "merge-stream": "^1.0.0"
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.3.0",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-replace": "^0.4.4",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-pngquant": "^5.1.0",
+    "minimist": "^1.2.0",
+    "through2": "^2.0.3"
   },
   "dependencies": {
-    "tingle.js": "^0.8.4"
+    "tingle.js": "^0.13.2"
   }
 }
