@@ -10,7 +10,6 @@
 * Complete workflow with gulp (images, LESS, scripts) and ES6 support
 * Base template with configurable Analytics
 * Fake SMTP [(maildev)](http://danfarrelly.nyc/MailDev/)
-* Cache busting strategy [(laravel-cachebuster)](https://github.com/TheMonkeys/laravel-cachebuster) + Nginx conf
 * CSS syntax with CSSComb (Needs this [atom package](https://atom.io/packages/css-comb))
 
 ## Requirements

@@ -1,4 +1,4 @@
-FROM webup/laravel-php-7.0:v0.9
+FROM webup/laravel-php-7.2:0.1
 
 ARG user=1000
 

@@ -29,6 +29,8 @@ ops/config/nginx/prod.conf
 backup.yml
 
 # OS
+/.idea
+/.vscode
 .DS_Store
 ._*
 Thumbs.db
@@ -40,6 +42,5 @@ Thumbs.db
 nbproject
 *.sublime-project
 *.sublime-workspace
-.idea
 *.swp
 *~

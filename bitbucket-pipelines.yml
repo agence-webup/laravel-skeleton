@@ -19,10 +19,8 @@ pipelines:
             - export SITE_ID=_site_id_
 
             # Build assets
-            - npm install -g gulp
             - npm install
-            - gulp
-            - gulp copy-npm
+            - ./node_modules/.bin/gulp --production
 
             # Login to registry
             - docker login --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD registry.containers.ovh.net

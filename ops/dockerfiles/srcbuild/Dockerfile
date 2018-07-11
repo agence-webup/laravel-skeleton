@@ -1,4 +1,4 @@
-FROM node:8.2.1
+FROM node:8.6
 
 # Neutralize the default user created by the base image
 RUN groupmod -g 999 node && usermod -u 999 -g 999 node
