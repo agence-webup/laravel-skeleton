@@ -22,7 +22,6 @@ services:
     user: ${UID}:${UID}
     volumes:
       - ./:/srv/http/
-    env_file: .env
     depends_on:
       - db
 
