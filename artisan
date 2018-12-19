@@ -1,6 +1,12 @@
 #!/usr/bin/env php
 <?php
 
+define('LARAVEL_START', microtime(true));
+
+/* Override Laravel's helper functions */
+
+require __DIR__ . '/app/Http/helpers.php';
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -13,7 +19,7 @@
 |
 */
 
-require __DIR__.'/bootstrap/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 $app = require_once __DIR__.'/bootstrap/app.php';
 

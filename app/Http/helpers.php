@@ -15,7 +15,7 @@ if (!function_exists('asset')) {
         static $manifest = [];
         static $manifestPath;
         if (empty($manifest) || $manifestPath !== $buildDirectory) {
-            $path = public_path($buildDirectory.'/rev-manifest.json');
+            $path = public_path($buildDirectory . '/rev-manifest.json');
             if (file_exists($path)) {
                 $manifest = json_decode(file_get_contents($path), true);
                 $manifestPath = $buildDirectory;
@@ -23,7 +23,7 @@ if (!function_exists('asset')) {
         }
         $file = ltrim($file, '/');
         if (isset($manifest[$file])) {
-            $publicPath = env('ASSETS_URL') . '/' .trim($buildDirectory.'/'.$manifest[$file], '/');
+            $publicPath = config('app.asset_url') . '/' . trim($buildDirectory . '/' . $manifest[$file], '/');
             return $publicPath;
         }
 
@@ -31,7 +31,7 @@ if (!function_exists('asset')) {
         $unversioned = public_path(parse_url($file, PHP_URL_PATH));
 
         if (file_exists($unversioned)) {
-            $publicPath = env('ASSETS_URL') . '/' .trim($file, '/');
+            $publicPath = config('app.asset_url') . '/' . trim($file, '/');
             return $publicPath;
         }
 
