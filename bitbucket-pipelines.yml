@@ -16,24 +16,29 @@ pipelines:
       - step:
           image: node:8.9
           script:
-            - export SITE_ID=_site_id_
-
             # Build assets
             - npm install
             - ./node_modules/.bin/gulp --production
+            - npm run prod
+          artifacts:
+            - public/**
+      - step:
+          image: tstrohmeier/awscli:3.6.5
+          script:
+            - export SITE_ID=_site_id_
 
-            # Login to registry
-            - docker login --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD registry.containers.ovh.net
+            # aws login
+            - eval $(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)
 
             ## Nginx
-            - export IMAGE_NAME=registry.containers.ovh.net/webup/$SITE_ID-front:$BITBUCKET_TAG
+            - export IMAGE_NAME=$AWS_REGISTRY_URL/$SITE_ID/front:$BITBUCKET_TAG
             # build the Docker image (this will use the Dockerfile in the root of the repo)
             - docker build -t $IMAGE_NAME -f ops/build/web/Dockerfile .
             # push the new Docker image to the Docker registry
             - docker push $IMAGE_NAME
 
             ## PHP
-            - export IMAGE_NAME=registry.containers.ovh.net/webup/$SITE_ID-php:$BITBUCKET_TAG
+            - export IMAGE_NAME=$AWS_REGISTRY_URL/$SITE_ID/php:$BITBUCKET_TAG
             # build the Docker image (this will use the Dockerfile in the root of the repo)
             - docker build --build-arg user=1500 -t $IMAGE_NAME -f ops/build/app/Dockerfile .
             # push the new Docker image to the Docker registry
