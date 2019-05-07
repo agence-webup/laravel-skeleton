@@ -19,7 +19,6 @@ pipelines:
             # Build assets
             - npm install
             - ./node_modules/.bin/gulp --production
-            - npm run prod
           artifacts:
             - public/**
       - step:
