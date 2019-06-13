@@ -8,6 +8,22 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
+[*.php]
+indent_style = space
+indent_size = 4
+
+[*.blade.php]
+indent_style = space
+indent_size = 2
+
+[*.{js,html,vue}]
+indent_style = space
+indent_size = 2
+
+[*.{scss,less,css}]
+indent_style = space
+indent_size = 2
+
 [*.md]
 trim_trailing_whitespace = false
 
