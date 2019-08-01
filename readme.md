@@ -3,23 +3,23 @@
 ## Features
 
 * Laravel 5.7.x
-* Development environment with docker
+* Development environment with Docker
 * Simpler forms [(laravel-form)](https://github.com/agence-webup/laravel-form)
 * Robust SEO [(seotools)](https://github.com/artesaos/seotools)
 * Minimalist CSS framework [(Higgcss)](https://github.com/robinparisi/higgcss)
-* Complete workflow with gulp (images, LESS, scripts) and ES6 support
+* Complete workflow with gulp (SCSS, JS, images, cache busting,...)
 * Base template with configurable Analytics
 * Fake SMTP [(maildev)](http://danfarrelly.nyc/MailDev/)
-* CSS syntax with CSSComb (Needs this [atom package](https://atom.io/packages/css-comb))
+* ESLint and CSSComb
 
 ## Requirements
 
 ### Linux / OSX
 
-You just need to install Docker and Docker Compose:
+You just need to install Docker:
 
-* [docker](https://docs.docker.com/compose/install/)
-* [docker-compose](https://docs.docker.com/compose/install/)
+* [Docker for mac](https://docs.docker.com/install/)
+* [Docker for ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 ## Credits
 
