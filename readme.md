@@ -14,38 +14,12 @@
 
 ## Requirements
 
-### Linux
+### Linux / OSX
 
 You just need to install Docker and Docker Compose:
 
 * [docker](https://docs.docker.com/compose/install/)
 * [docker-compose](https://docs.docker.com/compose/install/)
-
-### OSX
-
-You need to install docker-machine:
-
-```shell
-brew install docker
-brew install docker-compose
-brew install docker-machine
-brew tap caskroom/cask
-brew cask install virtualbox
-docker-machine create --driver=virtualbox default
-curl -s https://raw.githubusercontent.com/adlogix/docker-machine-nfs/master/docker-machine-nfs.sh |\
-  sudo tee /usr/local/bin/docker-machine-nfs > /dev/null && \\
-  sudo chmod +x /usr/local/bin/docker-machine-nfs
-docker-machine-nfs default
-eval $(docker-machine env)
-```
-
-Don't forget to enable NFS for better performance:
-
-```shell
-docker-machine-nfs default -f --mount-opts="noacl,async,nolock,vers=3,udp,noatime,actimeo=2"
-```
-
-###
 
 ## Credits
 
