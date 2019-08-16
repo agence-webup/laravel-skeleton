@@ -14,7 +14,30 @@ if (!function_exists('asset')) {
     {
         static $manifest = [];
         static $manifestPath;
-        if (empty($manifest) || $manifestPath !== $buildDirectory) {
+
+        $isNodemodule = strpos($file, 'node_modules') !== false;
+
+        if ($isNodemodule) {
+            //get package name from path (ex "library" from "/node_modules/librabry/dist/library.css")
+            $matches = [];
+            preg_match("/\/node_modules\/(.+)\//mU", $file, $matches);
+            $packageName = $matches[1] ?? null;
+
+            $nodeModuleVersionsPath = storage_path("framework/node_module_versions.php");
+            if (!file_exists($nodeModuleVersionsPath)) {
+                throw new InvalidArgumentException('File "' . $nodeModuleVersionsPath . '" doesn\'t exist. Did you run "php artisan nodemodules:versions" ?');
+            }
+            $nodeModuleVersions = unserialize(file_get_contents($nodeModuleVersionsPath));
+
+            try {
+                $packageVersion = $nodeModuleVersions[$packageName];
+            } catch (\Throwable $th) {
+                throw new InvalidArgumentException("Cannot find version for package " . $packageName);
+            }
+            $publicPath = env('ASSETS_URL') . '/' . trim($file, '/');
+
+            return $publicPath . "?v=" . $packageVersion;
+        } elseif (empty($manifest) || $manifestPath !== $buildDirectory) {
             $path = public_path($buildDirectory . '/rev-manifest.json');
             if (file_exists($path)) {
                 $manifest = json_decode(file_get_contents($path), true);
