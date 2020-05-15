@@ -44,3 +44,7 @@ nbproject
 *.sublime-workspace
 *.swp
 *~
+
+config/app.php
+
+config/contact.php
