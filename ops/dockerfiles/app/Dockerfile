@@ -1,5 +1,8 @@
 FROM webup/laravel:7
 
+# postgres
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql
+
 ARG user=1000
 
 RUN groupadd docker --gid ${user}

@@ -3,6 +3,9 @@ FROM webup/laravel:7
 COPY ops/build/app/fpm-docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY ops/build/app/php.ini /usr/local/etc/php/
 
+# postgres
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql
+
 # Cronr
 RUN curl -L https://github.com/agence-webup/cronr/releases/download/v1/cronr_1_build1_linux > /usr/local/bin/cronr && chmod +x /usr/local/bin/cronr
 

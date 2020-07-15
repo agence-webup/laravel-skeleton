@@ -26,12 +26,17 @@ services:
       - db
 
   db:
-    image: mysql:5.7.17
+    image: postgres:11.2-alpine
     environment:
-      - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_DATABASE=db
-    volumes:
-      - ./ops/config/mysql:/etc/mysql/conf.d
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=db
+  # db:
+  #   image: mysql:5.7.17
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=pass
+  #     - MYSQL_DATABASE=db
+  #   volumes:
+  #     - ./ops/config/mysql:/etc/mysql/conf.d
 
   srcbuild:
     build:

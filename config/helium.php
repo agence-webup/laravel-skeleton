@@ -1,6 +1,38 @@
 <?php
 
 return [
+    "title" => "Administration",
+    // "favicon" => asset("test"),
+
+    "main_title" => "Administration",
+
+    "menu" => [
+        "Dashboard" => [
+            "current_route" => "admin.home",
+            "icon" => "home",
+            "url" => 'admin.home',
+        ],
+        "Test2" => [
+            "current_route" => "admin.home",
+            "icon" => "home",
+            "links" => [
+                "Link 1 " => "admin.home",
+                "Link 2 " => "admin.home"
+            ],
+        ],
+    ],
+
+    "shortcuts" => [
+        [
+            "Voir la dernière facture" => "admin.home",
+            "Voir la première facture" => "admin.home"
+        ],
+        [
+            "Voir la liste des clients" => "admin.home",
+            "Ajouter un client" => "admin.home"
+        ]
+    ],
+
     'modules' => [
         'contact' => [
             "enabled" => false,
@@ -13,16 +45,6 @@ return [
             'removeparts' => [
                 'http://',
                 'https://',
-                'https://www.pierimport.fr',
-                'http://www.pierimport.fr',
-                'https://pier-import.demo4.webup.io',
-                'http://pier-import.demo4.webup.io',
-                'https://157.230.23.195',
-                'http://157.230.23.195',
-                'pier-import.demo4.webup.io',
-                '157.230.23.195',
-                'www.pierimport.fr',
-                'pierimport.fr',
                 config("app.url"),
                 str_replace('http://', "", config("app.url")),
                 str_replace('http://', "", config("app.url")),
