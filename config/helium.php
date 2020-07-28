@@ -20,6 +20,7 @@ return [
                 "Link 2 " => "admin.home"
             ],
         ],
+        // {{ Helium Crud Menu }}
     ],
 
     "shortcuts" => [
