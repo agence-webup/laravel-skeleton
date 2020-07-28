@@ -7,7 +7,7 @@ Helium::header()->contextual([
 "Supprimer les produits 1" => [
 "route" => "admin.home",
 "data-confirm" => "Certain ?",
-"dangerous" => true
+"warning" => true
 ],
 "Modifier l'ordre des produits" => [
 "route" => "admin.home",
@@ -16,7 +16,7 @@ Helium::header()->contextual([
 "route" => "admin.home",
 "data-confirm" => "Certain ?",
 "onclick" => "alert('test')",
-"dangerous" => true
+"danger" => true
 ],
 "Ceci est un test" => "admin.home",
 ]);
@@ -31,7 +31,7 @@ Helium::header()->contextual([
     <x-helium-box-header title="Liste des produits" :actions="[
         'Supprimer les produits 1' => [
           'route' => 'admin.home',
-          'dangerous' => true
+          'danger' => true
         ],
         'Ceci est un test' => 'admin.home',
       ]" />
