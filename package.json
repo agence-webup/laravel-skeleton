@@ -11,7 +11,7 @@
     "eslint-plugin-vue": "^5.2.3"
   },
   "dependencies": {
-    "helium-admin": "^3.4.0",
+    "helium-admin": "git+https://github.com/agence-webup/helium.git#v4",
     "tingle.js": "^0.15.1"
   }
 }
