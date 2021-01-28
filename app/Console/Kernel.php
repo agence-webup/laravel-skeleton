@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Scheduling\Schedule as AppSchedule;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -19,12 +20,26 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
+     * @return void
+     */
+    protected function defineConsoleSchedule()
+    {
+        $this->app->singleton(Schedule::class, function ($app) {
+            return tap(new AppSchedule($this->scheduleTimezone()), function ($schedule) {
+                $this->schedule($schedule->useCache($this->scheduleCache()));
+            });
+        });
+    }
+
+    /**
+     * Define the application's command schedule.
+     *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // $schedule->command('inspire')->setCronKey('inspire')->hourly();
     }
 
     /**
@@ -34,7 +49,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
