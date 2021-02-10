@@ -62,6 +62,8 @@ if (!function_exists('asset')) {
             $publicPath = $assetUrl . '/' . trim($file, '/');
             return $publicPath;
         }
+
+        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
 
