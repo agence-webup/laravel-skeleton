@@ -2,7 +2,7 @@
 
 ## Features
 
-* Laravel 5.7.x
+* Laravel 8.x
 * Development environment with Docker
 * Simpler forms [(laravel-form)](https://github.com/agence-webup/laravel-form)
 * Robust SEO [(seotools)](https://github.com/artesaos/seotools)
