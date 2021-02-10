@@ -1,11 +1,8 @@
----
-
-version: "2"
+version: '3'
 
 services:
-
   proxy:
-    image: nginx:1.12.2-alpine
+    image: nginx:1.19.6-alpine
     volumes:
       - ./ops/config/nginx:/etc/nginx/conf.d
     volumes_from:
@@ -24,14 +21,18 @@ services:
       - ./:/srv/http/
     depends_on:
       - db
+      - redis
 
   db:
-    image: mysql:5.7.17
+    image: mysql:5.7.33
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=db
     volumes:
       - ./ops/config/mysql:/etc/mysql/conf.d
+
+  redis:
+    image: redis:6.0.10-alpine
 
   srcbuild:
     build:
@@ -47,5 +48,5 @@ services:
       - HOME=/srv/http
 
   maildev:
-    image: djfarrelly/maildev:0.14.0
+    image: maildev/maildev:1.1.0
     command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open
