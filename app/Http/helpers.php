@@ -1,5 +1,6 @@
 <?php
 
+
 if (!function_exists('asset')) {
     /**
      * Override the Laravel's asset function
@@ -14,7 +15,6 @@ if (!function_exists('asset')) {
     {
         static $manifest = [];
         static $manifestPath;
-
         $isNodemodule = strpos($file, 'node_modules') !== false;
 
         if ($isNodemodule) {
