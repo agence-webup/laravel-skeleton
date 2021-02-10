@@ -5,6 +5,8 @@
 /public/node_modules
 /public/storage
 /public/rev-manifest.json
+/public/mix-manifest.json
+/public/npm-manifest.json
 /storage/*.key
 /vendor
 Homestead.json
@@ -44,3 +46,4 @@ nbproject
 *.sublime-workspace
 *.swp
 *~
+
