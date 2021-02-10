@@ -11,6 +11,10 @@ if (!function_exists('asset')) {
     {
         $assetUrl = trim(config('app.asset_url'), '/');
 
+        if (strpos($file, "vendor/telescope") !== false) {
+            return $assetUrl . '/' . trim($file, '/');
+        }
+
         static $manifest = [];
         static $manifestPath;
         if (empty($manifest) || $manifestPath !== $buildDirectory) {
@@ -50,17 +54,14 @@ if (!function_exists('asset')) {
             return $assetUrl . '/' . trim($buildDirectory . '/' . $manifest[$trimmedFile], '/');
         }
 
+
         // remove query string
         $unversioned = public_path(parse_url($file, PHP_URL_PATH));
-
-
 
         if (file_exists($unversioned)) {
             $publicPath = $assetUrl . '/' . trim($file, '/');
             return $publicPath;
         }
-
-        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
 
