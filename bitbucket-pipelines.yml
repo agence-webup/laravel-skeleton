@@ -14,7 +14,7 @@ pipelines:
 
     release-*:
       - step:
-          image: node:8.9
+          image: node:14.15.5
           script:
             # Build assets
             - npm install
