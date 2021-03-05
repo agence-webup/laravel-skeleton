@@ -1,30 +1,29 @@
-# laravel-skeleton
+# [Nom du projet]
 
-## Features
+# Checklist
 
-* Laravel 8.x
-* Development environment with Docker
-* Simpler forms [(laravel-form)](https://github.com/agence-webup/laravel-form)
-* Robust SEO [(seotools)](https://github.com/artesaos/seotools)
-* Minimalist CSS framework [(Higgcss)](https://github.com/robinparisi/higgcss)
-* Complete workflow with gulp (SCSS, JS, images, cache busting,...)
-* Base template with configurable Analytics
-* Fake SMTP [(maildev)](http://danfarrelly.nyc/MailDev/)
-* ESLint and CSSComb
+À vérifier lors de la mise en ligne :
 
-## Requirements
+## Technique
 
-### Linux / OSX
+- [ ] les sessions PHP sont configurées pour utiliser REDIS
+- [ ] la variable APP_ENV est configurée sur `production` 
+- [ ] le cache busting est fonctionnel pour tous les assets (Gulp, Mix et NPM)
+- [ ] les commandes de build prennent en compte l'environnement de production (npm run prod et gulp --production)
 
-You just need to install Docker:
+## SEO
 
-* [Docker for mac](https://docs.docker.com/install/)
-* [Docker for ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [ ] la balise canonical est fonctionnelle sur toutes les pages
+- [ ] la version www/non-www est correctement redirigée
+- [ ] la strcuture des URLs est propre
+- [ ] les routes dynamiques ne permettent pas l'utilisation d'accents ou de majuscules
+- [ ] les balises `<title>` et `<meta name="description">` sont uniques sur chaque page
+- [ ] les listing disposent de balise <prev> et <next>
+- [ ] le site est indexable (retirer le noindex de la version pre-prod)
 
-## Credits
+## Comment lancer ce projet ?
 
-Developed by [Agence Webup](https://github.com/agence-webup)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+1) Ce projet nécessite un environnement docker + docker-compose (https://docs.docker.com/compose/install/)
+2) `cp .env.example .env` puis modifier les valeurs
+3) `cp docker-compose.override.sample.yml docker-compose.override.yml`, modifier les valeurs (mot de passe MySQL, etc)
+4) `docker-compose up -d`
