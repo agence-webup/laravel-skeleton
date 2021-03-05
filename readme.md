@@ -9,7 +9,13 @@
 - [ ] les sessions PHP sont configurées pour utiliser REDIS
 - [ ] la variable APP_ENV est configurée sur `production` 
 - [ ] le cache busting est fonctionnel pour tous les assets (Gulp, Mix et NPM)
-- [ ] les commandes de build prennent en compte l'environnement de production (npm run prod et gulp --production)
+- [ ] les commandes de build prennent en compte l'environnement de production (`npm run prod` et `gulp --production`)
+- [ ] les backups sont configurées avec ping sur Healtcheck
+- [ ] updown est configuré
+- [ ] le dns est configuré avec un sous domaine pour les assets
+- [ ] l'outil de mails transactionnel est configuré avec DKIM et SPF
+- [ ] les cron sont monitorés sur healthcheck
+- [ ] le SSL est vérifié https://www.ssllabs.com/ssltest/analyze.html
 
 ## SEO
 
