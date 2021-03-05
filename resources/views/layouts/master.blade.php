@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,12 +9,13 @@
     @yield('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
     @if(config('analytics.analytics_id'))
-        @include('elements.marketing.analytics')
+    @include('elements.marketing.analytics')
     @endif
     @if(config('analytics.gtm_id'))
-        @include('elements.marketing.gtm')
+    @include('elements.marketing.gtm')
     @endif
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -36,7 +38,7 @@
         </footer>
     </div>
 
-    <script src="{{ asset('/assets/js/bundle.js') }}"></script>
     @yield('js')
 </body>
+
 </html>
