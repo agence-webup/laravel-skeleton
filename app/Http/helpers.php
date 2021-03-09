@@ -46,14 +46,15 @@ if (!function_exists('asset')) {
         }
 
         $trimmedFile = ltrim($file, '/');
-        if (isset($manifestNpm[$file])) {
-            return $assetUrl . '/' . trim($buildDirectory . '/' . $manifestNpm[$file], '/');
+        $isNodemodule = strpos($trimmedFile, "node_modules/") !== false;
+        $nodeModuleName = explode("/", $trimmedFile)[1] ?? null;
+        if ($isNodemodule && isset($manifestNpm[$nodeModuleName])) {
+            return $assetUrl . '/' . trim($buildDirectory . '/' . $trimmedFile, '/') . "?id=" . $manifestNpm[$nodeModuleName];
         } elseif (isset($manifestWebpack[$file])) {
             return $assetUrl . '/' . trim(mix($file), "/");
         } elseif (isset($manifest[$trimmedFile])) {
             return $assetUrl . '/' . trim($buildDirectory . '/' . $manifest[$trimmedFile], '/');
         }
-
 
         // remove query string
         $unversioned = public_path(parse_url($file, PHP_URL_PATH));
