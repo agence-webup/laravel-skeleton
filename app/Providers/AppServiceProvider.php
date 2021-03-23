@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
     private function updateCannonical()
     {
         //get current url without query params
-        $url = url()->current();
+        $url = rtrim(strtok(url()->full(), '?'), "/");
         $trimmedAppUrl = rtrim(config('app.url'), "/");
         //Replace request root by app.url from config (ex : replace ip by domain)
         $url = str_replace(Request::root(), $trimmedAppUrl, $url);
