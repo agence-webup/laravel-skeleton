@@ -11,21 +11,22 @@
 - [ ] le cache busting est fonctionnel pour tous les assets (Gulp, Mix et NPM)
 - [ ] les commandes de build prennent en compte l'environnement de production (`npm run prod` et `gulp --production`)
 - [ ] les backups sont configurées avec ping sur Healtcheck
-- [ ] updown est configuré
-- [ ] le dns est configuré avec un sous domaine pour les assets
+- [ ] Updown est configuré
+- [ ] le DNS est configuré avec un sous domaine pour les assets
 - [ ] l'outil de mails transactionnel est configuré avec DKIM et SPF
-- [ ] les cron sont monitorés sur healthcheck
+- [ ] les cron sont monitorés sur Healthcheck
 - [ ] le SSL est vérifié https://www.ssllabs.com/ssltest/analyze.html
 
 ## SEO
 
-- [ ] la balise canonical est fonctionnelle sur toutes les pages
+- [ ] la balise canonical est fonctionnelle sur toutes les pages (avec ou sans slash de fin, suppression des paramètres GET non essentiels)
 - [ ] la version www/non-www est correctement redirigée
-- [ ] la strcuture des URLs est propre
+- [ ] la structure des URLs est propre
 - [ ] les routes dynamiques ne permettent pas l'utilisation d'accents ou de majuscules
 - [ ] les balises `<title>` et `<meta name="description">` sont uniques sur chaque page
-- [ ] les listing disposent de balise <prev> et <next>
+- [ ] les page de listing disposent de balises <prev> et <next>
 - [ ] le site est indexable (retirer le noindex de la version pre-prod)
+- [ ] le robots.txt est rempli pour optimiser le budget de crawl
 
 ## Comment lancer ce projet ?
 
