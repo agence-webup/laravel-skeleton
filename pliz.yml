@@ -11,7 +11,6 @@ install_tasks:
   - composer
   - key:generate
   - gulp
-  - gulp:copy-npm
   - db:update
 
 tasks:
@@ -27,12 +26,6 @@ tasks:
       - sh
       - -c
       - ./node_modules/.bin/gulp watch
-  - name: gulp:copy-npm
-    container: srcbuild
-    command:
-      - sh
-      - -c
-      - ./node_modules/.bin/gulp copy-npm
 
 backup:
   files:
