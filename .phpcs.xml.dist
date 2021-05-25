@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
+    <description>The coding standard for Webup.</description>
+    <rule ref="PSR1"/>
+    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
+    <rule ref="PSR1.Classes.ClassDeclaration">
+        <exclude-pattern>database/migrations/*</exclude-pattern>
+    </rule>
+</ruleset>

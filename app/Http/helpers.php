@@ -1,6 +1,5 @@
 <?php
 
-
 if (!function_exists('asset')) {
     /**
      * Override the Laravel's asset function
@@ -49,7 +48,9 @@ if (!function_exists('asset')) {
         $isNodemodule = strpos($trimmedFile, "node_modules/") !== false;
         $nodeModuleName = explode("/", $trimmedFile)[1] ?? null;
         if ($isNodemodule && isset($manifestNpm[$nodeModuleName])) {
-            return $assetUrl . '/' . trim($buildDirectory . '/' . $trimmedFile, '/') . "?id=" . $manifestNpm[$nodeModuleName];
+            return $assetUrl
+                . '/' . trim($buildDirectory . '/' . $trimmedFile, '/')
+                . "?id=" . $manifestNpm[$nodeModuleName];
         } elseif (isset($manifestWebpack[$file])) {
             return $assetUrl . '/' . trim(mix($file), "/");
         } elseif (isset($manifest[$trimmedFile])) {
