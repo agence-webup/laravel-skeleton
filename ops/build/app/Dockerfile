@@ -12,8 +12,8 @@ RUN groupadd docker --gid ${user}
 RUN useradd docker --uid ${user} --gid ${user} --create-home
 
 # Add sources
-ADD . /srv/http
-RUN chown -R docker:docker .
+COPY --chown=docker:docker . /srv/http
+RUN chown docker:docker .
 
 # Setup
 USER ${user}
