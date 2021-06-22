@@ -1,4 +1,4 @@
-FROM webup/laravel:7
+FROM webup/laravel:6-php8.0
 
 COPY ops/build/app/fpm-docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY ops/build/app/php.ini /usr/local/etc/php/
