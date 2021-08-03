@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# don't validate if phpcs is not found
+PHPCS="$(command -v ./vendor/squizlabs/php_codesniffer/bin/phpcs)"
+if [ -z "$PHPCS" ]; then
+		echo "phpcs unavailable; skipping PHP Standards validation..."
+		exit
+fi
+
+# get all modified and staged PHP files (.blade included)
+# and run phpcs over them
+FILES="$(git diff --name-only --staged | grep .php | tr "\n" " ")"
+if [ ! -z "$FILES" ]; then
+		OUTPUT=$(./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary $FILES)
+		if [ ! -z "$OUTPUT" ]; then
+				echo "$OUTPUT"
+				exit 1
+		fi
+fi
+exit 0
