@@ -13,5 +13,6 @@
     <rule ref="PSR12"/>
     <rule ref="PSR1.Classes.ClassDeclaration">
         <exclude-pattern>database/migrations/*</exclude-pattern>
+        <exclude-pattern>database/seeds/*</exclude-pattern>
     </rule>
 </ruleset>
