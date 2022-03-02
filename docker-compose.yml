@@ -24,7 +24,7 @@ services:
       - redis
 
   db:
-    image: mysql:5.7.33
+    image: mariadb:10.6.4
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=db
