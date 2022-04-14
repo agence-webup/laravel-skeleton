@@ -16,13 +16,14 @@
         "webup/laravel-form": "^v1.5.0"
     },
     "require-dev": {
-        "laravel/telescope": "^v4.8",
-        "spatie/laravel-ignition": "^1.0.5",
         "barryvdh/laravel-debugbar": "^v3.6.7",
+        "beyondcode/laravel-query-detector": "^1.6",
         "fzaninotto/faker": "^v1.9.2",
+        "laravel/telescope": "^v4.8",
         "mockery/mockery": "^1.5.0",
+        "nunomaduro/collision": "^v6.1.0",
         "phpunit/phpunit": "^9.5.13",
-        "nunomaduro/collision": "^v6.1.0"
+        "spatie/laravel-ignition": "^1.0.5"
     },
     "autoload": {
         "psr-4": {
