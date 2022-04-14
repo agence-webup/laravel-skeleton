@@ -5,26 +5,24 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
-        "artesaos/seotools": "^0.19",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.3",
-        "laravel/framework": "^8.53",
-        "laravel/tinker": "^2.6",
-        "laravel/ui": "^3.3",
-        "predis/predis": "^1.1",
-        "webup/laravel-form": "^1.4"
+        "php": "^7.3|8.*",
+        "artesaos/seotools": "^0.22.0",
+        "fruitcake/laravel-cors": "^v2.0.5",
+        "guzzlehttp/guzzle": "^7.4",
+        "laravel/framework": "^v9.2",
+        "laravel/tinker": "^v2.7.0",
+        "laravel/ui": "^v3.4.3",
+        "predis/predis": "^v1.1.10",
+        "webup/laravel-form": "^v1.5.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/telescope": "^4.4",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3",
-        "squizlabs/php_codesniffer": "*"
+        "laravel/telescope": "^v4.8",
+        "spatie/laravel-ignition": "^1.0.5",
+        "barryvdh/laravel-debugbar": "^v3.6.7",
+        "fzaninotto/faker": "^v1.9.2",
+        "mockery/mockery": "^1.5.0",
+        "phpunit/phpunit": "^9.5.13",
+        "nunomaduro/collision": "^v6.1.0"
     },
     "autoload": {
         "psr-4": {
@@ -42,6 +40,9 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
