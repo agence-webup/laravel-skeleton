@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "lint:js": "eslint 'resources/assets/js/**/*' --ext .js,.json",
-    "lintfix:js": "eslint --fix 'resources/assets/js/**/*' --ext .js,.json"
+    "lintfix:js": "eslint --fix 'resources/assets/js/**/*' --ext .js,.json",
+    "lint:css": "npx stylelint --config .stylelintrc.json resources/assets/sass/**/*.scss",
+    "lintfix:css": "npx stylelint --fix --config .stylelintrc.json resources/assets/sass/**/*.scss"
   },
   "devDependencies": {
     "@agence-webup/gulpy": "^2.0.1",
