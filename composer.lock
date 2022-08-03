@@ -5719,16 +5719,16 @@
         },
         {
             "name": "webup/laravel-helium",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agence-webup/laravel-helium.git",
-                "reference": "4cd72e0c0c446f89c7b3f9d8c145466d57baaa47"
+                "reference": "68651ecd0e85373ffad08f16e7c295f8f6e9ff17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agence-webup/laravel-helium/zipball/4cd72e0c0c446f89c7b3f9d8c145466d57baaa47",
-                "reference": "4cd72e0c0c446f89c7b3f9d8c145466d57baaa47",
+                "url": "https://api.github.com/repos/agence-webup/laravel-helium/zipball/68651ecd0e85373ffad08f16e7c295f8f6e9ff17",
+                "reference": "68651ecd0e85373ffad08f16e7c295f8f6e9ff17",
                 "shasum": ""
             },
             "require": {
@@ -5773,9 +5773,9 @@
             "description": "Laravel package for agence-webup/helium.",
             "support": {
                 "issues": "https://github.com/agence-webup/laravel-helium/issues",
-                "source": "https://github.com/agence-webup/laravel-helium/tree/1.3.2"
+                "source": "https://github.com/agence-webup/laravel-helium/tree/1.3.3"
             },
-            "time": "2022-07-13T07:33:38+00:00"
+            "time": "2022-08-03T09:17:02+00:00"
         },
         {
             "name": "yajra/laravel-datatables-oracle",
