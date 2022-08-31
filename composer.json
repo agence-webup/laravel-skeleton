@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|8.*",
@@ -20,6 +23,7 @@
         "beyondcode/laravel-query-detector": "^1.6",
         "fzaninotto/faker": "^v1.9.2",
         "laravel/telescope": "^v4.9.1",
+        "laravel/pint": "^1.0",
         "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^v6.2.1",
         "phpunit/phpunit": "^9.5.21",
