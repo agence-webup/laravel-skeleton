@@ -2,7 +2,7 @@ version: '3'
 
 services:
   proxy:
-    image: nginx:1.19.6-alpine
+    image: nginx:1.23.1-alpine
     volumes:
       - ./ops/config/nginx:/etc/nginx/conf.d
     volumes_from:
@@ -19,20 +19,20 @@ services:
     user: ${UID}:${UID}
     volumes:
       - ./:/srv/http/
+      - ./ops/dockerfiles/app/fpm-docker.conf:/usr/local/etc/php-fpm.d/docker.conf
+      - ./ops/dockerfiles/app/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - db
       - redis
 
   db:
-    image: mariadb:10.6.4
+    image: mariadb:10.9.3
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=db
-    volumes:
-      - ./ops/config/mysql:/etc/mysql/conf.d
 
   redis:
-    image: redis:6.0.10-alpine
+    image: redis:7.0.4-alpine
 
   srcbuild:
     build:
@@ -48,5 +48,6 @@ services:
       - HOME=/srv/http
 
   maildev:
-    image: maildev/maildev:1.1.0
-    command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open
+    image: maildev/maildev:2.0.5
+    command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open --base-pathname "/maildev" --hide-extensions STARTTLS
+    restart: always

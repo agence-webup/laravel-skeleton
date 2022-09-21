@@ -7,10 +7,10 @@ config_files:
   .env.example: .env
 
 install_tasks:
-  - npm
+  # - npm
   - composer
   - key:generate
-  - gulp
+  # - gulp
   - db:update
 
 tasks:
