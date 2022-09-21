@@ -1,4 +1,4 @@
-FROM nginx:1.12.2-alpine
+FROM nginx:1.23.1-alpine
 
 WORKDIR /srv/http
 
