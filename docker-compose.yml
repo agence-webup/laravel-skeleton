@@ -50,4 +50,3 @@ services:
   maildev:
     image: maildev/maildev:2.0.5
     command: bin/maildev --web 80 --smtp 25 --outgoing-user test --outgoing-pass test --open --base-pathname "/maildev" --hide-extensions STARTTLS
-    restart: always
