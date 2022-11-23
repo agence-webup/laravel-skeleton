@@ -6,13 +6,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {!! SEO::generate() !!}
+    @vite(['resources/sass/style.scss', 'resources/js/app.js'])
     @yield('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
-    @if(config('analytics.analytics_id'))
-    @include('elements.marketing.analytics')
-    @endif
-    @if(config('analytics.gtm_id'))
-    @include('elements.marketing.gtm')
+    @if (config('analytics.analytics_id'))
+        @include('elements.marketing.analytics')
     @endif
 </head>
 
@@ -25,8 +23,6 @@
         <nav class="navigation">
             <a href="#">Page 1</a>
             <a href="#">Page 2</a>
-            <a href="#">Page 3</a>
-            <a href="#">Page 4</a>
         </nav>
 
         <main>
@@ -34,7 +30,7 @@
         </main>
 
         <footer>
-            Copyright &copy; <time datetime="{{date('Y')}}">{{date('Y')}}</time>
+            Copyright &copy; <time datetime="{{ date('Y') }}">{{ date('Y') }}</time>
         </footer>
     </div>
 

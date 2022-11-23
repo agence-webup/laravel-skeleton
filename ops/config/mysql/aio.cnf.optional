@@ -1,4 +1,0 @@
-[mysqld]
-
-# This configuration is required on some shared hosting, when too many MySQL instances are running inside containers.
-#innodb_use_native_aio=0

@@ -1,16 +1,29 @@
-# Project
+# Default Laravel
 /node_modules
-/public/assets
+/public/build
 /public/hot
-/public/node_modules
 /public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+# Project
+/public/assets
+/public/node_modules
 /public/rev-manifest.json
 /public/mix-manifest.json
 /public/npm-manifest.json
-/storage/*.key
-/vendor
-Homestead.json
-Homestead.yaml
 
 # env
 .env
@@ -31,8 +44,6 @@ ops/config/nginx/prod.conf
 backup.yml
 
 # OS
-/.idea
-/.vscode
 .DS_Store
 ._*
 Thumbs.db
